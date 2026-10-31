@@ -32,14 +32,14 @@ function summarizePoints(text) {
 const OVERRIDES = [
   { key: 'radboud', badge: 'Partly Funded', stipend: '€5,000' },
   { key: 'leuven', badge: 'Full Package', stipend: '€10,000/year' },
-  { key: 'helsinki', badge: 'Full Package', stipend: 'No stipend' },
+  { key: 'helsinki', badge: 'Partly Funded', stipend: 'No stipend' },
   { key: 'pisa', badge: 'Full Package', stipend: 'DSU grant (housing, meals, allowance)' },
   { key: 'soas', badge: 'Full Package', stipend: 'Up to €17,340' },
   { key: 'chulalongkorn', badge: 'Full Package', stipend: '9,000 THB / month' },
   { key: 'baptist', badge: 'Full Package', stipend: 'HK$100,000 living allowance' },
-  { key: 'nanyang', badge: 'Full Package', stipend: 'No stipend' },
-  { key: 'yonsei', badge: 'Full Package', stipend: 'No stipend' },
-  { key: 'tokyo', badge: 'Full Package', stipend: 'No stipend' },
+  { key: 'nanyang', badge: 'Partly Funded', stipend: 'No stipend' },
+  { key: 'yonsei', badge: 'Partly Funded', stipend: 'No stipend' },
+  { key: 'tokyo', badge: 'Partly Funded', stipend: 'No stipend' },
   { key: 'imics', badge: 'Full Package', stipend: 'NT$ 10,000 / month' },
   { key: 'gcit', badge: 'Full Package', stipend: 'NT$ 10,000 / month' },
   { key: 'cheng kung', badge: 'Full Package', stipend: 'Up to NT$ 30,000 / month' },
@@ -61,6 +61,11 @@ function applyUserOverrides(programs) {
         p.stipendNtwd = '';
         break; 
       }
+    }
+
+    const checkStipend = String(p.funding.stipend || p.funding.localSupportSnapshot || '').toLowerCase();
+    if (checkStipend.includes('no stipend') || checkStipend === '' || checkStipend === 'not stated') {
+      p.fundingBadge = 'Partly Funded';
     }
   });
   return programs;
@@ -173,7 +178,14 @@ function renderTable(programs) {
 
 function renderRanking(programs) {
   const ordered = programs.filter(program => Number.isFinite(program.score) && program.rankingEligible !== false)
-    .sort((a, b) => (a.rank || 99) - (b.rank || 99)).slice(0, 10);
+    .sort((a, b) => {
+      const badgeA = (a.fundingBadge || '').toLowerCase().includes('full') ? 1 : 0;
+      const badgeB = (b.fundingBadge || '').toLowerCase().includes('full') ? 1 : 0;
+      if (badgeA !== badgeB) return badgeB - badgeA;
+      return b.score - a.score;
+    })
+    .slice(0, 10);
+    
   const container = document.getElementById('tier-list');
   if (!ordered.length) return;
   const tiers = [
@@ -185,7 +197,7 @@ function renderRanking(programs) {
     const entries = tier.entries;
     if (!entries.length) return '';
     return `<h3 class="tier-label">${escapeHTML(tier.name)}</h3>${entries.map(program => {
-      const rank = program.rank || ordered.indexOf(program) + 1;
+      const rank = ordered.indexOf(program) + 1;
       const url = safeURL(program.programUrl);
       const image = safeURL(program.image);
       const universityUrl = safeURL(program.universityUrl);
