@@ -52,19 +52,26 @@ function applyUserOverrides(programs) {
     if (!p.funding) p.funding = {};
     const matchString = (p.university + ' ' + p.program).toLowerCase();
     
+    // Apply your specific list
     for (const override of OVERRIDES) {
       if (matchString.includes(override.key)) {
         p.fundingBadge = override.badge;
-        p.funding.localSupportSnapshot = override.stipend;
         p.funding.stipend = override.stipend;
-        p.funding.ntdSupportSnapshot = ''; 
+        // Erase conflicting JSON properties so our override is perfectly clean
+        p.funding.localSupportSnapshot = '';
+        p.funding.ntdSupportSnapshot = '';
+        p.funding.monthlyLocal = '';
+        p.funding.stipendLocal = '';
+        p.funding.monthlyStipendNTD = '';
+        p.funding.snapshotStipend = '';
         p.stipendNtwd = '';
         break; 
       }
     }
 
-    const checkStipend = String(p.funding.stipend || p.funding.localSupportSnapshot || '').toLowerCase();
-    if (checkStipend.includes('no stipend') || checkStipend === '' || checkStipend === 'not stated') {
+    // GLOBAL SWEEP: Aggressively force "Partly Funded" if any stipend string says "no stipend", "not stated", or "tuition-only"
+    const rawStipend = String(p.funding.snapshotStipend || p.funding.stipend || p.funding.localSupportSnapshot || '').toLowerCase();
+    if (rawStipend.includes('no stipend') || rawStipend.includes('no living stipend') || rawStipend.includes('tuition-only') || rawStipend === 'not stated') {
       p.fundingBadge = 'Partly Funded';
     }
   });
@@ -179,9 +186,11 @@ function renderTable(programs) {
 function renderRanking(programs) {
   const ordered = programs.filter(program => Number.isFinite(program.score) && program.rankingEligible !== false)
     .sort((a, b) => {
+      // Rule: Full Package > Partly Funded > Score. Delete these 3 lines if you want it to purely sort by score.
       const badgeA = (a.fundingBadge || '').toLowerCase().includes('full') ? 1 : 0;
       const badgeB = (b.fundingBadge || '').toLowerCase().includes('full') ? 1 : 0;
       if (badgeA !== badgeB) return badgeB - badgeA;
+      
       return b.score - a.score;
     })
     .slice(0, 10);
