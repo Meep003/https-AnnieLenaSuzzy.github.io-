@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Guide to Graduate School route marker">
-  <rect width="64" height="64" rx="18" fill="#172623"/>
-  <path d="M32 9c-11 0-20 8.8-20 19.7C12 43.2 32 57 32 57s20-13.8 20-28.3C52 17.8 43 9 32 9Z" fill="none" stroke="#e6bd65" stroke-width="2.2"/>
-  <circle cx="32" cy="29" r="7" fill="none" stroke="#e6bd65" stroke-width="2.2"/>
-  <path d="M32 36v9m-7 0h14" fill="none" stroke="#e6bd65" stroke-width="2.2" stroke-linecap="round"/>
-</svg>
