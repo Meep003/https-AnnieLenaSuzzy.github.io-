@@ -52,12 +52,10 @@ function applyUserOverrides(programs) {
     if (!p.funding) p.funding = {};
     const matchString = (p.university + ' ' + p.program).toLowerCase();
     
-    // Apply your specific list
     for (const override of OVERRIDES) {
       if (matchString.includes(override.key)) {
         p.fundingBadge = override.badge;
         p.funding.stipend = override.stipend;
-        // Erase conflicting JSON properties so our override is perfectly clean
         p.funding.localSupportSnapshot = '';
         p.funding.ntdSupportSnapshot = '';
         p.funding.monthlyLocal = '';
@@ -69,7 +67,6 @@ function applyUserOverrides(programs) {
       }
     }
 
-    // GLOBAL SWEEP: Aggressively force "Partly Funded" if any stipend string says "no stipend", "not stated", or "tuition-only"
     const rawStipend = String(p.funding.snapshotStipend || p.funding.stipend || p.funding.localSupportSnapshot || '').toLowerCase();
     if (rawStipend.includes('no stipend') || rawStipend.includes('no living stipend') || rawStipend.includes('tuition-only') || rawStipend === 'not stated') {
       p.fundingBadge = 'Partly Funded';
@@ -126,7 +123,7 @@ function cardTemplate(program) {
   const creditMarkup = imageCreditMarkup(program);
   const location = [program.city, program.country].filter(Boolean).join(', ') || 'Location not stated';
   return `<article class="program-card" data-id="${escapeHTML(program.id)}">
-    <div class="card-image-wrap">${image ? `<img src="${escapeHTML(image)}" alt="${escapeHTML(program.imageAlt || `${program.university} campus`)}" loading="lazy">` : `<div class="image-placeholder" role="img" aria-label="University image not yet available">University image not yet available</div>`}<span class="image-credit">${creditMarkup}</span></div>
+    <div class="card-image-wrap">${image ? `<img src="${escapeHTML(image)}" alt="${escapeHTML(program.imageAlt \vert{}\vert{} `${program.university} campus`)}" loading="lazy">` : `<div class="image-placeholder" role="img" aria-label="University image not yet available">University image not yet available</div>`}<span class="image-credit">${creditMarkup}</span></div>
     <div class="card-body"><div class="card-meta"><span class="card-region">${escapeHTML(program.region)}</span></div>
       <h3>${escapeHTML(program.program)}</h3><p class="card-university">${escapeHTML(program.university)}</p>
       <div>${fundingBadge(program)}</div><p class="card-summary">${escapeHTML(formatText(programSummary(program)))}</p>
@@ -152,28 +149,12 @@ function renderTable(programs) {
   const query = document.getElementById('program-search').value.trim().toLowerCase();
   const region = document.getElementById('region-filter').value;
   const filtered = programs.filter(program => {
-    const text = `${program.university} ${program.program} ${program.city} ${program.country}`.toLowerCase();
+    const text = `${program.university}${program.program} ${program.city}${program.country}`.toLowerCase();
     return (!query || text.includes(query)) && (region === 'all' || program.region === region);
   });
   document.getElementById('comparison-body').innerHTML = filtered.map(program => {
     const href = safeURL(program.programUrl);
-    const name = href ? `<a class="row-link" href="${escapeHTML(href)}" target="_blank" rel="noopener noreferrer">${escapeHTML(program.program)}</a>` : `<span class="row-link">${escapeHTML(program.program)}</span>`;
-    
-    const localSupport = formatText(program.funding?.localSupportSnapshot || program.funding?.stipend || 'Not stated');
-    const ntdSupport = formatText(tableText(program, 'stipendNtwd', 'Not stated'));
-    let stipendCell = localSupport;
-    if (localSupport !== 'Not stated' && ntdSupport !== 'Not stated' && localSupport !== ntdSupport) {
-      stipendCell = `${localSupport} ~ ${ntdSupport}`;
-    }
-
-    let feeLocal = formatText(tableText(program, 'applicationFeeLocal', tableText(program, 'applicationFee', 'Not stated')));
-    let feeNTD = formatText(tableText(program, 'applicationFeeNTD', 'Not stated'));
-    let feeCell = feeLocal;
-    if (feeLocal !== 'Not stated' && feeNTD !== 'Not stated' && feeLocal !== feeNTD) {
-      feeCell = `${feeLocal} ~ ${feeNTD}`;
-    }
-
-    return `<tr><td>${name}<span class="row-school">${escapeHTML(program.university)}</span></td>
+    const name = href ? `<a class="row-link" href="${escapeHTML(href)}" target="_blank" rel="noopener noreferrer">${escapeHTML(program.program)}</a>` : `<span class="row-link">${escapeHTML(program.program)}</span>`;  const localSupport = formatText(program.funding?.localSupportSnapshot \vert{}\vert{} program.funding?.stipend \vert{}\vert{} 'Not stated'); const ntdSupport = formatText(tableText(program, 'stipendNtwd', 'Not stated')); let stipendCell = localSupport; if (localSupport !== 'Not stated' && ntdSupport !== 'Not stated' && localSupport !== ntdSupport) { stipendCell = `${localSupport} ~ ${ntdSupport}`; }  let feeLocal = formatText(tableText(program, 'applicationFeeLocal', tableText(program, 'applicationFee', 'Not stated'))); let feeNTD = formatText(tableText(program, 'applicationFeeNTD', 'Not stated')); let feeCell = feeLocal; if (feeLocal !== 'Not stated' && feeNTD !== 'Not stated' && feeLocal !== feeNTD) { feeCell = `${feeLocal} ~ ${feeNTD}`; }  return `<tr><td>${name}<span class="row-school">${escapeHTML(program.university)}</span></td>
       <td>${escapeHTML(program.region)}</td><td>${escapeHTML(tableText(program, 'degree'))}</td>
       <td>${fundingBadge(program)}</td>
       <td>${escapeHTML(stipendCell)}</td>
@@ -186,11 +167,9 @@ function renderTable(programs) {
 function renderRanking(programs) {
   const ordered = programs.filter(program => Number.isFinite(program.score) && program.rankingEligible !== false)
     .sort((a, b) => {
-      // Rule: Full Package > Partly Funded > Score. Delete these 3 lines if you want it to purely sort by score.
       const badgeA = (a.fundingBadge || '').toLowerCase().includes('full') ? 1 : 0;
       const badgeB = (b.fundingBadge || '').toLowerCase().includes('full') ? 1 : 0;
       if (badgeA !== badgeB) return badgeB - badgeA;
-      
       return b.score - a.score;
     })
     .slice(0, 10);
@@ -211,16 +190,19 @@ function renderRanking(programs) {
       const image = safeURL(program.image);
       const universityUrl = safeURL(program.universityUrl);
       const imageMarkup = image ? `<img class="rank-image" src="${escapeHTML(image)}" alt="${escapeHTML(program.imageAlt || `${program.university} campus`)}" loading="lazy">` : '<div class="rank-image rank-image-fallback" aria-hidden="true">IBSC</div>';
-      const links = `${url ? externalLink('Programme page', url) : ''}${universityUrl ? ` ${externalLink('University website', universityUrl)}` : ''}`;
+      
+      const links = `<button type="button" data-open-profile="${escapeHTML(program.id)}" style="background:none; border:none; padding:0; font:inherit; color:var(--rust-dark); font-weight:700; cursor:pointer; text-decoration:underline; text-underline-offset:2px;">Open profile ↗</button>${url ? ` ${externalLink('Programme page', url)}` : ''}${universityUrl ? ` ${externalLink('University website', universityUrl)}` : ''}`;
+      
       const breakdown = program.scoreBreakdown || {};
       const scoreDetails = `Funding ${breakdown.financial ?? 0}/40 · Fit ${breakdown.course_and_field_fit ?? 0}/25 · English ${breakdown.english_medium_points_out_of_10 ?? 0}/10 · Readiness ${breakdown.application_readiness_out_of_25 ?? 0}/25`;
       const scoreBasisNote = program.scoreCashBasisNote ? `<p class="rank-score-source-note">${escapeHTML(formatText(program.scoreCashBasisNote))}</p>` : '';
-      return `<article class="rank-card"><div class="rank-no">#${String(rank).padStart(2,'0')}</div>${imageMarkup}<div class="rank-content"><div class="card-meta">${fundingBadge(program)}</div><h3>${escapeHTML(program.program)}</h3><p>${escapeHTML(program.university)} · ${escapeHTML(program.city || '')}, ${escapeHTML(program.country || '')}</p><p>${escapeHTML(formatText(program.rankingSummary || program.description || ''))}</p><p class="rank-score-breakdown">${escapeHTML(scoreDetails)}</p>${scoreBasisNote}<div class="rank-links">${links}</div></div><div class="rank-score"><strong>${escapeHTML(program.score)}</strong><span>out of 100</span></div></article>`;
+      
+      return `<article class="rank-card"><div class="rank-no">#${String(rank).padStart(2,'0')}</div>${imageMarkup}<div class="rank-content"><div class="card-meta">${fundingBadge(program)}</div><h3 data-open-profile="${escapeHTML(program.id)}" style="cursor:pointer; text-decoration:underline; text-underline-offset:2px;" title="Open profile">${escapeHTML(program.program)}</h3><p>${escapeHTML(program.university)} · ${escapeHTML(program.city || '')}, ${escapeHTML(program.country || '')}</p><p>${escapeHTML(formatText(program.rankingSummary || program.description || ''))}</p><p class="rank-score-breakdown">${escapeHTML(scoreDetails)}</p>${scoreBasisNote}<div class="rank-links">${links}</div></div><div class="rank-score"><strong>${escapeHTML(program.score)}</strong><span>out of 100</span></div></article>`;
     }).join('')}`;
   }).join('');
   const rankedIds = new Set(ordered.map(program => program.id));
   const excluded = programs.filter(program => !rankedIds.has(program.id));
-  if (excluded.length) document.getElementById('not-ranked-list').innerHTML = excluded.map(program => `<article><strong>${escapeHTML(program.university)} — ${escapeHTML(program.program)}</strong><p>${escapeHTML(formatText(program.rankReason || 'See the profile for programme details and linked sources.'))}</p></article>`).join('');
+  if (excluded.length) document.getElementById('not-ranked-list').innerHTML = excluded.map(program => `<article><strong><span data-open-profile="${escapeHTML(program.id)}" style="cursor:pointer; text-decoration:underline;" title="Open profile">${escapeHTML(program.university)} — ${escapeHTML(program.program)}</span></strong><p>${escapeHTML(formatText(program.rankReason || 'See the profile for programme details and linked sources.'))}</p></article>`).join('');
   const fundingWinner = programs.find(program => program.award === 'funding');
   const educationWinner = programs.find(program => program.award === 'education');
   if (fundingWinner) {
@@ -231,22 +213,7 @@ function renderRanking(programs) {
   if (educationWinner) {
     document.getElementById('best-education').textContent = educationWinner.program;
     const copy = document.getElementById('best-education-copy');
-    if (copy) copy.textContent = `Highest course/field fit plus English-medium score among the Top 10 (${educationWinner.scoreBreakdown.course_and_field_fit + educationWinner.scoreBreakdown.english_medium_points_out_of_10}/35).`;
-  }
-}
-
-function checklistFor(program) {
-  const byName = new Map((program.requirements || []).map(item => [String(item.item || '').toLowerCase(), item]));
-  return DOCUMENT_ITEMS.map(name => {
-    const normalized = name.toLowerCase();
-    const item = (program.requirements || []).find(entry => normalized.includes(String(entry.item || '').toLowerCase()) || String(entry.item || '').toLowerCase().includes(normalized.split(' / ')[0]));
-    return {item: name, status: item?.status || 'Not stated', details: item?.details || 'Not stated on the official pages reviewed.'};
-  });
-}
-
-function sourceLinks(program) {
-  const sources = Array.isArray(program.officialSources) ? program.officialSources : [];
-  return sources.filter(source => safeURL(source.url)).map(source => `<li>${externalLink(source.label || 'Official source', source.url)}</li>`).join('') || '<li>No official links recorded yet.</li>';
+    if (copy) copy.textContent = `Highest course/field fit plus English-medium score among the Top 10 (${educationWinner.scoreBreakdown.course_and_field_fit + educationWinner.scoreBreakdown.english_medium_points_out_of_10}/35).`; } }  function checklistFor(program) { const byName = new Map((program.requirements \vert{}\vert{} []).map(item => [String(item.item \vert{}\vert{} '').toLowerCase(), item])); return DOCUMENT_ITEMS.map(name => { const normalized = name.toLowerCase(); const item = (program.requirements \vert{}\vert{} []).find(entry => normalized.includes(String(entry.item \vert{}\vert{} '').toLowerCase()) \vert{}\vert{} String(entry.item \vert{}\vert{} '').toLowerCase().includes(normalized.split(' / ')[0])); return {item: name, status: item?.status \vert{}\vert{} 'Not stated', details: item?.details \vert{}\vert{} 'Not stated on the official pages reviewed.'}; }); }  function sourceLinks(program) { const sources = Array.isArray(program.officialSources) ? program.officialSources : []; return sources.filter(source => safeURL(source.url)).map(source => `<li>${externalLink(source.label || 'Official source', source.url)}</li>`).join('') || '<li>No official links recorded yet.</li>';
 }
 
 function screenshotPanel(program) {
@@ -254,8 +221,7 @@ function screenshotPanel(program) {
   const funding = shots.find(shot => /fund/i.test(shot.kind || ''));
   const requirements = shots.find(shot => /require/i.test(shot.kind || ''));
   const format = (shot, title) => shot?.path
-    ? `<figure><img src="${escapeHTML(shot.path)}" alt="${escapeHTML(shot.alt || title)}"><figcaption>${escapeHTML(title)} · captured ${escapeHTML(shot.capturedAt || 'date not recorded')} · ${externalLink(shot.pageTitle || 'Open official page', shot.sourceUrl)}</figcaption></figure>`
-    : `<p><strong>${title}:</strong> No screenshot file is attached to this source yet.</p>`;
+    ? `<figure><img src="${escapeHTML(shot.path)}" alt="${escapeHTML(shot.alt || title)}"><figcaption>${escapeHTML(title)} · captured ${escapeHTML(shot.capturedAt || 'date not recorded')} · ${externalLink(shot.pageTitle \vert{}\vert{} 'Open official page', shot.sourceUrl)}</figcaption></figure>` : `<p><strong>${title}:</strong> No screenshot file is attached to this source yet.</p>`;
   return `${format(funding, 'Funding source screenshot')}${format(requirements, 'Requirements screenshot')}`;
 }
 
@@ -264,7 +230,7 @@ function profileHTML(program) {
   const loc = [program.city, program.country].filter(Boolean).join(', ');
   const fund = program.funding || {};
   const checklist = checklistFor(program);
-  const courseMarkup = (program.courses || []).length ? `<ul>${program.courses.map(course => `<li>${escapeHTML(course.title || course)}${course.url ? ` — ${externalLink('source', course.url)}` : ''}</li>`).join('')}</ul>` : '<p>Related course titles and links are not stated in the profile data.</p>';
+  const courseMarkup = (program.courses || []).length ? `<ul>${program.courses.map(course => `<li>${escapeHTML(course.title \vert{}\vert{} course)}${course.url ? ` — ${externalLink('source', course.url)}` : ''}</li>`).join('')}</ul>` : '<p>Related course titles and links are not stated in the profile data.</p>';
   const displayLabels = {'GPA / academic minimum':'Minimum GPA','Language tests and English-medium degree':'Language test / English-medium degree waiver','Diploma / expected graduation':'Diploma / expected-graduation letter','Contact with an advisor':'Advisor contact','CV / résumé':'CV / resume'};
   
   const items = checklist.map(item => `<article class="detail-row"><strong>${escapeHTML(displayLabels[item.item] || item.item)}</strong><span class="check-status" style="margin-left: 8px;">${escapeHTML(item.status)}</span><p>${escapeHTML(formatText(item.details))}</p></article>`).join('');
@@ -277,14 +243,14 @@ function profileHTML(program) {
   const localStipend = formatText(fund.localSupportSnapshot || fund.monthlyLocal || fund.stipendLocal || fund.stipend || 'Not stated');
   const ntdStipend = formatText(fund.ntdSupportSnapshot || fund.monthlyStipendNTD || program.stipendNtwd || 'NT$ equivalent not stated');
   const isTwdSupport = /^(NT\$|TWD\b|NTD\b)/i.test(String(localStipend).trim());
-  const stipendSummary = formatText(fund.snapshotStipend || (isTwdSupport ? localStipend : (ntdStipend !== 'Not stated' && ntdStipend !== 'NT$ equivalent not stated' && localStipend !== ntdStipend ? `${localStipend} ~ ${ntdStipend}` : localStipend)));
+  const stipendSummary = formatText(fund.snapshotStipend || (isTwdSupport ? localStipend : (ntdStipend !== 'Not stated' && ntdStipend !== 'NT$ equivalent not stated' && localStipend !== ntdStipend ? `${localStipend} ~${ntdStipend}` : localStipend)));
   const stipendNote = formatText(fund.snapshotNote || '');
 
   const localFee = formatText(program.applicationFeeLocal || program.applicationFee || 'Not stated');
   const ntdFee = formatText(program.applicationFeeNTD || 'Not stated');
   let combinedFee = localFee;
   if (localFee !== 'Not stated' && ntdFee !== 'Not stated' && localFee !== ntdFee) {
-    combinedFee = `${localFee} ~ ${ntdFee}`;
+    combinedFee = `${localFee} ~${ntdFee}`;
   }
 
   const universityLink = externalLink('Official university website', program.universityUrl);
@@ -298,72 +264,10 @@ function profileHTML(program) {
     <div class="fact-item"><span>GRE / GMAT</span><strong>${escapeHTML(program.greGmat || 'Not stated')}</strong></div>
     <div class="fact-item quick-deadline"><span>Application Deadline</span><strong>${escapeHTML(appDeadline)}</strong></div></div><p class="small-note">NT$ equivalents are approximate, using indicative ECB/CBC cross-rates dated 30 October 2026. Annual and one-time awards show their totals, not assumed monthly payments.</p></section>
     <section class="dialog-section profile-checklist"><h3>Required Documents Checklist</h3><p>Every checklist line uses a rubric status: Required, Optional, Not required, or Not stated.</p><div class="detail-list">${items}</div><p><strong>GRE / GMAT / local-language tests:</strong> ${escapeHTML(program.optionalTests?.length ? program.optionalTests.map(test => `${test.name}: ${test.status}${test.details ? ` — ${test.details}` : ''}`).join('; ') : 'Not stated')}</p></section>
-    <section class="dialog-section"><h3>Programme and IBSC fit</h3><div class="fact-grid"><div class="fact-item"><span>Degree</span><strong>${escapeHTML(tableText(program,'degree'))}</strong></div><div class="fact-item"><span>Length</span><strong>${escapeHTML(program.duration || 'Not stated')}</strong></div><div class="fact-item"><span>Location</span><strong>${escapeHTML(loc || 'Not stated')}</strong></div><div class="fact-item"><span>Language</span><strong>${escapeHTML(program.language || 'Not stated')}</strong></div><div class="fact-item"><span>Field fit</span><strong>${escapeHTML(program.fieldFit || 'Not stated')}</strong></div><div class="fact-item"><span>Source review date</span><strong>${escapeHTML(program.lastChecked || 'Not recorded')}</strong></div></div><p style="margin-top:12px">${escapeHTML(desc)}</p><p><strong>Why it fits IBSC:</strong> ${escapeHTML(formatText(program.ibscFit || 'The profile does not yet include a source-backed explanation of its fit with IBSC.'))}</p><h4>Related courses</h4>${courseMarkup}</section>
+    <section class="dialog-section"><h3>Programme and IBSC fit</h3><div class="fact-grid"><div class="fact-item"><span>Degree</span><strong>${escapeHTML(tableText(program,'degree'))}</strong></div><div class="fact-item"><span>Length</span><strong>${escapeHTML(program.duration || 'Not stated')}</strong></div><div class="fact-item"><span>Location</span><strong>${escapeHTML(loc || 'Not stated')}</strong></div><div class="fact-item"><span>Language</span><strong>${escapeHTML(program.language || 'Not stated')}</strong></div><div class="fact-item"><span>Field fit</span><strong>${escapeHTML(program.fieldFit || 'Not stated')}</strong></div><div class="fact-item"><span>Source review date</span><strong>${escapeHTML(program.lastChecked || 'Not recorded')}</strong></div></div><p style="margin-top:12px">${escapeHTML(desc)}</p><p><strong>Why it fits IBSC:</strong> ${escapeHTML(formatText(program.ibscFit \vert{}\vert{} 'The profile does not yet include a source-backed explanation of its fit with IBSC.'))}</p><h4>Related courses</h4>${courseMarkup}</section>
     <section class="dialog-section"><h3>Full funding terms</h3><div class="fact-grid">
     <div class="fact-item"><span>Funding source</span><strong>${escapeHTML(summarizePoints(fund.source || 'Not stated'))}</strong></div>
     <div class="fact-item"><span>Tuition covered</span><strong>${escapeHTML(summarizePoints(fund.tuition || 'Not stated'))}</strong></div>
     <div class="fact-item"><span>Funding duration</span><strong>${escapeHTML(summarizePoints(fund.duration || 'Not stated'))}</strong></div>
     <div class="fact-item"><span>Guaranteed or competitive</span><strong>${escapeHTML(summarizePoints(fund.guarantee || 'Not stated'))}</strong></div>
-    <div class="fact-item"><span>Eligibility</span><strong>${escapeHTML(summarizePoints(fund.eligibility || 'Not stated'))}</strong></div>
-    <div class="fact-item"><span>Separate scholarship deadline</span><strong>${escapeHTML(summarizePoints(fund.deadline || awardDeadline))}</strong></div>
-    </div><p><strong>Why this funding badge:</strong> ${escapeHTML(formatText(fund.rubricBasis || 'See the official scholarship terms linked below.'))}</p><p><strong>Project-supplied award note:</strong> ${escapeHTML(formatText(fund.projectNote || 'No separate funding note was supplied.'))}</p><p><strong>Exchange rate and date:</strong> ${escapeHTML(program.exchangeRate || 'Not stated.')}</p></section>
-    <section class="dialog-section"><h3>Deadlines and contact</h3><div class="fact-grid"><div class="fact-item"><span>Application deadline</span><strong>${escapeHTML(appDeadline)}</strong></div><div class="fact-item"><span>Scholarship deadline</span><strong>${escapeHTML(awardDeadline)}</strong></div><div class="fact-item"><span>Programme start</span><strong>${escapeHTML(tableText(program,'startDate'))}</strong></div><div class="fact-item"><span>Application fee</span><strong>${escapeHTML(combinedFee)}</strong></div><div class="fact-item"><span>Admissions contact</span><strong>${escapeHTML(program.admissionsContact || 'Not stated')}</strong></div></div></section>
-    <section class="dialog-section"><h3>Official-page screenshots</h3><div class="detail-list">${screenshotPanel(program)}</div></section>
-    <section class="dialog-section"><h3>Official sources</h3><ul class="source-links">${sources}</ul><p class="small-note">Use the linked programme and scholarship pages to confirm cycle-specific details. Source review date: ${escapeHTML(program.lastChecked || 'Not recorded')}.</p></section>`;
-}
-
-function setupDialog(programs) {
-  const dialog = document.getElementById('profile-dialog');
-  document.addEventListener('click', event => {
-    const button = event.target.closest('[data-open-profile]');
-    if (button) {
-      const program = programs.find(item => item.id === button.dataset.openProfile);
-      if (!program) return;
-      document.getElementById('dialog-content').innerHTML = profileHTML(program);
-      dialog.showModal();
-    }
-  });
-  document.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
-  dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
-}
-
-function renderSources(programs) {
-  const unique = new Map();
-  programs.forEach(program => {
-    const imageSources = [];
-    if (program.imageSourceUrl) imageSources.push({label: `Campus image: ${program.imageCredit || 'source page'}`, url: program.imageSourceUrl});
-    if (program.imageLicenseUrl) imageSources.push({label: program.imageLicenseLabel || 'Campus image license', url: program.imageLicenseUrl});
-    [...(program.officialSources || []), ...imageSources].forEach(source => {
-    if (source.url && safeURL(source.url)) unique.set(source.url, {label:source.label || source.url, url:source.url, university:program.university});
-    });
-  });
-  const list = [...unique.values()];
-  document.getElementById('source-register-body').innerHTML = list.length
-    ? `<ul class="source-list">${list.map(source => `<li><strong>${escapeHTML(source.university)}:</strong> ${externalLink(source.label, source.url)}</li>`).join('')}</ul>`
-    : '<p>Official programme, admissions, curriculum, and scholarship sources will appear here as records are checked.</p>';
-  const dates = programs.map(program => program.lastChecked).filter(date => date && date !== 'Not checked' && date !== 'Not recorded');
-  document.getElementById('last-updated').textContent = dates.length ? dates.sort().at(-1) : 'Source review in progress';
-}
-
-async function init() {
-  try {
-    const response = await fetch('data/programs.json');
-    if (!response.ok) throw new Error(`Program data unavailable (${response.status})`);
-    let programs = await response.json();
-    
-    programs = applyUserOverrides(programs);
-    
-    renderDirectories(programs);
-    renderTable(programs);
-    renderRanking(programs);
-    renderSources(programs);
-    setupDialog(programs);
-    ['program-search','region-filter'].forEach(id => document.getElementById(id).addEventListener('input', () => renderTable(programs)));
-  } catch (error) {
-    console.error(error);
-    document.querySelectorAll('[data-program-grid]').forEach(grid => grid.innerHTML = `<p class="not-found">Programme data could not be loaded. Please refresh the page.</p>`);
-    document.getElementById('comparison-body').innerHTML = '<tr><td colspan="8">Programme data could not be loaded.</td></tr>';
-  }
-}
-
-document.addEventListener('DOMContentLoaded', init);
+    <div class="fact-item"><span>Eligibility</span><strong>${escapeHTML(summarizePoints(fund.eligibility || '
