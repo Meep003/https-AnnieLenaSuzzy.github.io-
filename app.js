@@ -1,9 +1,7 @@
-// --- TEXT SHORTENER ---
 function formatText(text) {
   if (!text) return text;
   let s = String(text);
   
-  // Shorten specific long paragraphs & verbose "Not stated" text
   s = s.replace(
     /Official full award: NT\$25,000\/month for 12 months\. Project note lists NT\$10,000\/month; the official handout lists a different amount\.?/gi,
     "NT$25,000/month for 12 months. Project note lists NT$10,000/month"
@@ -20,21 +18,17 @@ function formatText(text) {
   return s;
 }
 
-// --- FUNDING TERMS SUMMARIZER (Extracts key points) ---
 function summarizePoints(text) {
   if (!text || text === 'Not stated') return text;
   let s = String(text).trim();
   
-  // Split by period to separate sentences
   let parts = s.split('. ');
   if (parts.length > 2) {
-    // Return only the first 2 sentences for a clean summary
     return parts.slice(0, 2).join('. ') + '.';
   }
   return s;
 }
 
-// --- DATA OVERRIDES FOR BADGES & STIPENDS ---
 const OVERRIDES = [
   { key: 'radboud', badge: 'Partly Funded', stipend: '€5,000' },
   { key: 'leuven', badge: 'Full Package', stipend: '€10,000/year' },
@@ -153,7 +147,6 @@ function renderTable(programs) {
     const href = safeURL(program.programUrl);
     const name = href ? `<a class="row-link" href="${escapeHTML(href)}" target="_blank" rel="noopener noreferrer">${escapeHTML(program.program)}</a>` : `<span class="row-link">${escapeHTML(program.program)}</span>`;
     
-    // Combine Stipend into one line
     const localSupport = formatText(program.funding?.localSupportSnapshot || program.funding?.stipend || 'Not stated');
     const ntdSupport = formatText(tableText(program, 'stipendNtwd', 'Not stated'));
     let stipendCell = localSupport;
@@ -161,7 +154,6 @@ function renderTable(programs) {
       stipendCell = `${localSupport} ~ ${ntdSupport}`;
     }
 
-    // Combine Fee into one line
     let feeLocal = formatText(tableText(program, 'applicationFeeLocal', tableText(program, 'applicationFee', 'Not stated')));
     let feeNTD = formatText(tableText(program, 'applicationFeeNTD', 'Not stated'));
     let feeCell = feeLocal;
@@ -254,7 +246,6 @@ function profileHTML(program) {
   const courseMarkup = (program.courses || []).length ? `<ul>${program.courses.map(course => `<li>${escapeHTML(course.title || course)}${course.url ? ` — ${externalLink('source', course.url)}` : ''}</li>`).join('')}</ul>` : '<p>Related course titles and links are not stated in the profile data.</p>';
   const displayLabels = {'GPA / academic minimum':'Minimum GPA','Language tests and English-medium degree':'Language test / English-medium degree waiver','Diploma / expected graduation':'Diploma / expected-graduation letter','Contact with an advisor':'Advisor contact','CV / résumé':'CV / resume'};
   
-  // ADDED SPACING TO CHECKLIST STATUS WITH margin-left: 8px;
   const items = checklist.map(item => `<article class="detail-row"><strong>${escapeHTML(displayLabels[item.item] || item.item)}</strong><span class="check-status" style="margin-left: 8px;">${escapeHTML(item.status)}</span><p>${escapeHTML(formatText(item.details))}</p></article>`).join('');
   
   const sources = sourceLinks(program);
@@ -279,7 +270,6 @@ function profileHTML(program) {
   const programLink = externalLink('Official programme page', program.programUrl);
   const imageCredit = imageCreditMarkup(program);
   
-  // SUMMARIZED THE FUNDING GRID FIELDS
   return `<div class="dialog-head">${image ? `<img src="${escapeHTML(image)}" alt="${escapeHTML(program.imageAlt || program.university)}">` : ''}<div><h2 id="dialog-title">${escapeHTML(program.program)}</h2><p>${escapeHTML(program.university)} · ${escapeHTML(loc)}</p>${imageCredit ? `<p class="small-note">Image credit: ${imageCredit}</p>` : ''}<div class="profile-links">${programLink}${universityLink}</div></div></div>
     <section class="dialog-section profile-quick-funding"><h3>Funding Details</h3><div class="quick-funding-badge">${fundingBadge(program)}</div><div class="fact-grid quick-fact-grid">
     <div class="fact-item quick-stipend"><span>Stipend / living support</span><strong>${escapeHTML(stipendSummary)}</strong>${stipendNote ? `<small class="quick-stipend-note">${escapeHTML(stipendNote)}</small>` : ''}</div>
@@ -336,11 +326,10 @@ function renderSources(programs) {
 
 async function init() {
   try {
-    const response = await fetch('/data/programs.json');
+    const response = await fetch('data/programs.json');
     if (!response.ok) throw new Error(`Program data unavailable (${response.status})`);
     let programs = await response.json();
     
-    // Check and apply the overrides before loading the UI
     programs = applyUserOverrides(programs);
     
     renderDirectories(programs);
