@@ -181,7 +181,7 @@
         "url": "https://www.cbc.gov.tw/en/lp-700-2.html"
       }
     ],
-    "image": "/assets/campuses/radboud.webp",
+    "image": "assets/campuses/radboud.webp",
     "imageAlt": "Radboud University campus image",
     "imageCredit": "Radboud University official image source",
     "lastChecked": "1 Nov 2026",
@@ -209,14 +209,14 @@
     "officialScreenshots": [
       {
         "kind": "funding",
-        "path": "/assets/evidence/radboud-gcd-funding.jpg",
+        "path": "assets/evidence/radboud-gcd-funding.jpg",
         "sourceUrl": "https://www.ru.nl/en/education/scholarships/radboud-scholarship-programme",
         "capturedAt": "2026-11-01",
         "alt": "Official funding information page for this programme; captured 2026-11-01"
       },
       {
         "kind": "requirements",
-        "path": "/assets/evidence/radboud-gcd-requirements.jpg",
+        "path": "assets/evidence/radboud-gcd-requirements.jpg",
         "sourceUrl": "https://www.ru.nl/en/education/masters/global-communication-and-diversity/admission-and-application",
         "capturedAt": "2026-11-01",
         "alt": "Official requirements information page for this programme; captured 2026-11-01"
@@ -448,7 +448,7 @@
         "url": "https://www.cbc.gov.tw/en/lp-700-2.html"
       }
     ],
-    "image": "/assets/campuses/kuleuven.jpeg",
+    "image": "assets/campuses/kuleuven.jpeg",
     "imageAlt": "KU Leuven campus building",
     "imageCredit": "KU Leuven official About page",
     "lastChecked": "1 Nov 2026",
@@ -476,14 +476,14 @@
     "officialScreenshots": [
       {
         "kind": "funding",
-        "path": "/assets/evidence/kuleuven-dms-funding.jpg",
+        "path": "assets/evidence/kuleuven-dms-funding.jpg",
         "sourceUrl": "https://www.kuleuven.be/scholarships/year/2027-2028/master-mind-scholarship",
         "capturedAt": "2026-11-01",
         "alt": "Official funding information page for this programme; captured 2026-11-01"
       },
       {
         "kind": "requirements",
-        "path": "/assets/evidence/kuleuven-dms-requirements.jpg",
+        "path": "assets/evidence/kuleuven-dms-requirements.jpg",
         "sourceUrl": "https://onderwijsaanbod.kuleuven.be/opleidingen/e/SC_54752960/toelatingsvoorwaarden",
         "capturedAt": "2026-11-01",
         "alt": "Official requirements information page for this programme; captured 2026-11-01"
@@ -715,7 +715,7 @@
         "url": "https://www.cbc.gov.tw/en/lp-700-2.html"
       }
     ],
-    "image": "/assets/campuses/helsinki.jpg",
+    "image": "assets/campuses/helsinki.jpg",
     "imageAlt": "University of Helsinki Main Library building",
     "imageCredit": "ArchDaily — Helsinki University Main Library",
     "lastChecked": "1 Nov 2026",
@@ -743,14 +743,14 @@
     "officialScreenshots": [
       {
         "kind": "funding",
-        "path": "/assets/evidence/helsinki-gpc-funding.jpg",
+        "path": "assets/evidence/helsinki-gpc-funding.jpg",
         "sourceUrl": "https://www.helsinki.fi/en/admissions-and-education/apply-bachelors-and-masters-programmes/tuition-fees-and-scholarship-programme",
         "capturedAt": "2026-11-01",
         "alt": "Official funding information page for this programme; captured 2026-11-01"
       },
       {
         "kind": "requirements",
-        "path": "/assets/evidence/helsinki-gpc-requirements.jpg",
+        "path": "assets/evidence/helsinki-gpc-requirements.jpg",
         "sourceUrl": "https://opintopolku.fi/konfo/en/hakukohde/1.2.246.562.20.00000000000000075317/valintaperuste",
         "capturedAt": "2026-11-01",
         "alt": "Official requirements information page for this programme; captured 2026-11-01"
@@ -970,7 +970,7 @@
         "url": "https://www.cbc.gov.tw/en/lp-700-2.html"
       }
     ],
-    "image": "/assets/campuses/pisa.jpg",
+    "image": "assets/campuses/pisa.jpg",
     "imageAlt": "University of Pisa campus or academic setting",
     "imageCredit": "University of Pisa Digital Intelligence and Change Management site",
     "lastChecked": "1 Nov 2026",
@@ -998,14 +998,14 @@
     "officialScreenshots": [
       {
         "kind": "funding",
-        "path": "/assets/evidence/pisa-dh-funding.jpg",
+        "path": "assets/evidence/pisa-dh-funding.jpg",
         "sourceUrl": "https://www.dsu.toscana.it/borsa-di-studio",
         "capturedAt": "2026-11-01",
         "alt": "Official funding information page for this programme; captured 2026-11-01"
       },
       {
         "kind": "requirements",
-        "path": "/assets/evidence/pisa-dh-requirements.jpg",
+        "path": "assets/evidence/pisa-dh-requirements.jpg",
         "sourceUrl": "https://www.unipi.it/en/education/courses/master-degree/digital-humanities-wfur-lm-en/",
         "capturedAt": "2026-11-01",
         "alt": "Official requirements information page for this programme; captured 2026-11-01"
@@ -1217,7 +1217,7 @@
         "url": "https://www.cbc.gov.tw/en/lp-700-2.html"
       }
     ],
-    "image": "/assets/campuses/soas.jpeg",
+    "image": "assets/campuses/soas.jpeg",
     "imageAlt": "SOAS University of London campus",
     "imageCredit": "SOAS official visitor guide",
     "lastChecked": "1 Nov 2026",
@@ -1245,14 +1245,14 @@
     "officialScreenshots": [
       {
         "kind": "funding",
-        "path": "/assets/evidence/soas-gmdc-funding.jpg",
+        "path": "assets/evidence/soas-gmdc-funding.jpg",
         "sourceUrl": "https://www.soas.ac.uk/study/student-life/finance/scholarships/dr-mai-yamani-scholarship",
         "capturedAt": "2026-11-01",
         "alt": "Official funding information page for this programme; captured 2026-11-01"
       },
       {
         "kind": "requirements",
-        "path": "/assets/evidence/soas-gmdc-requirements.jpg",
+        "path": "assets/evidence/soas-gmdc-requirements.jpg",
         "sourceUrl": "https://www.soas.ac.uk/study/find-course/ma-global-media-and-digital-communications",
         "capturedAt": "2026-11-01",
         "alt": "Official requirements information page for this programme; captured 2026-11-01"
@@ -1468,7 +1468,7 @@
         "url": "https://www.cbc.gov.tw/en/lp-700-2.html"
       }
     ],
-    "image": "/assets/campuses/chula.jpg",
+    "image": "assets/campuses/chula.jpg",
     "imageAlt": "Chulalongkorn University auditorium viewed from the Mahamakut Building in Bangkok",
     "imageCredit": "Tangmo · CC BY-SA 3.0",
     "lastChecked": "1 Nov 2026",
@@ -1496,14 +1496,14 @@
     "officialScreenshots": [
       {
         "kind": "funding",
-        "path": "/assets/evidence/chula-scm-funding.jpg",
+        "path": "assets/evidence/chula-scm-funding.jpg",
         "sourceUrl": "https://www.chula.ac.th/en/news/298837/",
         "capturedAt": "2026-11-01",
         "alt": "Official funding information page for this programme; captured 2026-11-01"
       },
       {
         "kind": "requirements",
-        "path": "/assets/evidence/chula-scm-requirements.jpg",
+        "path": "assets/evidence/chula-scm-requirements.jpg",
         "sourceUrl": "https://www.iscm.commarts.chula.ac.th/mscm-admission/",
         "capturedAt": "2026-11-01",
         "alt": "Official requirements information page for this programme; captured 2026-11-01"
@@ -1713,7 +1713,7 @@
         "url": "https://www.cbc.gov.tw/en/lp-700-2.html"
       }
     ],
-    "image": "/assets/campuses/hkbu.jpg",
+    "image": "assets/campuses/hkbu.jpg",
     "imageAlt": "Hong Kong Baptist University campus building",
     "imageCredit": "Hong Kong Baptist University official About page",
     "lastChecked": "1 Nov 2026",
@@ -1741,14 +1741,14 @@
     "officialScreenshots": [
       {
         "kind": "funding",
-        "path": "/assets/evidence/hkbu-ma-comm-funding.jpg",
+        "path": "assets/evidence/hkbu-ma-comm-funding.jpg",
         "sourceUrl": "https://sa.hkbu.edu.hk/en/sfa/scholarships/academic-scholarships/for-postgraduate-students.html",
         "capturedAt": "2026-11-01",
         "alt": "Official funding information page for this programme; captured 2026-11-01"
       },
       {
         "kind": "requirements",
-        "path": "/assets/evidence/hkbu-ma-comm-requirements.jpg",
+        "path": "assets/evidence/hkbu-ma-comm-requirements.jpg",
         "sourceUrl": "https://ar.hkbu.edu.hk/tpg-admissions/programmes/master-of-arts-ma-in-communication",
         "capturedAt": "2026-11-01",
         "alt": "Official requirements information page for this programme; captured 2026-11-01"
@@ -1960,7 +1960,7 @@
         "url": "https://www.cbc.gov.tw/en/lp-700-2.html"
       }
     ],
-    "image": "/assets/campuses/ntu.jpg",
+    "image": "assets/campuses/ntu.jpg",
     "imageAlt": "Nanyang Technological University campus building",
     "imageCredit": "Nanyang Technological University official history page",
     "lastChecked": "1 Nov 2026",
@@ -1988,14 +1988,14 @@
     "officialScreenshots": [
       {
         "kind": "funding",
-        "path": "/assets/evidence/ntu-mmc-funding.jpg",
+        "path": "assets/evidence/ntu-mmc-funding.jpg",
         "sourceUrl": "https://www.ntu.edu.sg/media/docs/librariesprovider143/pg/mmc-excellence-scholarship96ada1416fb5492481eea130bc871657.pdf?sfvrsn=5818e832_1",
         "capturedAt": "2026-11-01",
         "alt": "Official funding information page for this programme; captured 2026-11-01"
       },
       {
         "kind": "requirements",
-        "path": "/assets/evidence/ntu-mmc-requirements.jpg",
+        "path": "assets/evidence/ntu-mmc-requirements.jpg",
         "sourceUrl": "https://www.ntu.edu.sg/education/graduate-programme/master-of-media-and-communication",
         "capturedAt": "2026-11-01",
         "alt": "Official requirements information page for this programme; captured 2026-11-01"
@@ -2211,7 +2211,7 @@
         "url": "https://www.cbc.gov.tw/en/lp-700-2.html"
       }
     ],
-    "image": "/assets/campuses/yonsei.jpg",
+    "image": "assets/campuses/yonsei.jpg",
     "imageAlt": "Yonsei University Underwood Hall in Seoul",
     "imageCredit": "Kimhs5400 · CC BY 4.0",
     "lastChecked": "1 Nov 2026",
@@ -2239,14 +2239,14 @@
     "officialScreenshots": [
       {
         "kind": "funding",
-        "path": "/assets/evidence/yonsei-pic-funding.jpg",
+        "path": "assets/evidence/yonsei-pic-funding.jpg",
         "sourceUrl": "https://gsis.yonsei.ac.kr/gsis/academics/scholarships.do",
         "capturedAt": "2026-11-01",
         "alt": "Official funding information page for this programme; captured 2026-11-01"
       },
       {
         "kind": "requirements",
-        "path": "/assets/evidence/yonsei-pic-requirements.jpg",
+        "path": "assets/evidence/yonsei-pic-requirements.jpg",
         "sourceUrl": "https://gsis.yonsei.ac.kr/gsis/community/boards1_01.do?mode=view&articleNo=478909",
         "capturedAt": "2026-11-01",
         "pageTitle": "BOARDS > Official Notices 게시판읽기(SPRING 2027 INTERNATIONAL STUDENT ADMISSION) | 국제학대학원",
@@ -2471,7 +2471,7 @@
         "url": "https://www.cbc.gov.tw/en/lp-700-2.html"
       }
     ],
-    "image": "/assets/campuses/tokyo.jpg",
+    "image": "assets/campuses/tokyo.jpg",
     "imageAlt": "The University of Tokyo campus building",
     "imageCredit": "The University of Tokyo official campus page",
     "lastChecked": "1 Nov 2026",
@@ -2499,14 +2499,14 @@
     "officialScreenshots": [
       {
         "kind": "funding",
-        "path": "/assets/evidence/tokyo-itasia-funding.jpg",
+        "path": "assets/evidence/tokyo-itasia-funding.jpg",
         "sourceUrl": "https://itasia.iii.u-tokyo.ac.jp/tuition",
         "capturedAt": "2026-11-01",
         "alt": "Official funding information page for this programme; captured 2026-11-01"
       },
       {
         "kind": "requirements",
-        "path": "/assets/evidence/tokyo-itasia-requirements.jpg",
+        "path": "assets/evidence/tokyo-itasia-requirements.jpg",
         "sourceUrl": "https://itasia.iii.u-tokyo.ac.jp/admissions",
         "capturedAt": "2026-11-01",
         "alt": "Official requirements information page for this programme; captured 2026-11-01"
@@ -2734,7 +2734,7 @@
         "url": "https://www.cbc.gov.tw/en/lp-700-2.html"
       }
     ],
-    "image": "/assets/campuses/nccu.png",
+    "image": "assets/campuses/nccu.png",
     "imageAlt": "Campus image from NCCU's International MBA website",
     "imageCredit": "NCCU International MBA website",
     "lastChecked": "1 Nov 2026",
@@ -2762,14 +2762,14 @@
     "officialScreenshots": [
       {
         "kind": "funding",
-        "path": "/assets/evidence/nccu-imics-funding.jpg",
+        "path": "assets/evidence/nccu-imics-funding.jpg",
         "sourceUrl": "https://oic.nccu.edu.tw/Post/1074",
         "capturedAt": "2026-11-01",
         "alt": "Official funding information page for this programme; captured 2026-11-01"
       },
       {
         "kind": "requirements",
-        "path": "/assets/evidence/nccu-imics-requirements.jpg",
+        "path": "assets/evidence/nccu-imics-requirements.jpg",
         "sourceUrl": "https://www.imics.nccu.edu.tw/international-admission",
         "capturedAt": "2026-11-01",
         "pageTitle": "International Admission | IMICS",
@@ -2967,7 +2967,7 @@
         "url": "https://www.cbc.gov.tw/en/lp-700-2.html"
       }
     ],
-    "image": "/assets/campuses/nccu.png",
+    "image": "assets/campuses/nccu.png",
     "imageAlt": "Campus image from NCCU's International MBA website",
     "imageCredit": "NCCU International MBA website",
     "lastChecked": "1 Nov 2026",
@@ -2995,7 +2995,7 @@
     "officialScreenshots": [
       {
         "kind": "funding",
-        "path": "/assets/evidence/nccu-gcit-funding.jpg",
+        "path": "assets/evidence/nccu-gcit-funding.jpg",
         "sourceUrl": "https://nccuadmission.nccu.edu.tw/Upload/FileManager/d59f7c8d-5b25-498d-aae0-81adb129b4d1.pdf",
         "capturedAt": "2026-11-01",
         "pageTitle": "",
@@ -3004,7 +3004,7 @@
       },
       {
         "kind": "requirements",
-        "path": "/assets/evidence/nccu-gcit-requirements.jpg",
+        "path": "assets/evidence/nccu-gcit-requirements.jpg",
         "sourceUrl": "https://nccuadmission.nccu.edu.tw/Upload/FileManager/d59f7c8d-5b25-498d-aae0-81adb129b4d1.pdf",
         "capturedAt": "2026-11-01",
         "pageTitle": "",
@@ -3250,7 +3250,7 @@
         "url": "https://www.cbc.gov.tw/en/lp-700-2.html"
       }
     ],
-    "image": "/assets/campuses/ncku-commons.jpg",
+    "image": "assets/campuses/ncku-commons.jpg",
     "imageAlt": "Sunlit lawn and university grounds at National Cheng Kung University in Tainan",
     "imageCredit": "Tang Allen · CC BY 2.0",
     "lastChecked": "1 Nov 2026",
@@ -3278,7 +3278,7 @@
     "officialScreenshots": [
       {
         "kind": "requirements",
-        "path": "/assets/evidence/ncku-icid-requirements.jpg",
+        "path": "assets/evidence/ncku-icid-requirements.jpg",
         "sourceUrl": "https://oia.ncku.edu.tw/p/404-1032-232640.php?Lang=en",
         "capturedAt": "2026-11-01",
         "pageTitle": "Required Documents",
@@ -3287,7 +3287,7 @@
       },
       {
         "kind": "funding",
-        "path": "/assets/evidence/ncku-icid-funding.jpg",
+        "path": "assets/evidence/ncku-icid-funding.jpg",
         "sourceUrl": "https://taiwanscholarship.moe.gov.tw/web/pages.aspx?p=7",
         "capturedAt": "2026-11-01",
         "pageTitle": "Scholarship Guidelines - Taiwan Scholarship and Huayu Enrichment Scholarship Program",
@@ -3500,7 +3500,7 @@
         "url": "https://www.cbc.gov.tw/en/lp-700-2.html"
       }
     ],
-    "image": "/assets/campuses/nkust.jpg",
+    "image": "assets/campuses/nkust.jpg",
     "imageAlt": "National Kaohsiung University of Science and Technology campus building",
     "imageCredit": "NKUST official briefing page",
     "lastChecked": "1 Nov 2026",
@@ -3528,7 +3528,7 @@
     "officialScreenshots": [
       {
         "kind": "funding",
-        "path": "/assets/evidence/nkust-tesol-funding.jpg",
+        "path": "assets/evidence/nkust-tesol-funding.jpg",
         "sourceUrl": "https://oia.nkust.edu.tw/en/unit-11-262-5.html",
         "capturedAt": "2026-11-01",
         "pageTitle": "境外生須知",
@@ -3537,7 +3537,7 @@
       },
       {
         "kind": "requirements",
-        "path": "/assets/evidence/nkust-tesol-requirements.jpg",
+        "path": "assets/evidence/nkust-tesol-requirements.jpg",
         "sourceUrl": "https://oia.nkust.edu.tw/en/unit-11-262-5.html",
         "capturedAt": "2026-11-01",
         "pageTitle": "境外生須知",
@@ -3743,7 +3743,7 @@
         "url": "https://www.cbc.gov.tw/en/lp-700-2.html"
       }
     ],
-    "image": "/assets/campuses/nthu-campus-official.jpg",
+    "image": "assets/campuses/nthu-campus-official.jpg",
     "imageAlt": "Campus buildings at National Tsing Hua University in Hsinchu",
     "imageCredit": "NTHU Campus Photos · NTHU copyright",
     "lastChecked": "1 Nov 2026",
@@ -3771,7 +3771,7 @@
     "officialScreenshots": [
       {
         "kind": "funding",
-        "path": "/assets/evidence/nthu-political-economy-funding.jpg",
+        "path": "assets/evidence/nthu-political-economy-funding.jpg",
         "sourceUrl": "https://www.tse.nthu.edu.tw/page/aid",
         "capturedAt": "2026-11-01",
         "pageTitle": "AID | Taipei School of Economics and Political Science (TSE)",
@@ -3780,7 +3780,7 @@
       },
       {
         "kind": "requirements",
-        "path": "/assets/evidence/nthu-political-economy-requirements.jpg",
+        "path": "assets/evidence/nthu-political-economy-requirements.jpg",
         "sourceUrl": "https://www.tse.nthu.edu.tw/page/admissions",
         "capturedAt": "2026-11-01",
         "pageTitle": "ADMISSIONS | Taipei School of Economics and Political Science (TSE)",
