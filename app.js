@@ -1,21 +1,75 @@
-// --- NEW TEXT SHORTENER ---
+// --- TEXT SHORTENER ---
 function formatText(text) {
   if (!text) return text;
   let s = String(text);
   
-  // 1. Shorten the long funding note
+  // Shorten specific long paragraphs & verbose "Not stated" text
   s = s.replace(
     /Official full award: NT\$25,000\/month for 12 months\. Project note lists NT\$10,000\/month; the official handout lists a different amount\.?/gi,
     "NT$25,000/month for 12 months. Project note lists NT$10,000/month"
   );
-  
-  // 2. Shorten the long deadline note
   s = s.replace(
     /Application windows are described as Sep–Oct or Feb–Mar depending on entry; exact 2027 dates not stated\.?/gi,
     "Exact 2027 dates not stated. Applications are described Sep–Oct or Feb–Mar based on entry."
   );
+  s = s.replace(
+    /Not stated in the reviewed official application pages\.?/gi,
+    "Not stated"
+  );
   
   return s;
+}
+
+// --- FUNDING TERMS SUMMARIZER (Extracts key points) ---
+function summarizePoints(text) {
+  if (!text || text === 'Not stated') return text;
+  let s = String(text).trim();
+  
+  // Split by period to separate sentences
+  let parts = s.split('. ');
+  if (parts.length > 2) {
+    // Return only the first 2 sentences for a clean summary
+    return parts.slice(0, 2).join('. ') + '.';
+  }
+  return s;
+}
+
+// --- DATA OVERRIDES FOR BADGES & STIPENDS ---
+const OVERRIDES = [
+  { key: 'radboud', badge: 'Partly Funded', stipend: '€5,000' },
+  { key: 'leuven', badge: 'Full Package', stipend: '€10,000/year' },
+  { key: 'helsinki', badge: 'Full Package', stipend: 'No stipend' },
+  { key: 'pisa', badge: 'Full Package', stipend: 'DSU grant (housing, meals, allowance)' },
+  { key: 'soas', badge: 'Full Package', stipend: 'Up to €17,340' },
+  { key: 'chulalongkorn', badge: 'Full Package', stipend: '9,000 THB / month' },
+  { key: 'baptist', badge: 'Full Package', stipend: 'HK$100,000 living allowance' },
+  { key: 'nanyang', badge: 'Full Package', stipend: 'No stipend' },
+  { key: 'yonsei', badge: 'Full Package', stipend: 'No stipend' },
+  { key: 'tokyo', badge: 'Full Package', stipend: 'No stipend' },
+  { key: 'imics', badge: 'Full Package', stipend: 'NT$ 10,000 / month' },
+  { key: 'gcit', badge: 'Full Package', stipend: 'NT$ 10,000 / month' },
+  { key: 'cheng kung', badge: 'Full Package', stipend: 'Up to NT$ 30,000 / month' },
+  { key: 'kaohsiung', badge: 'Full Package', stipend: 'NT$ 6,000 / month' },
+  { key: 'tsing hua', badge: 'Full Package', stipend: 'Up to NT$ 18,000 / month' }
+];
+
+function applyUserOverrides(programs) {
+  programs.forEach(p => {
+    if (!p.funding) p.funding = {};
+    const matchString = (p.university + ' ' + p.program).toLowerCase();
+    
+    for (const override of OVERRIDES) {
+      if (matchString.includes(override.key)) {
+        p.fundingBadge = override.badge;
+        p.funding.localSupportSnapshot = override.stipend;
+        p.funding.stipend = override.stipend;
+        p.funding.ntdSupportSnapshot = ''; 
+        p.stipendNtwd = '';
+        break; 
+      }
+    }
+  });
+  return programs;
 }
 
 const DOCUMENT_ITEMS = [
@@ -99,19 +153,19 @@ function renderTable(programs) {
     const href = safeURL(program.programUrl);
     const name = href ? `<a class="row-link" href="${escapeHTML(href)}" target="_blank" rel="noopener noreferrer">${escapeHTML(program.program)}</a>` : `<span class="row-link">${escapeHTML(program.program)}</span>`;
     
-    // --- STIPEND ONE-LINE FORMATTING ---
+    // Combine Stipend into one line
     const localSupport = formatText(program.funding?.localSupportSnapshot || program.funding?.stipend || 'Not stated');
     const ntdSupport = formatText(tableText(program, 'stipendNtwd', 'Not stated'));
     let stipendCell = localSupport;
-    if (program.region !== 'Taiwan' && localSupport !== 'Not stated' && ntdSupport !== 'Not stated' && localSupport !== ntdSupport) {
+    if (localSupport !== 'Not stated' && ntdSupport !== 'Not stated' && localSupport !== ntdSupport) {
       stipendCell = `${localSupport} ~ ${ntdSupport}`;
     }
 
-    // --- FEE ONE-LINE FORMATTING ---
+    // Combine Fee into one line
     let feeLocal = formatText(tableText(program, 'applicationFeeLocal', tableText(program, 'applicationFee', 'Not stated')));
     let feeNTD = formatText(tableText(program, 'applicationFeeNTD', 'Not stated'));
     let feeCell = feeLocal;
-    if (program.region !== 'Taiwan' && feeLocal !== 'Not stated' && feeNTD !== 'Not stated' && feeLocal !== feeNTD) {
+    if (feeLocal !== 'Not stated' && feeNTD !== 'Not stated' && feeLocal !== feeNTD) {
       feeCell = `${feeLocal} ~ ${feeNTD}`;
     }
 
@@ -199,27 +253,33 @@ function profileHTML(program) {
   const checklist = checklistFor(program);
   const courseMarkup = (program.courses || []).length ? `<ul>${program.courses.map(course => `<li>${escapeHTML(course.title || course)}${course.url ? ` — ${externalLink('source', course.url)}` : ''}</li>`).join('')}</ul>` : '<p>Related course titles and links are not stated in the profile data.</p>';
   const displayLabels = {'GPA / academic minimum':'Minimum GPA','Language tests and English-medium degree':'Language test / English-medium degree waiver','Diploma / expected graduation':'Diploma / expected-graduation letter','Contact with an advisor':'Advisor contact','CV / résumé':'CV / resume'};
-  const items = checklist.map(item => `<article class="detail-row"><strong>${escapeHTML(displayLabels[item.item] || item.item)}</strong><span class="check-status">${escapeHTML(item.status)}</span><p>${escapeHTML(formatText(item.details))}</p></article>`).join('');
+  
+  // ADDED SPACING TO CHECKLIST STATUS WITH margin-left: 8px;
+  const items = checklist.map(item => `<article class="detail-row"><strong>${escapeHTML(displayLabels[item.item] || item.item)}</strong><span class="check-status" style="margin-left: 8px;">${escapeHTML(item.status)}</span><p>${escapeHTML(formatText(item.details))}</p></article>`).join('');
+  
   const sources = sourceLinks(program);
   const desc = formatText(program.description || program.sourceNote || 'Description awaiting official-source review.');
   const appDeadline = formatText(tableText(program, 'applicationDeadline'));
   const awardDeadline = formatText(tableText(program, 'scholarshipDeadline'));
   
-  // --- COMBINE BOXES FOR PROFILE VIEW ---
   const localStipend = formatText(fund.localSupportSnapshot || fund.monthlyLocal || fund.stipendLocal || fund.stipend || 'Not stated');
   const ntdStipend = formatText(fund.ntdSupportSnapshot || fund.monthlyStipendNTD || program.stipendNtwd || 'NT$ equivalent not stated');
   const isTwdSupport = /^(NT\$|TWD\b|NTD\b)/i.test(String(localStipend).trim());
-  const stipendSummary = formatText(fund.snapshotStipend || (isTwdSupport ? localStipend : `${localStipend} ~ ${ntdStipend}`));
+  const stipendSummary = formatText(fund.snapshotStipend || (isTwdSupport ? localStipend : (ntdStipend !== 'Not stated' && ntdStipend !== 'NT$ equivalent not stated' && localStipend !== ntdStipend ? `${localStipend} ~ ${ntdStipend}` : localStipend)));
   const stipendNote = formatText(fund.snapshotNote || '');
 
   const localFee = formatText(program.applicationFeeLocal || program.applicationFee || 'Not stated');
-  const ntdFee = formatText(program.applicationFeeNTD || 'Not stated yet');
-  const combinedFee = (localFee !== 'Not stated' && ntdFee !== 'Not stated yet' && localFee !== ntdFee) ? `${localFee} ~ ${ntdFee}` : localFee;
+  const ntdFee = formatText(program.applicationFeeNTD || 'Not stated');
+  let combinedFee = localFee;
+  if (localFee !== 'Not stated' && ntdFee !== 'Not stated' && localFee !== ntdFee) {
+    combinedFee = `${localFee} ~ ${ntdFee}`;
+  }
 
   const universityLink = externalLink('Official university website', program.universityUrl);
   const programLink = externalLink('Official programme page', program.programUrl);
   const imageCredit = imageCreditMarkup(program);
   
+  // SUMMARIZED THE FUNDING GRID FIELDS
   return `<div class="dialog-head">${image ? `<img src="${escapeHTML(image)}" alt="${escapeHTML(program.imageAlt || program.university)}">` : ''}<div><h2 id="dialog-title">${escapeHTML(program.program)}</h2><p>${escapeHTML(program.university)} · ${escapeHTML(loc)}</p>${imageCredit ? `<p class="small-note">Image credit: ${imageCredit}</p>` : ''}<div class="profile-links">${programLink}${universityLink}</div></div></div>
     <section class="dialog-section profile-quick-funding"><h3>Funding Details</h3><div class="quick-funding-badge">${fundingBadge(program)}</div><div class="fact-grid quick-fact-grid">
     <div class="fact-item quick-stipend"><span>Stipend / living support</span><strong>${escapeHTML(stipendSummary)}</strong>${stipendNote ? `<small class="quick-stipend-note">${escapeHTML(stipendNote)}</small>` : ''}</div>
@@ -228,7 +288,14 @@ function profileHTML(program) {
     <div class="fact-item quick-deadline"><span>Application Deadline</span><strong>${escapeHTML(appDeadline)}</strong></div></div><p class="small-note">NT$ equivalents are approximate, using indicative ECB/CBC cross-rates dated 30 October 2026. Annual and one-time awards show their totals, not assumed monthly payments.</p></section>
     <section class="dialog-section profile-checklist"><h3>Required Documents Checklist</h3><p>Every checklist line uses a rubric status: Required, Optional, Not required, or Not stated.</p><div class="detail-list">${items}</div><p><strong>GRE / GMAT / local-language tests:</strong> ${escapeHTML(program.optionalTests?.length ? program.optionalTests.map(test => `${test.name}: ${test.status}${test.details ? ` — ${test.details}` : ''}`).join('; ') : 'Not stated')}</p></section>
     <section class="dialog-section"><h3>Programme and IBSC fit</h3><div class="fact-grid"><div class="fact-item"><span>Degree</span><strong>${escapeHTML(tableText(program,'degree'))}</strong></div><div class="fact-item"><span>Length</span><strong>${escapeHTML(program.duration || 'Not stated')}</strong></div><div class="fact-item"><span>Location</span><strong>${escapeHTML(loc || 'Not stated')}</strong></div><div class="fact-item"><span>Language</span><strong>${escapeHTML(program.language || 'Not stated')}</strong></div><div class="fact-item"><span>Field fit</span><strong>${escapeHTML(program.fieldFit || 'Not stated')}</strong></div><div class="fact-item"><span>Source review date</span><strong>${escapeHTML(program.lastChecked || 'Not recorded')}</strong></div></div><p style="margin-top:12px">${escapeHTML(desc)}</p><p><strong>Why it fits IBSC:</strong> ${escapeHTML(formatText(program.ibscFit || 'The profile does not yet include a source-backed explanation of its fit with IBSC.'))}</p><h4>Related courses</h4>${courseMarkup}</section>
-    <section class="dialog-section"><h3>Full funding terms</h3><div class="fact-grid"><div class="fact-item"><span>Funding source</span><strong>${escapeHTML(fund.source || 'Not stated')}</strong></div><div class="fact-item"><span>Tuition covered</span><strong>${escapeHTML(fund.tuition || 'Not stated')}</strong></div><div class="fact-item"><span>Funding duration</span><strong>${escapeHTML(fund.duration || 'Not stated')}</strong></div><div class="fact-item"><span>Guaranteed or competitive</span><strong>${escapeHTML(fund.guarantee || 'Not stated')}</strong></div><div class="fact-item"><span>Eligibility</span><strong>${escapeHTML(fund.eligibility || 'Not stated')}</strong></div><div class="fact-item"><span>Separate scholarship deadline</span><strong>${escapeHTML(fund.deadline || awardDeadline)}</strong></div></div><p><strong>Why this funding badge:</strong> ${escapeHTML(formatText(fund.rubricBasis || 'See the official scholarship terms linked below.'))}</p><p><strong>Project-supplied award note:</strong> ${escapeHTML(formatText(fund.projectNote || 'No separate funding note was supplied.'))}</p><p><strong>Exchange rate and date:</strong> ${escapeHTML(program.exchangeRate || 'Not stated.')}</p></section>
+    <section class="dialog-section"><h3>Full funding terms</h3><div class="fact-grid">
+    <div class="fact-item"><span>Funding source</span><strong>${escapeHTML(summarizePoints(fund.source || 'Not stated'))}</strong></div>
+    <div class="fact-item"><span>Tuition covered</span><strong>${escapeHTML(summarizePoints(fund.tuition || 'Not stated'))}</strong></div>
+    <div class="fact-item"><span>Funding duration</span><strong>${escapeHTML(summarizePoints(fund.duration || 'Not stated'))}</strong></div>
+    <div class="fact-item"><span>Guaranteed or competitive</span><strong>${escapeHTML(summarizePoints(fund.guarantee || 'Not stated'))}</strong></div>
+    <div class="fact-item"><span>Eligibility</span><strong>${escapeHTML(summarizePoints(fund.eligibility || 'Not stated'))}</strong></div>
+    <div class="fact-item"><span>Separate scholarship deadline</span><strong>${escapeHTML(summarizePoints(fund.deadline || awardDeadline))}</strong></div>
+    </div><p><strong>Why this funding badge:</strong> ${escapeHTML(formatText(fund.rubricBasis || 'See the official scholarship terms linked below.'))}</p><p><strong>Project-supplied award note:</strong> ${escapeHTML(formatText(fund.projectNote || 'No separate funding note was supplied.'))}</p><p><strong>Exchange rate and date:</strong> ${escapeHTML(program.exchangeRate || 'Not stated.')}</p></section>
     <section class="dialog-section"><h3>Deadlines and contact</h3><div class="fact-grid"><div class="fact-item"><span>Application deadline</span><strong>${escapeHTML(appDeadline)}</strong></div><div class="fact-item"><span>Scholarship deadline</span><strong>${escapeHTML(awardDeadline)}</strong></div><div class="fact-item"><span>Programme start</span><strong>${escapeHTML(tableText(program,'startDate'))}</strong></div><div class="fact-item"><span>Application fee</span><strong>${escapeHTML(combinedFee)}</strong></div><div class="fact-item"><span>Admissions contact</span><strong>${escapeHTML(program.admissionsContact || 'Not stated')}</strong></div></div></section>
     <section class="dialog-section"><h3>Official-page screenshots</h3><div class="detail-list">${screenshotPanel(program)}</div></section>
     <section class="dialog-section"><h3>Official sources</h3><ul class="source-links">${sources}</ul><p class="small-note">Use the linked programme and scholarship pages to confirm cycle-specific details. Source review date: ${escapeHTML(program.lastChecked || 'Not recorded')}.</p></section>`;
@@ -271,7 +338,11 @@ async function init() {
   try {
     const response = await fetch('/data/programs.json');
     if (!response.ok) throw new Error(`Program data unavailable (${response.status})`);
-    const programs = await response.json();
+    let programs = await response.json();
+    
+    // Check and apply the overrides before loading the UI
+    programs = applyUserOverrides(programs);
+    
     renderDirectories(programs);
     renderTable(programs);
     renderRanking(programs);
