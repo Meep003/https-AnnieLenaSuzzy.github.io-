@@ -38,8 +38,9 @@ const OVERRIDES = [
   { key: 'chulalongkorn', badge: 'Full Package', stipend: '9,000 THB / month' },
   { key: 'baptist', badge: 'Full Package', stipend: 'HK$100,000 living allowance' },
   { key: 'nanyang', badge: 'Partly Funded', stipend: 'No stipend' },
-  { key: 'yonsei', badge: 'Partly Funded', stipend: 'No stipend' },
-  { key: 'tokyo', badge: 'Partly Funded', stipend: 'No stipend' },
+  { key: 'yonsei', badge: 'Full Package', stipend: 'KRW 500,000 / month' },
+  { key: 'tokyo', badge: 'Full Package', stipend: '¥100,000 / month' },
+  { key: 'iuj', badge: 'Full Package', stipend: '¥100,000 / month' },
   { key: 'imics', badge: 'Full Package', stipend: 'NT$ 10,000 / month' },
   { key: 'gcit', badge: 'Full Package', stipend: 'NT$ 10,000 / month' },
   { key: 'cheng kung', badge: 'Full Package', stipend: 'Up to NT$ 30,000 / month' },
@@ -100,11 +101,8 @@ function externalLink(label, href) {
 }
 
 function imageCreditMarkup(program) {
-  const credit = program.imageCredit || 'Image source not recorded';
-  const source = program.imageSourceUrl || program.imageCreditLink;
-  const creditLink = source ? externalLink(credit, source) : escapeHTML(credit);
-  const licenseLink = program.imageLicenseUrl ? externalLink(program.imageLicenseLabel || 'License', program.imageLicenseUrl) : '';
-  return [creditLink, licenseLink].filter(Boolean).join(' · ');
+  // Purposely returning an empty string to hide all image credits from the site
+  return '';
 }
 
 function fundingBadge(program) {
@@ -120,10 +118,9 @@ function programSummary(program) {
 
 function cardTemplate(program) {
   const image = safeURL(program.image);
-  const creditMarkup = imageCreditMarkup(program);
   const location = [program.city, program.country].filter(Boolean).join(', ') || 'Location not stated';
   return `<article class="program-card" data-id="${escapeHTML(program.id)}">
-    <div class="card-image-wrap">${image ? `<img src="${escapeHTML(image)}" alt="${escapeHTML(program.imageAlt || `${program.university} campus`)}" loading="lazy">` : `<div class="image-placeholder" role="img" aria-label="University image not yet available">University image not yet available</div>`}<span class="image-credit">${creditMarkup}</span></div>
+    <div class="card-image-wrap">${image ? `<img src="${escapeHTML(image)}" alt="${escapeHTML(program.imageAlt || `${program.university} campus`)}" loading="lazy">` : `<div class="image-placeholder" role="img" aria-label="University image not yet available">University image not yet available</div>`}</div>
     <div class="card-body"><div class="card-meta"><span class="card-region">${escapeHTML(program.region)}</span></div>
       <h3>${escapeHTML(program.program)}</h3><p class="card-university">${escapeHTML(program.university)}</p>
       <div>${fundingBadge(program)}</div><p class="card-summary">${escapeHTML(formatText(programSummary(program)))}</p>
@@ -251,9 +248,12 @@ function screenshotPanel(program) {
   const shots = Array.isArray(program.officialScreenshots) ? program.officialScreenshots : [];
   const funding = shots.find(shot => /fund/i.test(shot.kind || ''));
   const requirements = shots.find(shot => /require/i.test(shot.kind || ''));
+  
+  // Stripped out the figcaption completely so it is literally just the image
   const format = (shot, title) => shot?.path
-    ? `<figure><img src="${escapeHTML(shot.path)}" alt="${escapeHTML(shot.alt || title)}"><figcaption>${escapeHTML(title)} · captured ${escapeHTML(shot.capturedAt || 'date not recorded')} · ${externalLink(shot.pageTitle || 'Open official page', shot.sourceUrl)}</figcaption></figure>`
+    ? `<figure style="margin-bottom: 14px;"><img src="${escapeHTML(shot.path)}" alt="${escapeHTML(shot.alt || title)}"></figure>`
     : `<p><strong>${title}:</strong> No screenshot file is attached to this source yet.</p>`;
+  
   return `${format(funding, 'Funding source screenshot')}${format(requirements, 'Requirements screenshot')}`;
 }
 
@@ -287,9 +287,9 @@ function profileHTML(program) {
 
   const universityLink = externalLink('Official university website', program.universityUrl);
   const programLink = externalLink('Official programme page', program.programUrl);
-  const imageCredit = imageCreditMarkup(program);
   
-  return `<div class="dialog-head">${image ? `<img src="${escapeHTML(image)}" alt="${escapeHTML(program.imageAlt || program.university)}">` : ''}<div><h2 id="dialog-title">${escapeHTML(program.program)}</h2><p>${escapeHTML(program.university)} · ${escapeHTML(loc)}</p>${imageCredit ? `<p class="small-note">Image credit: ${imageCredit}</p>` : ''}<div class="profile-links">${programLink}${universityLink}</div></div></div>
+  // Notice that imageCredit is no longer rendered anywhere in the dialog-head
+  return `<div class="dialog-head">${image ? `<img src="${escapeHTML(image)}" alt="${escapeHTML(program.imageAlt || program.university)}">` : ''}<div><h2 id="dialog-title">${escapeHTML(program.program)}</h2><p>${escapeHTML(program.university)} · ${escapeHTML(loc)}</p><div class="profile-links">${programLink}${universityLink}</div></div></div>
     <section class="dialog-section profile-quick-funding"><h3>Funding Details</h3><div class="quick-funding-badge">${fundingBadge(program)}</div><div class="fact-grid quick-fact-grid">
     <div class="fact-item quick-stipend"><span>Stipend / living support</span><strong>${escapeHTML(stipendSummary)}</strong>${stipendNote ? `<small class="quick-stipend-note">${escapeHTML(stipendNote)}</small>` : ''}</div>
     <div class="fact-item"><span>Application Fee</span><strong>${escapeHTML(combinedFee)}</strong></div>
@@ -331,11 +331,9 @@ function renderSources(programs) {
     const uniName = program.university;
     if (!byUniversity.has(uniName)) byUniversity.set(uniName, []);
 
-    const imageSources = [];
-    if (program.imageSourceUrl) imageSources.push({label: `Campus image: ${program.imageCredit || 'source page'}`, url: program.imageSourceUrl});
-    if (program.imageLicenseUrl) imageSources.push({label: program.imageLicenseLabel || 'Campus image license', url: program.imageLicenseUrl});
+    // Purposely excluded imageSourceUrl and imageLicenseUrl to hide them from the register
 
-    [...(program.officialSources || []), ...imageSources].forEach(source => {
+    [...(program.officialSources || [])].forEach(source => {
       if (source.url && safeURL(source.url)) {
         if (!byUniversity.get(uniName).find(s => s.url === source.url)) {
             byUniversity.get(uniName).push({label: source.label || source.url, url: source.url});
