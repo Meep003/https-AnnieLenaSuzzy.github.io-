@@ -12,6 +12,36 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css">
   <script src="./app.js" defer></script>
+  <style>
+    .log-table-wrap {
+      margin-top: 2rem;
+      border: 1px solid var(--line);
+      background: var(--white);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .log-table-wrap table {
+      min-width: 100%;
+    }
+    .log-table th {
+      background: #242d3c;
+      color: #ffffff;
+      font-size: 10px;
+      padding: 16px 14px;
+      letter-spacing: 0.05em;
+    }
+    .log-table td {
+      padding: 16px 14px;
+      font-size: 11.5px;
+      line-height: 1.5;
+      border-bottom: 1px solid #eae6df;
+      vertical-align: middle;
+    }
+    .log-table tr:last-child td {
+      border-bottom: none;
+    }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -111,15 +141,50 @@
         <div><p class="section-kicker">08 / ABOUT & AI LOG</p><h2 id="about-title">Read the evidence</h2></div>
         <p>Official programme and scholarship pages are the source of truth. Draft text and AI suggestions are not proof.</p>
       </div>
+      
       <div class="about-grid">
-        <article>
+        <article style="grid-column: 1 / -1; margin-bottom: 8px;">
           <h3>Find → check → confirm</h3>
           <p>The project team reports manually screening the 15-candidate list. This website links programme, curriculum, scholarship and admissions sources for readers to consult. Some official details can vary by year, nationality or course option, so compare the linked pages before applying.</p>
           <p><strong>Funding labels follow the rubric:</strong> FULL PACKAGE means a 100% tuition waiver plus a stipend that covers basic city living costs. PARTLY FUNDED includes tuition-only, stipend-only, insufficient living support or shorter-term awards. The supplied list uses “Full Package” for some entries with no stipend; those claims remain in the profiles, but the badge follows the linked award terms.</p>
           <p><strong>Finder AIs:</strong> Gemini-Pro, ChatGPT-4o<br><strong>Checker AI:</strong> Gemini 4 Argon<br>Manus was used in this build to review official sources and create the website.</p>
           <p><strong>Author(s):</strong> LENA - 1133655, ANNIE - 1143645, SUZZY - 1143641.</p>
           <p class="small-note">Last updated: <span id="last-updated">1 November 2026</span>.</p>
+          
+          <div class="table-wrap log-table-wrap">
+            <table class="log-table">
+              <thead>
+                <tr>
+                  <th scope="col">FACT CHECKED</th>
+                  <th scope="col">TOOL #1 (FINDER) SAID</th>
+                  <th scope="col">TOOL #2 (CHECKER) SAID</th>
+                  <th scope="col">OFFICIAL UNIVERSITY SOURCE SAYS</th>
+                  <th scope="col">LINK + DATE CHECKED</th>
+                  <th scope="col">RESULT / ACTION</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="font-weight: 600;">Helsinki Screenshot</td>
+                  <td style="color: #923c24;">Could not load image</td>
+                  <td style="color: #bf5a36;">Image failed to render</td>
+                  <td style="color: #245243;">Official Admissions Portal</td>
+                  <td><a href="#" style="color: #2854b3; text-decoration: underline;">studyinfo.fi (2026/11/02)</a></td>
+                  <td><span style="background: #f5e9ce; color: #795317; padding: 5px 9px; border-radius: 3px; font-weight: 700; font-size: 10px;">Manually screenshot and adding it in.</span></td>
+                </tr>
+                <tr>
+                  <td style="font-weight: 600;">GCIT Screenshot</td>
+                  <td style="color: #923c24;">Could not load image</td>
+                  <td style="color: #bf5a36;">Image failed to render</td>
+                  <td style="color: #245243;">Official Admissions Portal</td>
+                  <td><a href="#" style="color: #2854b3; text-decoration: underline;">nccu.edu.tw (2026/11/02)</a></td>
+                  <td><span style="background: #f5e9ce; color: #795317; padding: 5px 9px; border-radius: 3px; font-weight: 700; font-size: 10px;">Manually screenshot and adding it in.</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </article>
+
         <article>
           <h3>How to read source notes</h3>
           <p><strong>Official source:</strong> a university or scholarship page linked beside the claim.</p>
@@ -127,7 +192,7 @@
           <p><strong>Different wording or cycle:</strong> read the linked official page and check the year and applicant category.</p>
         </article>
       </div>
-      <details class="source-register">
+      <details class="source-register" style="margin-top: 24px;">
         <summary>Open the source register</summary>
         <div id="source-register-body">
           <p>Official programme, admissions, curriculum, and scholarship sources will appear here as records are checked.</p>
