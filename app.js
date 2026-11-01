@@ -206,16 +206,19 @@ function renderRanking(programs) {
       const image = safeURL(program.image);
       const universityUrl = safeURL(program.universityUrl);
       const imageMarkup = image ? `<img class="rank-image" src="${escapeHTML(image)}" alt="${escapeHTML(program.imageAlt || `${program.university} campus`)}" loading="lazy">` : '<div class="rank-image rank-image-fallback" aria-hidden="true">IBSC</div>';
-      const links = `${url ? externalLink('Programme page', url) : ''}${universityUrl ? ` ${externalLink('University website', universityUrl)}` : ''}`;
+      
+      const links = `<button type="button" data-open-profile="${escapeHTML(program.id)}" style="background:none; border:none; padding:0; font:inherit; color:var(--rust-dark); font-weight:700; cursor:pointer; text-decoration:underline; text-underline-offset:2px;">Open profile ↗</button>${url ? ` ${externalLink('Programme page', url)}` : ''}${universityUrl ? ` ${externalLink('University website', universityUrl)}` : ''}`;
+      
       const breakdown = program.scoreBreakdown || {};
       const scoreDetails = `Funding ${breakdown.financial ?? 0}/40 · Fit ${breakdown.course_and_field_fit ?? 0}/25 · English ${breakdown.english_medium_points_out_of_10 ?? 0}/10 · Readiness ${breakdown.application_readiness_out_of_25 ?? 0}/25`;
       const scoreBasisNote = program.scoreCashBasisNote ? `<p class="rank-score-source-note">${escapeHTML(formatText(program.scoreCashBasisNote))}</p>` : '';
-      return `<article class="rank-card"><div class="rank-no">#${String(rank).padStart(2,'0')}</div>${imageMarkup}<div class="rank-content"><div class="card-meta">${fundingBadge(program)}</div><h3>${escapeHTML(program.program)}</h3><p>${escapeHTML(program.university)} · ${escapeHTML(program.city || '')}, ${escapeHTML(program.country || '')}</p><p>${escapeHTML(formatText(program.rankingSummary || program.description || ''))}</p><p class="rank-score-breakdown">${escapeHTML(scoreDetails)}</p>${scoreBasisNote}<div class="rank-links">${links}</div></div><div class="rank-score"><strong>${escapeHTML(program.score)}</strong><span>out of 100</span></div></article>`;
+      
+      return `<article class="rank-card"><div class="rank-no">#${String(rank).padStart(2,'0')}</div>${imageMarkup}<div class="rank-content"><div class="card-meta">${fundingBadge(program)}</div><h3 data-open-profile="${escapeHTML(program.id)}" style="cursor:pointer; text-decoration:underline; text-underline-offset:2px;" title="Open profile">${escapeHTML(program.program)}</h3><p>${escapeHTML(program.university)} · ${escapeHTML(program.city || '')}, ${escapeHTML(program.country || '')}</p><p>${escapeHTML(formatText(program.rankingSummary || program.description || ''))}</p><p class="rank-score-breakdown">${escapeHTML(scoreDetails)}</p>${scoreBasisNote}<div class="rank-links">${links}</div></div><div class="rank-score"><strong>${escapeHTML(program.score)}</strong><span>out of 100</span></div></article>`;
     }).join('')}`;
   }).join('');
   const rankedIds = new Set(ordered.map(program => program.id));
   const excluded = programs.filter(program => !rankedIds.has(program.id));
-  if (excluded.length) document.getElementById('not-ranked-list').innerHTML = excluded.map(program => `<article><strong>${escapeHTML(program.university)} — ${escapeHTML(program.program)}</strong><p>${escapeHTML(formatText(program.rankReason || 'See the profile for programme details and linked sources.'))}</p></article>`).join('');
+  if (excluded.length) document.getElementById('not-ranked-list').innerHTML = excluded.map(program => `<article><strong><span data-open-profile="${escapeHTML(program.id)}" style="cursor:pointer; text-decoration:underline;" title="Open profile">${escapeHTML(program.university)} — ${escapeHTML(program.program)}</span></strong><p>${escapeHTML(formatText(program.rankReason || 'See the profile for programme details and linked sources.'))}</p></article>`).join('');
   const fundingWinner = programs.find(program => program.award === 'funding');
   const educationWinner = programs.find(program => program.award === 'education');
   if (fundingWinner) {
@@ -342,7 +345,7 @@ function renderSources(programs) {
 
 async function init() {
   try {
-    const response = await fetch('data/programs.json');
+    const response = await fetch('./data/programs.json');
     if (!response.ok) throw new Error(`Program data unavailable (${response.status})`);
     let programs = await response.json();
     
