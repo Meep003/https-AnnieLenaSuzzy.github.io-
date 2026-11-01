@@ -326,19 +326,42 @@ function setupDialog(programs) {
 }
 
 function renderSources(programs) {
-  const unique = new Map();
+  const byUniversity = new Map();
   programs.forEach(program => {
+    const uniName = program.university;
+    if (!byUniversity.has(uniName)) byUniversity.set(uniName, []);
+
     const imageSources = [];
     if (program.imageSourceUrl) imageSources.push({label: `Campus image: ${program.imageCredit || 'source page'}`, url: program.imageSourceUrl});
     if (program.imageLicenseUrl) imageSources.push({label: program.imageLicenseLabel || 'Campus image license', url: program.imageLicenseUrl});
+
     [...(program.officialSources || []), ...imageSources].forEach(source => {
-    if (source.url && safeURL(source.url)) unique.set(source.url, {label:source.label || source.url, url:source.url, university:program.university});
+      if (source.url && safeURL(source.url)) {
+        if (!byUniversity.get(uniName).find(s => s.url === source.url)) {
+            byUniversity.get(uniName).push({label: source.label || source.url, url: source.url});
+        }
+      }
     });
   });
-  const list = [...unique.values()];
-  document.getElementById('source-register-body').innerHTML = list.length
-    ? `<ul class="source-list">${list.map(source => `<li><strong>${escapeHTML(source.university)}:</strong> ${externalLink(source.label, source.url)}</li>`).join('')}</ul>`
-    : '<p>Official programme, admissions, curriculum, and scholarship sources will appear here as records are checked.</p>';
+
+  const container = document.getElementById('source-register-body');
+  if (byUniversity.size === 0) {
+    container.innerHTML = '<p>Official programme, admissions, curriculum, and scholarship sources will appear here as records are checked.</p>';
+  } else {
+    let html = '<div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:12px; margin-top:14px;">';
+    for (const [uni, links] of byUniversity.entries()) {
+      if (links.length === 0) continue;
+      html += `<details style="background:var(--white); border:1px solid var(--line); padding:12px; border-radius:4px;">
+        <summary style="font-weight:700; font-size:12px; color:var(--ink); cursor:pointer; list-style-position:inside;">${escapeHTML(uni)}</summary>
+        <ul style="padding-left:16px; margin-top:10px; font-size:11px; margin-bottom:0; display:flex; flex-direction:column; gap:6px;">
+          ${links.map(link => `<li>${externalLink(link.label, link.url)}</li>`).join('')}
+        </ul>
+      </details>`;
+    }
+    html += '</div>';
+    container.innerHTML = html;
+  }
+
   const dates = programs.map(program => program.lastChecked).filter(date => date && date !== 'Not checked' && date !== 'Not recorded');
   document.getElementById('last-updated').textContent = dates.length ? dates.sort().at(-1) : 'Source review in progress';
 }
