@@ -6,12 +6,12 @@
   <meta name="theme-color" content="#f3f0e8">
   <meta name="description" content="A source-led guide for IBSC seniors comparing graduate programme candidates, funding claims and application documents.">
   <title>Guide to Graduate School | IBSC</title>
-  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css">
-  <script src="./app.js" defer></script>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -94,7 +94,7 @@
     <section class="section-shell compare-section" id="compare" aria-labelledby="compare-title">
       <div class="section-heading"><div><p class="section-kicker">06 / COMPARE</p><h2 id="compare-title">All candidates, side by side</h2></div><p>Use this first pass to spot what is known, what is missing, and what needs a closer look.</p></div>
       <div class="table-tools"><label for="program-search">Find a programme<input id="program-search" type="search" placeholder="University, programme, or country"></label><label for="region-filter">Region<select id="region-filter"><option value="all">All regions</option><option value="Taiwan">Taiwan</option><option value="Asia">Asia outside Taiwan</option><option value="Europe">Europe</option></select></label></div>
-      <div class="table-wrap"><table><thead><tr><th scope="col">Programme / university</th><th scope="col">Region</th><th scope="col">Degree</th><th scope="col">Funding</th><th scope="col">Stipend / living support (local + NT$)</th><th scope="col">Fee (local + NT$)</th><th scope="col">GRE / GMAT</th><th scope="col">Deadline</th></tr></thead><tbody id="comparison-body"></tbody></table></div><p class="table-footnote">“Not stated” means we could not confirm the information on the official pages reviewed. It does not mean “not required.” Amounts converted to NT$ use the dated rate listed in each profile.</p>
+      <div class="table-wrap"><table><thead><tr><th scope="col">Programme / university</th><th scope="col">Region</th><th scope="col">Degree</th><th scope="col">Funding</th><th scope="col">Stipend (Local ~ NT$)</th><th scope="col">Fee (Local ~ NT$)</th><th scope="col">GRE / GMAT</th><th scope="col">Deadline</th></tr></thead><tbody id="comparison-body"></tbody></table></div><p class="table-footnote">“Not stated” means we could not confirm the information on the official pages reviewed. It does not mean “not required.” Amounts converted to NT$ use the dated rate listed in each profile.</p>
     </section>
 
     <section class="ranking-section" id="top-10" aria-labelledby="ranking-title">
@@ -107,9 +107,32 @@
     </section>
 
     <section class="section-shell about-section" id="about" aria-labelledby="about-title">
-      <div class="section-heading"><div><p class="section-kicker">08 / ABOUT & SOURCES</p><h2 id="about-title">Read the evidence</h2></div><p>Official programme and scholarship pages are the source of truth. Draft text and AI suggestions are not proof.</p></div>
-      <div class="about-grid"><article><h3>Find → check → confirm</h3><p>The project team reports manually screening the 15-candidate list. This website links programme, curriculum, scholarship and admissions sources for readers to consult. Some official details can vary by year, nationality or course option, so compare the linked pages before applying.</p><p><strong>Funding labels follow the rubric:</strong> FULL PACKAGE means a 100% tuition waiver plus a stipend that covers basic city living costs. PARTLY FUNDED includes tuition-only, stipend-only, insufficient living support or shorter-term awards. The supplied list uses “Full Package” for some entries with no stipend; those claims remain in the profiles, but the badge follows the linked award terms.</p><p>The supplied project file identifies Google Gemini as a primary candidate-finding tool. Manus was used in this build to review official sources and create the website. Add the team's AI Verification Log to record who used each tool and how they checked the claims.</p><p><strong>Author(s):</strong> Add project team name(s). <strong>Personal Google Site(s):</strong> Add the team's site link(s) before submission.</p><p class="small-note">Last updated: <span id="last-updated">1 November 2026</span>.</p></article><article><h3>How to read source notes</h3><p><strong>Official source:</strong> a university or scholarship page linked beside the claim.</p><p><strong>Not stated:</strong> the reviewed page did not provide that detail; it does not mean “not required.”</p><p><strong>Different wording or cycle:</strong> read the linked official page and check the year and applicant category.</p></article></div>
-      <details class="source-register"><summary>Open the source register</summary><div id="source-register-body"><p>Official programme, admissions, curriculum, and scholarship sources will appear here as records are checked.</p></div></details>
+      <div class="section-heading">
+        <div><p class="section-kicker">08 / ABOUT & AI LOG</p><h2 id="about-title">Read the evidence</h2></div>
+        <p>Official programme and scholarship pages are the source of truth. Draft text and AI suggestions are not proof.</p>
+      </div>
+      <div class="about-grid">
+        <article>
+          <h3>Find → check → confirm</h3>
+          <p>The project team reports manually screening the 15-candidate list. This website links programme, curriculum, scholarship and admissions sources for readers to consult. Some official details can vary by year, nationality or course option, so compare the linked pages before applying.</p>
+          <p><strong>Funding labels follow the rubric:</strong> FULL PACKAGE means a 100% tuition waiver plus a stipend that covers basic city living costs. PARTLY FUNDED includes tuition-only, stipend-only, insufficient living support or shorter-term awards. The supplied list uses “Full Package” for some entries with no stipend; those claims remain in the profiles, but the badge follows the linked award terms.</p>
+          <p><strong>Finder AIs:</strong> Gemini-Pro, ChatGPT-4o<br><strong>Checker AI:</strong> Gemini 4 Argon<br>Manus was used in this build to review official sources and create the website.</p>
+          <p><strong>Author(s):</strong> LENA - 1133655, ANNIE - 1143645, SUZZY - 1143641.</p>
+          <p class="small-note">Last updated: <span id="last-updated">1 November 2026</span>.</p>
+        </article>
+        <article>
+          <h3>How to read source notes</h3>
+          <p><strong>Official source:</strong> a university or scholarship page linked beside the claim.</p>
+          <p><strong>Not stated:</strong> the reviewed page did not provide that detail; it does not mean “not required.”</p>
+          <p><strong>Different wording or cycle:</strong> read the linked official page and check the year and applicant category.</p>
+        </article>
+      </div>
+      <details class="source-register">
+        <summary>Open the source register</summary>
+        <div id="source-register-body">
+          <p>Official programme, admissions, curriculum, and scholarship sources will appear here as records are checked.</p>
+        </div>
+      </details>
     </section>
   </main>
 
