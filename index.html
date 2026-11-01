@@ -1,442 +1,207 @@
-function formatText(text) {
-  if (!text) return text;
-  let s = String(text);
-  
-  s = s.replace(
-    /Official full award: NT\$25,000\/month for 12 months\. Project note lists NT\$10,000\/month; the official handout lists a different amount\.?/gi,
-    "NT$25,000/month for 12 months. Project note lists NT$10,000/month"
-  );
-  s = s.replace(
-    /Application windows are described as Sep–Oct or Feb–Mar depending on entry; exact 2027 dates not stated\.?/gi,
-    "Exact 2027 dates not stated. Applications are described Sep–Oct or Feb–Mar based on entry."
-  );
-  s = s.replace(
-    /Not stated in the reviewed official application pages\.?/gi,
-    "Not stated"
-  );
-  s = s.replace(
-    /Official pages reviewed do not state that classes are taught in English, so English-medium eligibility remains unconfirmed\.?/gi,
-    "International graduate coursework and seminars are offered in English alongside the Global Leader Scholarship track."
-  );
-  
-  return s;
-}
-
-function summarizePoints(text) {
-  if (!text || text === 'Not stated') return text;
-  let s = String(text).trim();
-  
-  let parts = s.split('. ');
-  if (parts.length > 2) {
-    return parts.slice(0, 2).join('. ') + '.';
-  }
-  return s;
-}
-
-const OVERRIDES = [
-  { key: 'radboud', badge: 'Partly Funded', stipend: '€5,000 / year (about NT$ 175,000)' },
-  { key: 'leuven', badge: 'Full Package', stipend: '€10,000 / year (about NT$ 350,000)' },
-  { key: 'helsinki', badge: 'Partly Funded', stipend: 'No stipend' },
-  { key: 'pisa', badge: 'Full Package', stipend: 'DSU grant: housing, meals & allowance (up to €7,000 / yr ~ NT$ 245,000)' },
-  { key: 'soas', badge: 'Full Package', stipend: 'Up to £17,340 / year (about NT$ 720,000)' },
-  { key: 'chulalongkorn', badge: 'Full Package', stipend: '9,000 THB / month (about NT$ 8,500)' },
-  { key: 'baptist', badge: 'Full Package', stipend: 'HK$100,000 / year (about NT$ 410,000)' },
-  { key: 'korea university', badge: 'Full Package', stipend: 'KRW 500,000 / month (about NT$ 11,600)' },
-  { key: 'yonsei', badge: 'Full Package', stipend: 'KRW 500,000 / month (about NT$ 11,600)' },
-  { key: 'international university of japan', badge: 'Full Package', stipend: '¥100,000 / month (about NT$ 21,000)' },
-  { key: 'tokyo', badge: 'Full Package', stipend: '¥100,000 / month (about NT$ 21,000)' },
-  { key: 'iuj', badge: 'Full Package', stipend: '¥100,000 / month (about NT$ 21,000)' },
-  { key: 'imics', badge: 'Full Package', stipend: 'NT$ 10,000 / month' },
-  { key: 'gcit', badge: 'Full Package', stipend: 'NT$ 10,000 / month' },
-  { key: 'cheng kung', badge: 'Full Package', stipend: 'Up to NT$ 30,000 / month' },
-  { key: 'kaohsiung', badge: 'Full Package', stipend: 'NT$ 6,000 / month' },
-  { key: 'tsing hua', badge: 'Full Package', stipend: 'Up to NT$ 18,000 / month' }
-];
-
-function applyUserOverrides(programs) {
-  programs.forEach(p => {
-    if (!p.funding) p.funding = {};
-    const matchString = (p.university + ' ' + p.program).toLowerCase();
-    let isOverridden = false;
-    
-    for (const override of OVERRIDES) {
-      if (matchString.includes(override.key)) {
-        p.fundingBadge = override.badge;
-        p.funding.stipend = override.stipend;
-        p.funding.localSupportSnapshot = '';
-        p.funding.ntdSupportSnapshot = '';
-        p.funding.monthlyLocal = '';
-        p.funding.stipendLocal = '';
-        p.funding.monthlyStipendNTD = '';
-        p.funding.snapshotStipend = '';
-        
-        // Taiwan schools don't need currency exchange conversion text
-        if (p.region === 'Taiwan') {
-          p.stipendNtwd = '';
-        } else {
-          p.stipendNtwd = override.stipend;
-        }
-        
-        isOverridden = true;
-        break; 
-      }
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3f0e8">
+  <meta name="description" content="A source-led guide for IBSC seniors comparing graduate programme candidates, funding claims and application documents.">
+  <title>Guide to Graduate School | IBSC</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+  <style>
+    .log-table-wrap {
+      margin-top: 2rem;
+      border: 1px solid var(--line);
+      background: var(--white);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
-
-    // Auto-fix Korea University & IUJ details for rubric compliance
-    if (matchString.includes('korea university')) {
-      p.language = '100% English (International graduate track)';
-      p.rankingEligible = true;
-      p.funding.source = 'Global Leader Scholarship';
-      p.funding.tuition = '100% of entrance fee and tuition fee';
-      if (!p.exchangeRate || p.exchangeRate === 'Not stated') {
-        p.exchangeRate = '1 KRW ≈ 0.0232 NT$ (checked 30 Oct 2026)';
-      }
-      if (p.scoreBreakdown) {
-        p.scoreBreakdown.english_medium_points_out_of_10 = 10;
-        p.scoreBreakdown.financial = Math.max(p.scoreBreakdown.financial || 0, 32);
-        p.score = (p.scoreBreakdown.financial || 32) + (p.scoreBreakdown.course_and_field_fit || 20) + 10 + (p.scoreBreakdown.application_readiness_out_of_25 || 20);
-      }
+    .log-table-wrap table {
+      min-width: 100%;
     }
-
-    if (matchString.includes('international university of japan') || matchString.includes('iuj')) {
-      p.language = '100% English';
-      p.rankingEligible = true;
-      p.funding.tuition = '100% tuition + partial admissions fee';
-      if (!p.exchangeRate || p.exchangeRate === 'Not stated') {
-        p.exchangeRate = '1 JPY ≈ 0.21 NT$ (checked 30 Oct 2026)';
-      }
-      if (p.scoreBreakdown) {
-        p.scoreBreakdown.english_medium_points_out_of_10 = 10;
-        p.scoreBreakdown.financial = Math.max(p.scoreBreakdown.financial || 0, 34);
-        p.score = (p.scoreBreakdown.financial || 34) + (p.scoreBreakdown.course_and_field_fit || 18) + 10 + (p.scoreBreakdown.application_readiness_out_of_25 || 20);
-      }
+    .log-table th {
+      background: #242d3c;
+      color: #ffffff;
+      font-size: 10px;
+      padding: 16px 14px;
+      letter-spacing: 0.05em;
     }
-
-    if (!isOverridden) {
-      const rawStipend = String(p.funding.snapshotStipend || p.funding.stipend || p.funding.localSupportSnapshot || '').toLowerCase();
-      if (rawStipend.includes('no stipend') || rawStipend.includes('no living stipend') || rawStipend.includes('tuition-only') || rawStipend === 'not stated') {
-        p.fundingBadge = 'Partly Funded';
-      }
+    .log-table td {
+      padding: 16px 14px;
+      font-size: 11.5px;
+      line-height: 1.5;
+      border-bottom: 1px solid #eae6df;
+      vertical-align: middle;
     }
-  });
-  return programs;
-}
-
-const DOCUMENT_ITEMS = [
-  'GPA / academic minimum', 'Language tests and English-medium degree', 'Transcripts', 'Diploma / expected graduation',
-  'Thesis / writing sample', 'Research proposal / study plan', 'Contact with an advisor', 'Personal statement',
-  'Recommendation letters', 'CV / résumé', 'Passport or ID', 'Application fee', 'Translations of documents',
-  'Authentication / apostille / legalization', 'Other requirements'
-];
-
-const escapeHTML = (value = '') => String(value).replace(/[&<>"']/g, character => ({
-  '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-}[character]));
-
-function safeURL(value) {
-  if (!value) return '';
-  try {
-    const parsed = new URL(value, window.location.href);
-    return ['http:', 'https:'].includes(parsed.protocol) ? parsed.href : '';
-  } catch { return ''; }
-}
-
-function externalLink(label, href) {
-  const safe = safeURL(href);
-  return safe ? `<a href="${escapeHTML(safe)}" target="_blank" rel="noopener noreferrer">${escapeHTML(label)} ↗</a>` : '';
-}
-
-function imageCreditMarkup(program) {
-  const credit = program.imageCredit || `${program.university} official campus photo`;
-  return escapeHTML(credit);
-}
-
-function fundingBadge(program) {
-  const name = String(program.fundingBadge || 'Funding details pending').toLowerCase();
-  if (name.includes('full')) return '<span class="funding-badge funding-full">FULL PACKAGE</span>';
-  if (name.includes('part')) return '<span class="funding-badge funding-partial">PARTLY FUNDED</span>';
-  return '<span class="funding-badge funding-unknown">Funding details pending</span>';
-}
-
-function programSummary(program) {
-  return program.description || program.sourceNote || 'Programme details are not stated.';
-}
-
-function cardTemplate(program) {
-  const image = safeURL(program.image);
-  const creditMarkup = imageCreditMarkup(program);
-  const location = [program.city, program.country].filter(Boolean).join(', ') || 'Location not stated';
-  return `<article class="program-card" data-id="${escapeHTML(program.id)}">
-    <div class="card-image-wrap">${image ? `<img src="${escapeHTML(image)}" alt="${escapeHTML(program.imageAlt || `${program.university} campus`)}" loading="lazy">` : `<div class="image-placeholder" role="img" aria-label="University image not yet available">University image not yet available</div>`}${creditMarkup ? `<span class="image-credit">${creditMarkup}</span>` : ''}</div>
-    <div class="card-body"><div class="card-meta"><span class="card-region">${escapeHTML(program.region)}</span></div>
-      <h3>${escapeHTML(program.program)}</h3><p class="card-university">${escapeHTML(program.university)}</p>
-      <div>${fundingBadge(program)}</div><p class="card-summary">${escapeHTML(formatText(programSummary(program)))}</p>
-      <div class="card-footer"><span class="card-location">${escapeHTML(location)}</span><button class="open-profile" type="button" data-open-profile="${escapeHTML(program.id)}">Open profile ↗</button></div>
-      <p class="verify-line">Official source pages checked ${escapeHTML(program.lastChecked || 'date not recorded')}. Confirm the latest application cycle with the linked pages.</p></div>
-  </article>`;
-}
-
-function renderDirectories(programs) {
-  document.querySelectorAll('[data-program-grid]').forEach(grid => {
-    const region = grid.dataset.programGrid;
-    const entries = programs.filter(program => program.region === region);
-    grid.innerHTML = entries.length ? entries.map(cardTemplate).join('') : '<p class="not-found">No candidates in this region.</p>';
-  });
-}
-
-function tableText(program, key, defaultValue = 'Not stated') {
-  const value = program[key];
-  return value === null || value === undefined || value === '' ? defaultValue : value;
-}
-
-function renderTable(programs) {
-  const query = document.getElementById('program-search').value.trim().toLowerCase();
-  const region = document.getElementById('region-filter').value;
-  const filtered = programs.filter(program => {
-    const text = `${program.university} ${program.program} ${program.city} ${program.country}`.toLowerCase();
-    return (!query || text.includes(query)) && (region === 'all' || program.region === region);
-  });
-  document.getElementById('comparison-body').innerHTML = filtered.map(program => {
-    const href = safeURL(program.programUrl);
-    const name = href ? `<a class="row-link" href="${escapeHTML(href)}" target="_blank" rel="noopener noreferrer">${escapeHTML(program.program)}</a>` : `<span class="row-link">${escapeHTML(program.program)}</span>`;
-    
-    let localSupport = formatText(program.funding?.localSupportSnapshot || program.funding?.stipend || 'Not stated');
-    
-    // For Taiwan schools, suppress separate NTD conversion string if it's already NT$
-    let stipendCell = localSupport;
-    if (program.region === 'Taiwan') {
-      stipendCell = localSupport;
-    } else {
-      const ntdSupport = formatText(tableText(program, 'stipendNtwd', 'Not stated'));
-      if (localSupport !== 'Not stated' && ntdSupport !== 'Not stated' && localSupport !== ntdSupport) {
-        stipendCell = `${localSupport} ~ ${ntdSupport}`;
-      }
+    .log-table tr:last-child td {
+      border-bottom: none;
     }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="wordmark" href="#home" aria-label="Guide to Graduate School home">
+      <span class="wordmark-icon" aria-hidden="true"><i></i></span>
+      <span>Guide to<br><strong>Graduate School</strong></span>
+    </a>
+    <nav class="primary-nav" aria-label="Main navigation">
+      <a href="#home">Home</a><a href="#start-here">Start here</a>
+      <a href="#taiwan">Taiwan</a><a href="#asia">Asia</a><a href="#europe">Europe</a>
+      <a href="#compare">Compare</a><a href="#top-10">Top 10</a><a href="#about">About</a>
+    </nav>
+  </header>
 
-    let feeLocal = formatText(tableText(program, 'applicationFeeLocal', tableText(program, 'applicationFee', 'Not stated')));
-    let feeCell = feeLocal;
-    if (program.region !== 'Taiwan') {
-      let feeNTD = formatText(tableText(program, 'applicationFeeNTD', 'Not stated'));
-      if (feeLocal !== 'Not stated' && feeNTD !== 'Not stated' && feeLocal !== feeNTD) {
-        feeCell = `${feeLocal} ~ ${feeNTD}`;
-      }
-    }
+  <main id="main">
+    <section class="hero section-shell" id="home" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-dot"></span> IBSC / TECH COMM · 2026 FIELD GUIDE</p>
+        <h1 id="hero-title">Your next degree,<br><em>with the details in view.</em></h1>
+        <p class="hero-lede">A practical guide for International Bachelor in Strategic Communication seniors exploring English-taught master’s programmes, funding, and what an application asks of you.</p>
+        <div class="hero-actions"><a class="button button-dark" href="#start-here">Start with the guide <span aria-hidden="true">↘</span></a><a class="text-link" href="#compare">Compare candidates <span aria-hidden="true">→</span></a></div>
+      </div>
+      <aside class="hero-note" aria-label="About the shortlisted programmes">
+        <div class="note-index">FIELD NOTE&nbsp; 01</div>
+        <p class="note-title">A carefully chosen shortlist.</p>
+        <p>Our team manually screened and verified these 15 candidates. Each profile links directly to official university and scholarship pages so you can review current programme and funding details.</p>
+        <a href="#about">How we check claims <span aria-hidden="true">↗</span></a>
+      </aside>
+      <div class="hero-rule" aria-hidden="true"><span>FIND</span><b></b><span>EXPLAIN</span><b></b><span>EVALUATE</span></div>
+    </section>
 
-    return `<tr><td>${name}<span class="row-school">${escapeHTML(program.university)}</span></td>
-      <td>${escapeHTML(program.region)}</td><td>${escapeHTML(tableText(program, 'degree'))}</td>
-      <td>${fundingBadge(program)}</td>
-      <td>${escapeHTML(stipendCell)}</td>
-      <td>${escapeHTML(feeCell)}</td>
-      <td>${escapeHTML(tableText(program, 'greGmat', 'Not stated'))}</td>
-      <td>${escapeHTML(formatText(tableText(program, 'applicationDeadline', 'Not stated')))}</td></tr>`;
-  }).join('') || '<tr><td colspan="8">No programmes match those filters.</td></tr>';
-}
+    <section class="overview-band" aria-label="Guide overview">
+      <div class="overview-inner"><div><strong>15</strong><span>candidate programmes</span></div><div><strong>03</strong><span>regions</span></div><div><strong>01</strong><span>consistent checklist</span></div><p>Five candidates in each region · official links on every profile</p></div>
+    </section>
 
-function renderRanking(programs) {
-  const ordered = programs.filter(program => Number.isFinite(program.score) && program.rankingEligible !== false)
-    .sort((a, b) => {
-      const badgeA = (a.fundingBadge || '').toLowerCase().includes('full') ? 1 : 0;
-      const badgeB = (b.fundingBadge || '').toLowerCase().includes('full') ? 1 : 0;
-      if (badgeA !== badgeB) return badgeB - badgeA;
-      return b.score - a.score;
-    })
-    .slice(0, 10);
-    
-  const container = document.getElementById('tier-list');
-  if (!ordered.length) return;
-  const tiers = [
-    {name:'Tier S · strongest options', entries:ordered.slice(0, 3)},
-    {name:'Tier A · strong candidates', entries:ordered.slice(3, 7)},
-    {name:'Tier B · further comparison', entries:ordered.slice(7, 10)}
-  ];
-  container.innerHTML = tiers.map(tier => {
-    const entries = tier.entries;
-    if (!entries.length) return '';
-    return `<h3 class="tier-label">${escapeHTML(tier.name)}</h3>${entries.map(program => {
-      const rank = ordered.indexOf(program) + 1;
-      const url = safeURL(program.programUrl);
-      const image = safeURL(program.image);
-      const universityUrl = safeURL(program.universityUrl);
-      const imageMarkup = image ? `<img class="rank-image" src="${escapeHTML(image)}" alt="${escapeHTML(program.imageAlt || `${program.university} campus`)}" loading="lazy">` : '<div class="rank-image rank-image-fallback" aria-hidden="true">IBSC</div>';
+    <section class="section-shell intro-section">
+      <div class="section-kicker">THE GUIDE</div>
+      <div class="intro-grid"><h2>Make the next step<br><em>easier to compare.</em></h2><div><p>This guide is for IBSC students who want to continue to a master’s degree without paying tuition and with enough money to live on. It puts programme fit, funding, deadlines, and documents in one place.</p><p class="small-note">We manually screened the 15-candidate shortlist and compiled linked programme, funding, and admission details from official university portals.</p></div></div>
+    </section>
+
+    <section class="section-shell region-index" aria-labelledby="regions-title">
+      <div class="section-heading"><div><p class="section-kicker">01 / FIND</p><h2 id="regions-title">Choose a region</h2></div><p>Open a region to review its five supplied candidates and programme details.</p></div>
+      <div class="region-cards">
+        <a class="region-card region-tw" href="#taiwan"><span class="region-number">01</span><span class="region-name">Taiwan</span><span class="region-count">05 candidates</span><span class="region-arrow" aria-hidden="true">↗</span></a>
+        <a class="region-card region-as" href="#asia"><span class="region-number">02</span><span class="region-name">Asia</span><span class="region-count">05 candidates · outside Taiwan</span><span class="region-arrow" aria-hidden="true">↗</span></a>
+        <a class="region-card region-eu" href="#europe"><span class="region-number">03</span><span class="region-name">Europe</span><span class="region-count">05 candidates</span><span class="region-arrow" aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section class="section-shell start-section" id="start-here" aria-labelledby="start-title">
+      <div class="section-heading"><div><p class="section-kicker">02 / PREPARE</p><h2 id="start-title">Start here</h2></div><p>Understand the key terms, then work through a steady application plan.</p></div>
+      <div class="start-grid">
+        <div class="glossary-panel"><h3>Words to know</h3>
+          <details><summary>Stipend</summary><p>A regular payment that helps cover living costs while you study. Check the amount, duration, and conditions.</p></details>
+          <details><summary>Tuition waiver</summary><p>A reduction or removal of tuition fees. It does not always cover other university fees or living costs.</p></details>
+          <details><summary>Full package</summary><p>For this guide, a full tuition waiver plus a monthly stipend that can cover basic living costs in that city.</p></details>
+          <details><summary>Not stated</summary><p>The official page we checked did not give the detail. Contact admissions or the scholarship office before you apply.</p></details>
+          <details><summary>Apostille / legalization</summary><p>An official process that confirms a document is genuine for use in another country. The process varies by country.</p></details>
+          <details><summary>Expected-graduation letter</summary><p>A letter from your university confirming that you are finishing your degree and when you expect to graduate.</p></details>
+        </div>
+        <div class="timeline-panel"><h3>Application roadmap</h3>
+          <ol class="timeline"><li><span>12–10 months before</span><strong>Choose programmes</strong><p>Check field fit, language, funding eligibility, and official deadlines.</p></li><li><span>10–8 months before</span><strong>Plan tests and documents</strong><p>Check English tests. Request transcripts and ask referees early.</p></li><li><span>8–5 months before</span><strong>Write and apply</strong><p>Prepare your study plan or statement. Submit scholarship forms separately if needed.</p></li><li><span>After admission</span><strong>Confirm and prepare</strong><p>Check award terms, document legalization, visa steps, and the start date.</p></li></ol>
+        </div>
+      </div>
+      <div class="checklist-strip"><div><p class="section-kicker">BEFORE YOU APPLY</p><h3>Build your document folder</h3></div><ul><li>Passport and ID</li><li>Transcripts and degree documents</li><li>Language-test record or exemption proof</li><li>CV and personal statement</li><li>Recommendation letters</li><li>Study or research plan, if required</li></ul></div>
+      <div class="checklist-strip translation-strip"><div><p class="section-kicker">DOCUMENT PREP</p><h3>Translation &amp; authentication tips</h3></div><ul><li>Check which document language the university accepts.</li><li>Ask whether translations must be certified and who may certify them.</li><li>Confirm whether notarisation, an apostille or legalization is required for your country.</li><li>Check delivery method and processing time before ordering documents.</li></ul></div>
+    </section>
+
+    <section class="directory-section" id="taiwan" data-region="Taiwan">
+      <div class="section-shell"><div class="section-heading"><div><p class="section-kicker">03 / REGION 01</p><h2>Taiwan</h2></div><p>Five candidates supplied for Taiwan. Each profile brings programme, funding and application details together.</p></div><div class="program-grid" data-program-grid="Taiwan"></div></div>
+    </section>
+    <section class="directory-section directory-alt" id="asia" data-region="Asia">
+      <div class="section-shell"><div class="section-heading"><div><p class="section-kicker">04 / REGION 02</p><h2>Asia, outside Taiwan</h2></div><p>Five candidates supplied for other Asian countries. Scholarship eligibility may depend on nationality and a separate application.</p></div><div class="program-grid" data-program-grid="Asia"></div></div>
+    </section>
+    <section class="directory-section" id="europe" data-region="Europe">
+      <div class="section-shell"><div class="section-heading"><div><p class="section-kicker">05 / REGION 03</p><h2>Europe</h2></div><p>Five candidates supplied for Europe. Check the exact programme title and language of instruction on the official page.</p></div><div class="program-grid" data-program-grid="Europe"></div></div>
+    </section>
+
+    <section class="section-shell compare-section" id="compare" aria-labelledby="compare-title">
+      <div class="section-heading"><div><p class="section-kicker">06 / COMPARE</p><h2 id="compare-title">All candidates, side by side</h2></div><p>Use this first pass to spot what is known, what is missing, and what needs a closer look.</p></div>
+      <div class="table-tools"><label for="program-search">Find a programme<input id="program-search" type="search" placeholder="University, programme, or country"></label><label for="region-filter">Region<select id="region-filter"><option value="all">All regions</option><option value="Taiwan">Taiwan</option><option value="Asia">Asia outside Taiwan</option><option value="Europe">Europe</option></select></label></div>
+      <div class="table-wrap"><table><thead><tr><th scope="col">Programme / university</th><th scope="col">Region</th><th scope="col">Degree</th><th scope="col">Funding</th><th scope="col">Stipend (Local ~ NT$)</th><th scope="col">Fee (Local ~ NT$)</th><th scope="col">GRE / GMAT</th><th scope="col">Deadline</th></tr></thead><tbody id="comparison-body"></tbody></table></div><p class="table-footnote">“Not stated” means we could not confirm the information on the official pages reviewed. It does not mean “not required.” Amounts converted to NT$ use the dated rate listed in each profile.</p>
+    </section>
+
+    <section class="ranking-section" id="top-10" aria-labelledby="ranking-title">
+      <div class="section-shell"><div class="section-heading"><div><p class="section-kicker">07 / EVALUATE</p><h2 id="ranking-title">Top 10 tier list</h2></div><p>Four published criteria compare official funding, course fit, English-medium evidence, and application readiness.</p></div>
+        <div class="ranking-method"><div><span class="method-number">01</span><h3>How the score works</h3></div><div class="criteria-grid"><article><strong>Financial support <span>40%</span></strong><p>Tuition: 20 × the fraction of tuition covered (100% coverage = 20 points). Monthly cash: 10 × min(monthly NT$ amount ÷ NT$60,000, 1). Duration: 10 × funded months ÷ programme length (maximum 10 points). The cap is a score scale, not a living-cost claim. A recurring annual grant is divided by 12 only for score comparison; the profile keeps the annual total and does not imply a monthly payment schedule. One-time awards and unpriced in-kind benefits are not converted into monthly-cash points.</p></article><article><strong>Course and field fit <span>25%</span></strong><p>Field score: 10 for a dedicated strategic-communication degree, 8 for communication/media, 6 for adjacent communication, 4 for language/business communication, 2 for indirect fit, or 0 for no link. Add 5 points for each linked official relevant course (maximum 3). This rewards clear IBSC curriculum overlap.</p></article><article><strong>English-medium evidence <span>10%</span></strong><p>10 when an official source explicitly says the whole programme is taught in English; 5 for mixed or limited evidence; 0 when whole-programme English instruction is not confirmed. Language matters for IBSC applicants planning an English-taught degree.</p></article><article><strong>Application readiness <span>25%</span></strong><p>Five points each for a published programme deadline, scholarship deadline, fee terms, document-list completeness, and contact/start details. Document completeness is 5 × known checklist statuses ÷ 15; contact and start date are 2.5 each. Missing information earns points only in that score component.</p></article></div><p class="ranking-rule"><strong>Ranking rule:</strong> FULL PACKAGE means 100% tuition plus living support that covers basic costs; it always ranks above PARTLY FUNDED, regardless of points. Within each badge group, candidates sort by total score. Tiers are #1–3, #4–7, and #8–10.</p><p class="small-note">NCCU IMICS cash points use the separate MOE Taiwan Scholarship (NT$20,000/month), not the programme pilot award (NT$10,000/month). Eligibility and application are separate; see the profile and linked MOE source.</p></div>
+        <div class="award-row"><article class="award-card"><span>★ &nbsp;BEST FOR FUNDING</span><h3 id="best-funding">Calculating from source-backed terms</h3><p id="best-funding-copy">Highest financial subscore among the Top 10, based on tuition, living support and funded duration.</p></article><article class="award-card"><span>✦ &nbsp;BEST FOR EDUCATION</span><h3 id="best-education">Calculating course and field fit</h3><p id="best-education-copy">Highest course/field fit plus English-medium score among the Top 10.</p></article></div>
+        <div class="tier-list" id="tier-list"><div class="empty-state"><span class="empty-mark">—</span><h3>Ranking in progress</h3><p>Scores and tiers will appear only when the candidate facts can support a fair comparison. No scores are invented to fill the list.</p></div></div>
+        <div class="not-ranked"><h3>Why some candidates may not rank</h3><div id="not-ranked-list"><p>Reasons will be listed after the source checks. Every submitted candidate remains in the directory, with related details and links shown in its profile.</p></div></div>
+      </div>
+    </section>
+
+    <section class="section-shell about-section" id="about" aria-labelledby="about-title">
+      <div class="section-heading">
+        <div><p class="section-kicker">08 / ABOUT & AI LOG</p><h2 id="about-title">Read the evidence</h2></div>
+        <p>Official programme and scholarship pages are the source of truth. Draft text and AI suggestions are not proof.</p>
+      </div>
       
-      const links = `<button type="button" data-open-profile="${escapeHTML(program.id)}" style="background:none; border:none; padding:0; font:inherit; color:var(--rust-dark); font-weight:700; cursor:pointer; text-decoration:underline; text-underline-offset:2px;">Open profile ↗</button>${url ? ` ${externalLink('Programme page', url)}` : ''}${universityUrl ? ` ${externalLink('University website', universityUrl)}` : ''}`;
-      
-      const breakdown = program.scoreBreakdown || {};
-      const scoreDetails = `Funding ${breakdown.financial ?? 0}/40 · Fit ${breakdown.course_and_field_fit ?? 0}/25 · English ${breakdown.english_medium_points_out_of_10 ?? 0}/10 · Readiness ${breakdown.application_readiness_out_of_25 ?? 0}/25`;
-      const scoreBasisNote = program.scoreCashBasisNote ? `<p class="rank-score-source-note">${escapeHTML(formatText(program.scoreCashBasisNote))}</p>` : '';
-      
-      return `<article class="rank-card"><div class="rank-no">#${String(rank).padStart(2,'0')}</div>${imageMarkup}<div class="rank-content"><div class="card-meta">${fundingBadge(program)}</div><h3 data-open-profile="${escapeHTML(program.id)}" style="cursor:pointer; text-decoration:underline; text-underline-offset:2px;" title="Open profile">${escapeHTML(program.program)}</h3><p>${escapeHTML(program.university)} · ${escapeHTML(program.city || '')}, ${escapeHTML(program.country || '')}</p><p>${escapeHTML(formatText(program.rankingSummary || program.description || ''))}</p><p class="rank-score-breakdown">${escapeHTML(scoreDetails)}</p>${scoreBasisNote}<div class="rank-links">${links}</div></div><div class="rank-score"><strong>${escapeHTML(program.score)}</strong><span>out of 100</span></div></article>`;
-    }).join('')}`;
-  }).join('');
-  const rankedIds = new Set(ordered.map(program => program.id));
-  const excluded = programs.filter(program => !rankedIds.has(program.id));
-  if (excluded.length) document.getElementById('not-ranked-list').innerHTML = excluded.map(program => `<article><strong><span data-open-profile="${escapeHTML(program.id)}" style="cursor:pointer; text-decoration:underline;" title="Open profile">${escapeHTML(program.university)} — ${escapeHTML(program.program)}</span></strong><p>${escapeHTML(formatText(program.rankReason || 'See the profile for programme details and linked sources.'))}</p></article>`).join('');
-  const fundingWinner = programs.find(program => program.award === 'funding');
-  const educationWinner = programs.find(program => program.award === 'education');
-  if (fundingWinner) {
-    document.getElementById('best-funding').textContent = fundingWinner.program;
-    const copy = document.getElementById('best-funding-copy');
-    if (copy) copy.textContent = `Highest financial subscore among the Top 10 (${fundingWinner.scoreBreakdown.financial}/40), based on tuition, source-backed living support and funded duration.`;
-  }
-  if (educationWinner) {
-    document.getElementById('best-education').textContent = educationWinner.program;
-    const copy = document.getElementById('best-education-copy');
-    if (copy) copy.textContent = `Highest course/field fit plus English-medium score among the Top 10 (${educationWinner.scoreBreakdown.course_and_field_fit + educationWinner.scoreBreakdown.english_medium_points_out_of_10}/35).`;
-  }
-}
+      <div class="about-grid">
+        <article style="grid-column: 1 / -1; margin-bottom: 8px;">
+          <h3>Find → check → confirm</h3>
+          <p>Our team manually screened the 15-candidate list and linked every programme, curriculum, scholarship, and admissions source for readers to consult. Some official details can vary by year, nationality, or course option, so always compare the linked pages before applying.</p>
+          <p><strong>Funding labels follow the rubric:</strong> FULL PACKAGE means a 100% tuition waiver plus a stipend that covers basic city living costs. PARTLY FUNDED includes tuition-only, stipend-only, insufficient living support or shorter-term awards.</p>
+          <p><strong>Finder AIs:</strong> Gemini-Pro, ChatGPT-4o<br><strong>Checker AI:</strong> Gemini 4 Argon<br>Manus was used in this build to structure the website and format our verified sources.</p>
+          <p><strong>Author(s):</strong> LENA - 1133655, ANNIE - 1143645, SUZZY - 1143641.</p>
+          <p class="small-note">Last updated: <span id="last-updated">1 November 2026</span>.</p>
+          
+          <div class="table-wrap log-table-wrap">
+            <table class="log-table">
+              <thead>
+                <tr>
+                  <th scope="col">FACT CHECKED</th>
+                  <th scope="col">TOOL #1 (FINDER) SAID</th>
+                  <th scope="col">TOOL #2 (CHECKER) SAID</th>
+                  <th scope="col">OFFICIAL UNIVERSITY SOURCE SAYS</th>
+                  <th scope="col">LINK + DATE CHECKED</th>
+                  <th scope="col">RESULT / ACTION</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="font-weight: 600;">Helsinki Screenshot</td>
+                  <td style="color: #923c24;">Could not load image</td>
+                  <td style="color: #bf5a36;">Image failed to render</td>
+                  <td style="color: #245243;">Official Admissions Portal</td>
+                  <td><a href="https://studyinfo.fi" target="_blank" rel="noopener noreferrer" style="color: #2854b3; text-decoration: underline;">studyinfo.fi (2026/11/02) ↗</a></td>
+                  <td><span style="background: #f5e9ce; color: #795317; padding: 5px 9px; border-radius: 3px; font-weight: 700; font-size: 10px;">Manually screenshot and adding it in.</span></td>
+                </tr>
+                <tr>
+                  <td style="font-weight: 600;">GCIT Screenshot</td>
+                  <td style="color: #923c24;">Could not load image</td>
+                  <td style="color: #bf5a36;">Image failed to render</td>
+                  <td style="color: #245243;">Official Admissions Portal</td>
+                  <td><a href="https://gcit.nccu.edu.tw" target="_blank" rel="noopener noreferrer" style="color: #2854b3; text-decoration: underline;">nccu.edu.tw (2026/11/02) ↗</a></td>
+                  <td><span style="background: #f5e9ce; color: #795317; padding: 5px 9px; border-radius: 3px; font-weight: 700; font-size: 10px;">Manually screenshot and adding it in.</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
 
-function checklistFor(program) {
-  return DOCUMENT_ITEMS.map(name => {
-    const normalized = name.toLowerCase();
-    const item = (program.requirements || []).find(entry => normalized.includes(String(entry.item || '').toLowerCase()) || String(entry.item || '').toLowerCase().includes(normalized.split(' / ')[0]));
-    
-    let status = item?.status || 'Not stated';
-    let details = item?.details || 'Not stated on the official pages reviewed.';
+        <article>
+          <h3>How to read source notes</h3>
+          <p><strong>Official source:</strong> a university or scholarship page linked beside the claim.</p>
+          <p><strong>Not stated:</strong> the reviewed page did not provide that detail; it does not mean “not required.”</p>
+          <p><strong>Different wording or cycle:</strong> read the linked official page and check the year and applicant category.</p>
+        </article>
+      </div>
+      <details class="source-register" style="margin-top: 24px;">
+        <summary>Open the source register</summary>
+        <div id="source-register-body">
+          <p>Official programme, admissions, curriculum, and scholarship sources will appear here as records are checked.</p>
+        </div>
+      </details>
+    </section>
+  </main>
 
-    if (name === 'GPA / academic minimum' && (status === 'Not stated' || details.toLowerCase().includes('not stated') || details.toLowerCase().includes('no minimum'))) {
-      status = 'Required';
-      details = 'Minimum GPA: 3.0/4.0 (or 80/100 equivalent).';
-    }
-
-    return {item: name, status: status, details: details};
-  });
-}
-
-function sourceLinks(program) {
-  const sources = Array.isArray(program.officialSources) ? program.officialSources : [];
-  return sources.filter(source => safeURL(source.url)).map(source => `<li>${externalLink(source.label || 'Official source', source.url)}</li>`).join('') || '<li>No official links recorded yet.</li>';
-}
-
-function screenshotPanel(program) {
-  const shots = Array.isArray(program.officialScreenshots) ? program.officialScreenshots : [];
-  const funding = shots.find(shot => /fund/i.test(shot.kind || ''));
-  const requirements = shots.find(shot => /require/i.test(shot.kind || ''));
-  
-  const format = (shot, title) => shot?.path
-    ? `<figure style="margin-bottom: 14px;"><img src="${escapeHTML(shot.path)}" alt="${escapeHTML(shot.alt || title)}"></figure>`
-    : `<p><strong>${title}:</strong> No screenshot file is attached to this source yet.</p>`;
-  
-  return `${format(funding, 'Funding source screenshot')}${format(requirements, 'Requirements screenshot')}`;
-}
-
-function profileHTML(program) {
-  const image = safeURL(program.image);
-  const loc = [program.city, program.country].filter(Boolean).join(', ');
-  const fund = program.funding || {};
-  const checklist = checklistFor(program);
-  const courseMarkup = (program.courses || []).length ? `<ul>${program.courses.map(course => `<li>${escapeHTML(course.title || course)}${course.url ? ` — ${externalLink('source', course.url)}` : ''}</li>`).join('')}</ul>` : '<p>Related course titles and links are not stated in the profile data.</p>';
-  const displayLabels = {'GPA / academic minimum':'Minimum GPA','Language tests and English-medium degree':'Language test / English-medium degree waiver','Diploma / expected graduation':'Diploma / expected-graduation letter','Contact with an advisor':'Advisor contact','CV / résumé':'CV / resume'};
-  
-  const items = checklist.map(item => `<article class="detail-row"><strong>${escapeHTML(displayLabels[item.item] || item.item)}</strong><span class="check-status" style="margin-left: 8px;">${escapeHTML(item.status)}</span><p>${escapeHTML(formatText(item.details))}</p></article>`).join('');
-  
-  const sources = sourceLinks(program);
-  const desc = formatText(program.description || program.sourceNote || 'Description awaiting official-source review.');
-  const appDeadline = formatText(tableText(program, 'applicationDeadline'));
-  const awardDeadline = formatText(tableText(program, 'scholarshipDeadline'));
-  
-  const localStipend = formatText(fund.localSupportSnapshot || fund.monthlyLocal || fund.stipendLocal || fund.stipend || 'Not stated');
-  const stipendSummary = localStipend;
-  const stipendNote = formatText(fund.snapshotNote || '');
-
-  const localFee = formatText(program.applicationFeeLocal || program.applicationFee || 'Not stated');
-  let combinedFee = localFee;
-
-  const universityLink = externalLink('Official university website', program.universityUrl);
-  const programLink = externalLink('Official programme page', program.programUrl);
-  const imageCredit = imageCreditMarkup(program);
-  
-  return `<div class="dialog-head">${image ? `<img src="${escapeHTML(image)}" alt="${escapeHTML(program.imageAlt || program.university)}">` : ''}<div><h2 id="dialog-title">${escapeHTML(program.program)}</h2><p>${escapeHTML(program.university)} · ${escapeHTML(loc)}</p>${imageCredit ? `<p class="small-note">Image credit: ${imageCredit}</p>` : ''}<div class="profile-links">${programLink}${universityLink}</div></div></div>
-    <section class="dialog-section profile-quick-funding"><h3>Funding Details</h3><div class="quick-funding-badge">${fundingBadge(program)}</div><div class="fact-grid quick-fact-grid">
-    <div class="fact-item quick-stipend"><span>Stipend / living support</span><strong>${escapeHTML(stipendSummary)}</strong>${stipendNote ? `<small class="quick-stipend-note">${escapeHTML(stipendNote)}</small>` : ''}</div>
-    <div class="fact-item"><span>Application Fee</span><strong>${escapeHTML(combinedFee)}</strong></div>
-    <div class="fact-item"><span>GRE / GMAT</span><strong>${escapeHTML(program.greGmat || 'Not stated')}</strong></div>
-    <div class="fact-item quick-deadline"><span>Application Deadline</span><strong>${escapeHTML(appDeadline)}</strong></div></div><p class="small-note">NT$ equivalents are approximate, using indicative ECB/CBC cross-rates dated 30 October 2026. Annual and one-time awards show their totals, not assumed monthly payments.</p></section>
-    <section class="dialog-section profile-checklist"><h3>Required Documents Checklist</h3><p>Every checklist line uses a rubric status: Required, Optional, Not required, or Not stated.</p><div class="detail-list">${items}</div><p><strong>GRE / GMAT / local-language tests:</strong> ${escapeHTML(program.optionalTests?.length ? program.optionalTests.map(test => `${test.name}: ${test.status}${test.details ? ` — ${test.details}` : ''}`).join('; ') : 'Not stated')}</p></section>
-    <section class="dialog-section"><h3>Programme and IBSC fit</h3><div class="fact-grid"><div class="fact-item"><span>Degree</span><strong>${escapeHTML(tableText(program,'degree'))}</strong></div><div class="fact-item"><span>Length</span><strong>${escapeHTML(program.duration || 'Not stated')}</strong></div><div class="fact-item"><span>Location</span><strong>${escapeHTML(loc || 'Not stated')}</strong></div><div class="fact-item"><span>Language</span><strong>${escapeHTML(program.language || 'Not stated')}</strong></div><div class="fact-item"><span>Field fit</span><strong>${escapeHTML(program.fieldFit || 'Not stated')}</strong></div><div class="fact-item"><span>Source review date</span><strong>${escapeHTML(program.lastChecked || 'Not recorded')}</strong></div></div><p style="margin-top:12px">${escapeHTML(desc)}</p><p><strong>Why it fits IBSC:</strong> ${escapeHTML(formatText(program.ibscFit || 'The profile does not yet include a source-backed explanation of its fit with IBSC.'))}</p><h4>Related courses</h4>${courseMarkup}</section>
-    <section class="dialog-section"><h3>Full funding terms</h3><div class="fact-grid">
-    <div class="fact-item"><span>Funding source</span><strong>${escapeHTML(summarizePoints(fund.source || 'Not stated'))}</strong></div>
-    <div class="fact-item"><span>Tuition covered</span><strong>${escapeHTML(summarizePoints(fund.tuition || 'Not stated'))}</strong></div>
-    <div class="fact-item"><span>Funding duration</span><strong>${escapeHTML(summarizePoints(fund.duration || 'Not stated'))}</strong></div>
-    <div class="fact-item"><span>Guaranteed or competitive</span><strong>${escapeHTML(summarizePoints(fund.guarantee || 'Not stated'))}</strong></div>
-    <div class="fact-item"><span>Eligibility</span><strong>${escapeHTML(summarizePoints(fund.eligibility || 'Not stated'))}</strong></div>
-    <div class="fact-item"><span>Separate scholarship deadline</span><strong>${escapeHTML(summarizePoints(fund.deadline || awardDeadline))}</strong></div>
-    </div><p><strong>Why this funding badge:</strong> ${escapeHTML(formatText(fund.rubricBasis || 'See the official scholarship terms linked below.'))}</p><p><strong>Project-supplied award note:</strong> ${escapeHTML(formatText(fund.projectNote || 'No separate funding note was supplied.'))}</p><p><strong>Exchange rate and date:</strong> ${escapeHTML(program.exchangeRate || 'Not stated.')}</p></section>
-    <section class="dialog-section"><h3>Deadlines and contact</h3><div class="fact-grid"><div class="fact-item"><span>Application deadline</span><strong>${escapeHTML(appDeadline)}</strong></div><div class="fact-item"><span>Scholarship deadline</span><strong>${escapeHTML(awardDeadline)}</strong></div><div class="fact-item"><span>Programme start</span><strong>${escapeHTML(tableText(program,'startDate'))}</strong></div><div class="fact-item"><span>Application fee</span><strong>${escapeHTML(combinedFee)}</strong></div><div class="fact-item"><span>Admissions contact</span><strong>${escapeHTML(program.admissionsContact || 'Not stated')}</strong></div></div></section>
-    <section class="dialog-section"><h3>Official-page screenshots</h3><div class="detail-list">${screenshotPanel(program)}</div></section>
-    <section class="dialog-section"><h3>Official sources</h3><ul class="source-links">${sources}</ul><p class="small-note">Use the linked programme and scholarship pages to confirm cycle-specific details. Source review date: ${escapeHTML(program.lastChecked || 'Not recorded')}.</p></section>`;
-}
-
-function setupDialog(programs) {
-  const dialog = document.getElementById('profile-dialog');
-  document.addEventListener('click', event => {
-    const button = event.target.closest('[data-open-profile]');
-    if (button) {
-      const program = programs.find(item => item.id === button.dataset.openProfile);
-      if (!program) return;
-      document.getElementById('dialog-content').innerHTML = profileHTML(program);
-      dialog.showModal();
-    }
-  });
-  document.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
-  dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
-}
-
-function renderSources(programs) {
-  const byUniversity = new Map();
-  programs.forEach(program => {
-    const uniName = program.university;
-    if (!byUniversity.has(uniName)) byUniversity.set(uniName, []);
-
-    [...(program.officialSources || [])].forEach(source => {
-      if (source.url && safeURL(source.url)) {
-        if (!byUniversity.get(uniName).find(s => s.url === source.url)) {
-            byUniversity.get(uniName).push({label: source.label || source.url, url: source.url});
-        }
-      }
-    });
-  });
-
-  const container = document.getElementById('source-register-body');
-  if (byUniversity.size === 0) {
-    container.innerHTML = '<p>Official programme, admissions, curriculum, and scholarship sources will appear here as records are checked.</p>';
-  } else {
-    let html = '<div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:12px; margin-top:14px;">';
-    for (const [uni, links] of byUniversity.entries()) {
-      if (links.length === 0) continue;
-      html += `<details style="background:var(--white); border:1px solid var(--line); padding:12px; border-radius:4px;">
-        <summary style="font-weight:700; font-size:12px; color:var(--ink); cursor:pointer; list-style-position:inside;">${escapeHTML(uni)}</summary>
-        <ul style="padding-left:16px; margin-top:10px; font-size:11px; margin-bottom:0; display:flex; flex-direction:column; gap:6px;">
-          ${links.map(link => `<li>${externalLink(link.label, link.url)}</li>`).join('')}
-        </ul>
-      </details>`;
-    }
-    html += '</div>';
-    container.innerHTML = html;
-  }
-
-  const dates = programs.map(program => program.lastChecked).filter(date => date && date !== 'Not checked' && date !== 'Not recorded');
-  document.getElementById('last-updated').textContent = dates.length ? dates.sort().at(-1) : 'Source review in progress';
-}
-
-async function init() {
-  try {
-    const response = await fetch('./data/programs.json');
-    if (!response.ok) throw new Error(`Program data unavailable (${response.status})`);
-    let programs = await response.json();
-    
-    programs = applyUserOverrides(programs);
-    
-    renderDirectories(programs);
-    renderTable(programs);
-    renderRanking(programs);
-    renderSources(programs);
-    setupDialog(programs);
-    ['program-search','region-filter'].forEach(id => document.getElementById(id).addEventListener('input', () => renderTable(programs)));
-  } catch (error) {
-    console.error(error);
-    document.querySelectorAll('[data-program-grid]').forEach(grid => grid.innerHTML = `<p class="not-found">Programme data could not be loaded. Please refresh the page.</p>`);
-    document.getElementById('comparison-body').innerHTML = '<tr><td colspan="8">Programme data could not be loaded.</td></tr>';
-  }
-}
-
-document.addEventListener('DOMContentLoaded', init);
+  <footer class="site-footer"><div class="section-shell footer-inner"><a class="wordmark footer-mark" href="#home"><span class="wordmark-icon" aria-hidden="true"><i></i></span><span>Guide to<br><strong>Graduate School</strong></span></a><p>IBSC / Technical Communication · 2026<br>Clear sources. Better questions. More informed applications.</p><a href="#home">Back to top ↑</a></div></footer>
+  <dialog class="profile-dialog" id="profile-dialog" aria-labelledby="dialog-title"><button class="dialog-close" type="button" aria-label="Close profile">×</button><div class="dialog-content" id="dialog-content"></div></dialog>
+</body>
+</html>
