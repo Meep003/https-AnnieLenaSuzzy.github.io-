@@ -243,7 +243,7 @@
       "as_of": "2026-10-31"
     },
     "rankingSummary": "Linked courses include Managing Diversity in Communication, Culture and Persuasion Research, alongside a Strong fit field fit. The Partly Funded result reflects The Radboud Scholarship leaves a student fee payable and states that living/study costs are not covered. The separate €5,000 NL award is one-time, not a recurring living stipend.",
-    "rank": 3,
+    "rank": 4,
     "scoreCashBasisNote": ""
   },
   {
@@ -510,7 +510,7 @@
       "as_of": "2026-10-31"
     },
     "rankingSummary": "Linked courses include Digital Persuasion, Media and Crisis, alongside a Related, but not a dedicated strategic-communication degree. field fit. The Partly Funded result reflects The reviewed official award page does not establish a guaranteed 100% tuition waiver plus living-cost support for this exact programme. The annual grant is not presented as a monthly payment.",
-    "rank": 8,
+    "rank": 9,
     "scoreCashBasisNote": ""
   },
   {
@@ -777,7 +777,7 @@
       "as_of": "2026-10-31"
     },
     "rankingSummary": "Linked courses include Governance, Organizations, and Communication (GPC-O316), Globalizations: Politics, Economy and Communication (GPC-311), alongside a Relevant / good fit, especially the Governance, Organisations and Communication study track; not a narrowly named strategic-communications degree. field fit. The Partly Funded result reflects The university scholarship covers 50% or 100% of tuition and states no living stipend.",
-    "rank": 2,
+    "rank": 3,
     "scoreCashBasisNote": ""
   },
   {
@@ -976,7 +976,7 @@
     "lastChecked": "1 Nov 2026",
     "rankingEligible": false,
     "score": 41,
-    "rankReason": "It placed outside the Top 10 with 41/100; the official degree language is Italian and the DSU cash value is variable, limiting its English-medium evidence comparison.",
+    "rankReason": "Outside the Top 10 after the updated weighted ranking; the source-backed score is 41/100 and its funding/entry details remain less complete than the ranked options.",
     "imageSourceUrl": "https://dicm.ec.unipi.it/",
     "submittedCandidate": "Master's Degree in Digital Humanities",
     "programUrl": "https://www.unipi.it/en/education/courses/master-degree/digital-humanities-wfur-lm-en/",
@@ -1240,7 +1240,7 @@
     "fundingScreenshotUrl": "https://www.soas.ac.uk/study/student-life/finance/scholarships/dr-mai-yamani-scholarship",
     "requirementsScreenshotUrl": "https://www.soas.ac.uk/study/find-course/ma-global-media-and-digital-communications",
     "sourceReviewDate": "2026-10-31",
-    "award": "funding",
+    "award": null,
     "imageCreditNote": "SOAS official visitor guide",
     "officialScreenshots": [
       {
@@ -1279,7 +1279,7 @@
       "as_of": "2026-10-31"
     },
     "rankingSummary": "Linked courses include International Political Communication, Debates in Global Media and Digital Political Cultures, alongside a Strongly related field fit. The Full Package result reflects The official award offers full tuition plus up to £17,340 for living/study costs for an eligible one-year master's; this exceeds the cited London 9-month student-visa maintenance benchmark of £13,761. A separate accommodation award has different terms.",
-    "rank": 1,
+    "rank": 2,
     "scoreCashBasisNote": ""
   },
   {
@@ -1491,7 +1491,7 @@
     "fundingScreenshotUrl": "https://www.chula.ac.th/en/news/298837/",
     "requirementsScreenshotUrl": "https://www.iscm.commarts.chula.ac.th/mscm-admission/",
     "sourceReviewDate": "2026-10-31",
-    "award": "education",
+    "award": null,
     "imageCreditNote": "Tangmo · CC BY-SA 3.0",
     "officialScreenshots": [
       {
@@ -1530,7 +1530,7 @@
       "as_of": "2026-10-31"
     },
     "rankingSummary": "Linked courses include Principles of Communication Management, Strategic Planning and Evaluation for Integrated Communications, alongside a Strong direct fit field fit. The Partly Funded result reflects The cited official offer confirms full tuition and a monthly allowance but does not state its amount/duration. The project-supplied THB 9,000 is below the university's published food/personal-plus-dormitory components of about THB 25,000/month.",
-    "rank": 7,
+    "rank": 8,
     "imageLicenseLabel": "CC BY-SA 3.0 license",
     "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
     "scoreCashBasisNote": ""
@@ -1719,7 +1719,7 @@
     "lastChecked": "1 Nov 2026",
     "rankingEligible": false,
     "score": 43,
-    "rankReason": "It placed outside the Top 10 with 43/100; the candidate programme's merit awards are later-term awards and no living stipend is stated, limiting its financial support comparison.",
+    "rankReason": "Outside the Top 10 at 43/100. The source review does not establish a per-month award amount and current award applicability for this exact candidate programme.",
     "imageSourceUrl": "https://www.hkbu.edu.hk/en/about-hkbu.html",
     "submittedCandidate": "Master of Arts in Communication",
     "programUrl": "https://comm.hkbu.edu.hk/en/programmes/taught-postgraduate-programmes/macomm.html",
@@ -1779,762 +1779,789 @@
     "scoreCashBasisNote": ""
   },
   {
-    "id": "ntu-mmc",
+    "id": "nus-cnm-mar",
     "region": "Asia",
-    "university": "Nanyang Technological University",
-    "program": "Media and Communication (MMC)",
-    "degree": "Master (Coursework)",
+    "university": "National University of Singapore",
+    "program": "Master of Arts (by Research) in Communications and New Media",
+    "officialProgramName": "Master of Arts (by Research) — Communications and New Media",
+    "degree": "Master of Arts (by Research)",
     "city": "Singapore",
     "country": "Singapore",
-    "duration": "Normally 12 months full-time; part-time 24–48 months",
-    "sourceStatus": "needs-check",
-    "sourceNote": "The current official award is Master of Media and Communication, not the draft’s Master of Mass Communication title. The curriculum is directly relevant; the reviewed programme description does not explicitly confirm that every part of the degree is taught in English.",
-    "fieldFit": "Strong fit",
-    "language": "The official page supports English-language instruction by requiring English proficiency from applicants whose prior university or instruction was not English, and the program is delivered in person. It does not explicitly state in the accessed program description that every element of the entire degree is taught in English; therefore whole-degree English instruction is Not stated explicitly.",
-    "fundingBadge": "Partly Funded",
+    "duration": "The candidate brief describes a 2-year route. NUS lists a typical 2-year Master’s (Research) scholarship award; the CNM programme permits up to 36 months of candidature.",
+    "durationSourceNote": "The 2-year duration is the supplied candidate-plan basis and matches the typical Master’s (Research) award. The official CNM page states a maximum of 36 months; a scholarship beyond 24 months is not stated.",
+    "sourceStatus": "Official programme, scholarship, admissions, and English-medium policy pages reviewed 2026-11-02.",
+    "sourceNote": "The official scholarship page lists a full tuition waiver and SGD 2,900/month for international Master’s (Research) students. The award is competitive, normally two years, and renewable by semester at NUS’s discretion. CNM allows up to 36 months, so any extension beyond the 2-year award is not covered by this classification.",
+    "submittedCandidate": "Replacement selected by the student: National University of Singapore (NUS).",
+    "programUrl": "https://fass.nus.edu.sg/cnm/master-of-arts-by-research/",
+    "universityUrl": "https://www.nus.edu.sg/",
+    "fieldFit": "Strong direct fit with strategic communication and media research.",
+    "language": "English is NUS’s stated university-wide medium of instruction unless specified otherwise. CNM’s official programme page and modules are in English; no different medium is stated for this programme. TOEFL/IELTS may be waived for native English speakers; acceptance of an IBSC English-medium degree is not stated.",
+    "englishSourceUrl": "https://www.nus.edu.sg/registrar/academic-information-policies/non-graduating/education-at-nus",
+    "fundingBadge": "Full Package",
     "funding": {
-      "source": "MMC Excellence Scholarship (official, program-specific scholarship)",
-      "tuition": "Awardees receive either full or partial (50%) scholarship toward tuition fees only. The official scholarship document does not state a monetary cap or cover other expenses. The program is self-financed; applicants are not eligible for general financial assistance such as Tuition Fee Loan, Service Obligation or MOE Subsidies.",
-      "stipend": "Not stated; the scholarship document describes tuition fees only and does not list a stipend.",
-      "guarantee": "Open to full-time students admitted to NTU WKWSCI’s MMC. Applicant must be self-funded and not have another scholarship for MMC tuition, maintain CGPA 4.0, and complete the program within one year. Selection considers exceptional academic performance, demonstrated leadership development, or significant professional accomplishments. The number of awards and award probability are Not stated.",
-      "eligibility": "Open to full-time students admitted to NTU WKWSCI’s MMC. Applicant must be self-funded and not have another scholarship for MMC tuition, maintain CGPA 4.0, and complete the program within one year. Selection considers exceptional academic performance, demonstrated leadership development, or significant professional accomplishments. The number of awards and award probability are Not stated.",
-      "deadline": "Scholarship applications open 1 May–31 May; results announced by July of the intake year. Submit required documents by email to wkwsci_coursework@ntu.edu.sg.",
-      "sourceUrl": "https://www.ntu.edu.sg/media/docs/librariesprovider143/pg/mmc-excellence-scholarship96ada1416fb5492481eea130bc871657.pdf?sfvrsn=5818e832_1",
-      "monthlyStipendNTD": "No living stipend stated; tuition-only award.",
-      "classificationNote": "Preliminary classification is PARTLY FUNDED until a cited official monthly student budget confirms that any living stipend covers basic costs for the full funded period.",
-      "localSupportSnapshot": "No living stipend stated. The programme scholarship covers either full or 50% of tuition only.",
-      "ntdSupportSnapshot": "No living stipend stated; tuition-only award.",
-      "monthlyLocal": "No living stipend stated. The programme scholarship covers either full or 50% of tuition only.",
-      "projectNote": "Project note: full package, no stipend.",
-      "rubricBasis": "The programme-specific award covers tuition only and does not state a living stipend.",
+      "source": "NUS Research Scholarship for Master’s (Research) students",
+      "sourceUrl": "https://nusgs.nus.edu.sg/scholarships/nus-research-scholarship/",
+      "tuition": "Full tuition-fee waiver while the scholarship is held.",
+      "duration": "Typical period: 2 years. Initially tenable for 1 year and renewable each semester at the University’s discretion, subject to satisfactory progress; maximum 2 years.",
+      "stipend": "SGD 2,900/month for international Master’s (Research) students (rate effective 1 January 2026).",
+      "monthlyLocal": "S$2,900/month",
+      "monthlyStipendNTD": "≈ NT$73,677/month",
+      "localSupportSnapshot": "S$2,900/month",
+      "ntdSupportSnapshot": "≈ NT$73,677/month",
+      "snapshotStipend": "S$2,900/month ≈ NT$73,677/month",
+      "snapshotNote": "Competitive award with full tuition; typical Master’s (Research) period is 2 years. NUS estimates essential on-campus living costs at S$1,200–2,100/month. On-campus housing is limited and not guaranteed.",
+      "guarantee": "Competitive, not guaranteed. NUS selects outstanding graduate students; renewal depends on satisfactory progress and University discretion. International recipients must fulfil the Graduate Assistantship Programme. Employment or other awards require prior approval.",
+      "eligibility": "Master’s (Research) students, including international students. The scholarship page lists at least Second Class Honours Upper Division/equivalent as its academic prerequisite. Admission and scholarship selection are separate decisions.",
+      "deadline": "Scholarship interest is indicated with the admission application in GradApp; no separate scholarship deadline is stated. CNM’s August 2027 window closed on 1 November 2026.",
+      "rubricBasis": "Full tuition plus a recurring S$2,900/month stipend exceeds NUS’s published S$1,200–2,100/month on-campus essentials estimate for the standard 2-year award period. The scholarship is competitive. CNM permits up to 36 months, but NUS lists a maximum 2-year Master’s (Research) award, so any extension beyond 24 months is not covered.",
+      "projectNote": "Candidate selected by the student. Funding amounts and conditions in this profile come from NUS official pages, not from an unverified estimate.",
       "fxDate": "30 October 2026",
-      "snapshotStipend": "No living stipend stated.",
-      "snapshotNote": "Tuition-only award."
+      "classificationNote": "Full Package for the standard 2-year study basis if the competitive scholarship is awarded; do not assume scholarship coverage for a 36-month extension."
     },
     "requirements": [
       {
         "item": "GPA / academic minimum",
-        "status": "Not stated",
-        "details": "No separate status for this item was confirmed in the official-page review. Check the linked current-cycle requirements page before applying."
+        "status": "Required",
+        "details": "The scholarship page lists at least Second Class Honours (Upper Division) or equivalent. The CNM admission page does not state a separate minimum GPA."
       },
       {
         "item": "Language tests and English-medium degree",
         "status": "Required",
-        "details": "Applicants whose previous university/instruction does not satisfy the English-medium conditions must submit IELTS Academic 6.5 overall (each subscore at least 6.0) or TOEFL iBT 100."
+        "details": "CNM asks for TOEFL or IELTS. Native English speakers may apply for a waiver. The official page does not state a score threshold or confirm that an IBSC English-medium degree alone qualifies."
       },
       {
         "item": "Transcripts",
         "status": "Required",
-        "details": "Upload required supporting documents with the online application; use the NTU admissions guide for the complete list."
+        "details": "Submit undergraduate and graduate transcripts with the online application, as applicable."
       },
       {
         "item": "Diploma / expected graduation",
         "status": "Required",
-        "details": "A good bachelor’s degree (Honours merit and above) in any discipline is required."
+        "details": "A bachelor’s degree is required; the reviewed page does not specify the expected-graduation letter format."
       },
       {
         "item": "Thesis / writing sample",
         "status": "Not stated",
-        "details": "No separate status for this item was confirmed in the official-page review. Check the linked current-cycle requirements page before applying."
+        "details": "No separate thesis or writing sample is listed on the official CNM application page."
       },
       {
         "item": "Research proposal / study plan",
-        "status": "Not stated",
-        "details": "No separate status for this item was confirmed in the official-page review. Check the linked current-cycle requirements page before applying."
+        "status": "Required",
+        "details": "Submit a research proposal of approximately 1,000 words describing the topic, prior work, method, and brief bibliography."
       },
       {
         "item": "Contact with an advisor",
         "status": "Not stated",
-        "details": "No separate status for this item was confirmed in the official-page review. Check the linked current-cycle requirements page before applying."
+        "details": "No requirement to contact a potential supervisor is stated on the reviewed CNM page."
       },
       {
         "item": "Personal statement",
-        "status": "Not stated",
-        "details": "No separate status for this item was confirmed in the official-page review. Check the linked current-cycle requirements page before applying."
+        "status": "Required",
+        "details": "The NUS Research Scholarship page says a statement of purpose is compulsory for scholarship consideration; the CNM admissions page does not describe a separate admission essay."
       },
       {
         "item": "Recommendation letters",
         "status": "Required",
-        "details": "At least two referees are requested as part of the application."
+        "details": "Two recommendation letters are required by the CNM programme page."
       },
       {
         "item": "CV / résumé",
-        "status": "Not stated",
-        "details": "No separate status for this item was confirmed in the official-page review. Check the linked current-cycle requirements page before applying."
+        "status": "Required",
+        "details": "A comprehensive CV is compulsory for NUS Research Scholarship consideration."
       },
       {
         "item": "Passport or ID",
         "status": "Not stated",
-        "details": "No separate status for this item was confirmed in the official-page review. Check the linked current-cycle requirements page before applying."
+        "details": "No passport-copy status was confirmed on the reviewed CNM page."
       },
       {
         "item": "Application fee",
         "status": "Required",
-        "details": "S$50 non-refundable per programme."
+        "details": "S$50 online application fee, inclusive of GST; non-refundable."
       },
       {
         "item": "Translations of documents",
         "status": "Not stated",
-        "details": "No separate status for this item was confirmed in the official-page review. Check the linked current-cycle requirements page before applying."
+        "details": "The reviewed CNM page does not state translation rules."
       },
       {
         "item": "Authentication / apostille / legalization",
         "status": "Not stated",
-        "details": "No separate status for this item was confirmed in the official-page review. Check the linked current-cycle requirements page before applying."
+        "details": "No separate authentication rule was found on the reviewed CNM page."
       },
       {
         "item": "Other requirements",
         "status": "Required",
-        "details": "At least one year of work experience is required; an internship does not count. Submit a work certificate or employment letter. GRE/GMAT are not required."
+        "details": "The scholarship application is made through GradApp. International scholarship holders must complete the Graduate Assistantship Programme. August 2027 CNM applications closed 1 November 2026; late applications are considered for the next relevant intake."
       }
     ],
     "optionalTests": [
       {
+        "name": "TOEFL / IELTS",
+        "status": "Required unless waived",
+        "details": "Native English speakers may apply for a waiver; no score threshold is stated on the CNM page."
+      },
+      {
         "name": "GRE",
-        "status": "Not required",
-        "details": "Not required"
+        "status": "Optional",
+        "details": "The NUS Research Scholarship page lists GRE as optional supporting evidence, not a compulsory admissions item."
       },
       {
         "name": "GMAT",
-        "status": "Not required",
-        "details": "Not required"
-      },
-      {
-        "name": "Local-language test",
         "status": "Not stated",
-        "details": "No local-language test requirement was separately confirmed in the reviewed sources."
+        "details": "No GMAT requirement is stated for this programme on the reviewed pages."
       }
     ],
-    "applicationFee": "S$50, non-refundable, per programme.",
-    "applicationDeadline": "Applications normally open 1 Nov and close 15 Feb; all supporting documents must arrive by the deadline. Confirm the relevant intake cycle.",
-    "scholarshipDeadline": "Scholarship applications open 1 May–31 May; results announced by July of the intake year. Submit required documents by email to wkwsci_coursework@ntu.edu.sg.",
-    "startDate": "August intake; exact date not stated.",
-    "admissionsContact": "WKWSCI Graduate Coursework: wkwsci_coursework@ntu.edu.sg; official program page also links to https://www.ntu.edu.sg/forms/enquiry-form.",
-    "courses": [
-      {
-        "title": "MC6339 Strategic Public Relations Management",
-        "url": "https://www.ntu.edu.sg/education/graduate-programme/master-of-media-and-communication"
-      },
-      {
-        "title": "MC6361 Managing Reputation, Crisis, & Media Relations",
-        "url": "https://www.ntu.edu.sg/education/graduate-programme/master-of-media-and-communication"
-      },
-      {
-        "title": "MC6360 Internal Communication",
-        "url": "https://www.ntu.edu.sg/education/graduate-programme/master-of-media-and-communication"
-      }
-    ],
-    "description": "NTU’s Master of Media and Communication is a coursework master’s for students seeking advanced communication and marketing-communication skills. Its curriculum includes public relations, reputation and crisis communication, and internal communication. Full-time students usually complete it in 12 months in Singapore. The school describes it as relevant to marketing-communication professionals, but full-degree English instruction needs confirmation.",
-    "draftClaim": "The draft describes a coursework-based strategic communication master's but cites an NTU Research Scholarship; these claims need careful official verification.",
-    "officialSources": [
-      {
-        "label": "Official programme page",
-        "url": "https://www.ntu.edu.sg/education/graduate-programme/master-of-media-and-communication"
-      },
-      {
-        "label": "University website",
-        "url": "https://www.ntu.edu.sg/"
-      },
-      {
-        "label": "Additional requirements",
-        "url": "https://www.ntu.edu.sg/admissions/graduate/cwadmissionguide"
-      },
-      {
-        "label": "Additional requirements",
-        "url": "https://www.ntu.edu.sg/media/docs/librariesprovider143/pg/referee-letter-reference-guide_v2-9-nov-2022.pdf?sfvrsn=49f4ffca_3"
-      },
-      {
-        "label": "Official scholarship/funding source",
-        "url": "https://www.ntu.edu.sg/media/docs/librariesprovider143/pg/mmc-excellence-scholarship96ada1416fb5492481eea130bc871657.pdf?sfvrsn=5818e832_1"
-      },
-      {
-        "label": "Official admissions contact",
-        "url": "https://www.ntu.edu.sg/forms/enquiry-form"
-      },
-      {
-        "label": "ECB euro reference exchange rates (30 October 2026)",
-        "url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html"
-      },
-      {
-        "label": "Central Bank of Taiwan USD/TWD closing rates (30 October 2026)",
-        "url": "https://www.cbc.gov.tw/en/lp-700-2.html"
-      }
-    ],
-    "image": "assets/campuses/ntu.jpg",
-    "imageAlt": "Nanyang Technological University campus building",
-    "imageCredit": "Nanyang Technological University official history page",
-    "lastChecked": "1 Nov 2026",
-    "rankingEligible": true,
-    "score": 70,
-    "rankReason": "",
-    "imageSourceUrl": "https://www.ntu.edu.sg/about-us/history",
-    "submittedCandidate": "Master of Mass Communication (Strategic Communication Focus)",
-    "programUrl": "https://www.ntu.edu.sg/education/graduate-programme/master-of-media-and-communication",
-    "universityUrl": "https://www.ntu.edu.sg/",
-    "officialProgramName": "Master of Media and Communication (MMC)",
-    "verificationDetails": "The current official degree is Master of Media and Communication (MMC), not “Master of Mass Communication.” It is a strong strategic-marketing communication fit, usually 12 months full-time. The MMC Excellence Scholarship is competitive and covers either 100% or 50% of tuition only, with no stipend. The source page requires English proficiency in specified cases, but does not explicitly state whole-degree instructional language.",
-    "englishSourceUrl": "https://www.ntu.edu.sg/education/graduate-programme/master-of-media-and-communication",
-    "durationSourceNote": "Full-time: normally 12 months (official page describes completion over 12 months; candidature 2–4 semesters). Part-time: 24–48 months (4–8 semesters). In-person, NTU, Singapore. The page’s extracted text does not specify a separate city field; NTU is in Singapore.",
-    "ibscFit": "The programme develops strategic marketing-communication skills and includes reputation, crisis, media-relations and internal-communication topics. Strategic Public Relations Management, Managing Reputation, Crisis & Media Relations, and Internal Communication fit IBSC interests.",
-    "requirementsSummary": "Minimum: good Bachelor’s degree in any discipline (Honours merit and above) and at least one year of work experience (internship does not count), supported by work certificate or employment letter. TOEFL iBT 100 or IELTS Academic 6.5 overall with each subscore at least 6.0 is required when prior university/instruction does not meet the stated English-medium conditions. GRE/GMAT not required. Online application requires at least two referees and supporting documents; the official page refers applicants to NTU admissions for the full document checklist. Application deadline includes online form and all supporting documents. Application fee S$50, non-refundable. For AY 2025–26 official tuition shown is S$43,000 total, with applicable stated rebates for eligible groups; fees may change.",
-    "applicationFeeNTD": "≈ NT$1,270 (rate dated 30 October 2026)",
-    "exchangeRate": "Indicative cross-rate, 30 October 2026: ECB euro reference rates crossed with the Central Bank of Taiwan's USD/TWD close; amounts rounded to the nearest NT$1. Not a transaction quote. Sources: ECB and CBC links below.",
-    "stipendNtwd": "No living stipend stated; tuition-only award.",
-    "fundingScreenshotUrl": "https://www.ntu.edu.sg/media/docs/librariesprovider143/pg/mmc-excellence-scholarship96ada1416fb5492481eea130bc871657.pdf?sfvrsn=5818e832_1",
-    "requirementsScreenshotUrl": "https://www.ntu.edu.sg/education/graduate-programme/master-of-media-and-communication",
-    "sourceReviewDate": "2026-10-31",
-    "award": null,
-    "imageCreditNote": "Nanyang Technological University official history page",
-    "officialScreenshots": [
-      {
-        "kind": "funding",
-        "path": "assets/evidence/ntu-mmc-funding.jpg",
-        "sourceUrl": "https://www.ntu.edu.sg/media/docs/librariesprovider143/pg/mmc-excellence-scholarship96ada1416fb5492481eea130bc871657.pdf?sfvrsn=5818e832_1",
-        "capturedAt": "2026-11-01",
-        "alt": "Official funding information page for this programme; captured 2026-11-01"
-      },
-      {
-        "kind": "requirements",
-        "path": "assets/evidence/ntu-mmc-requirements.jpg",
-        "sourceUrl": "https://www.ntu.edu.sg/education/graduate-programme/master-of-media-and-communication",
-        "capturedAt": "2026-11-01",
-        "alt": "Official requirements information page for this programme; captured 2026-11-01"
-      }
-    ],
-    "feeExchangeRate": "Indicative cross-rate, 30 October 2026: ECB euro reference rates crossed with the Central Bank of Taiwan's USD/TWD close; amounts rounded to the nearest NT$1. Not a transaction quote. Sources: ECB and CBC links below.",
-    "applicationFeeLocal": "S$50, non-refundable, per programme.",
+    "greGmat": "GRE: optional supporting evidence for scholarship review; not stated as a CNM admission requirement. GMAT: not stated.",
+    "applicationDeadline": "August 2027 Semester I: 16 May–1 November 2026 (closed as of 2 November 2026). The next CNM application window is not stated.",
+    "scholarshipDeadline": "Apply through GradApp with the admission application; no separate scholarship deadline is stated. The August 2027 cycle closed 1 November 2026.",
+    "applicationFee": "S$50.00 online, non-refundable (inclusive of GST)",
+    "applicationFeeLocal": "S$50.00 online, non-refundable",
+    "applicationFeeNTD": "≈ NT$1,270",
     "feeCurrency": "SGD",
     "feeAmount": 50,
+    "feeExchangeRate": "1 SGD ≈ NT$25.4057 on 30 October 2026",
+    "stipendNtwd": "≈ NT$73,677/month",
+    "exchangeRate": "ECB 30 October 2026: EUR/USD 1.1172, EUR/SGD 1.4282, EUR/JPY 175.68, EUR/KRW 1491.76; Central Bank of Taiwan USD/TWD 32.478. Indicative cross-rates: SGD 1 ≈ NT$25.4057; JPY 1 ≈ NT$0.2065; KRW 1 ≈ NT$0.0243.",
+    "startDate": "August 2027 (Semester I); confirm the next cycle after the 2027 window.",
+    "admissionsContact": "CNM Graduate Office: cnm.graduate@nus.edu.sg",
+    "courses": [
+      {
+        "title": "NM6101 — Advanced Theories in Communications and New Media",
+        "url": "https://fass.nus.edu.sg/cnm/master-of-arts-by-research/"
+      },
+      {
+        "title": "NM6103 — Quantitative Research Methods in Communications and New Media",
+        "url": "https://fass.nus.edu.sg/cnm/master-of-arts-by-research/"
+      },
+      {
+        "title": "NM6104 — Qualitative Research Methods in Communications and New Media",
+        "url": "https://fass.nus.edu.sg/cnm/master-of-arts-by-research/"
+      }
+    ],
+    "description": "The Master of Arts by Research in Communications and New Media lets students pursue a research topic while completing four core research modules and two electives. It is a full-time option for international candidates and may take up to 36 months. The scholarship page lists a typical two-year award for master’s research students. Applicants submit transcripts, two recommendation letters, and a research proposal of about 1,000 words.",
+    "ibscFit": "This is a direct fit for IBSC students interested in strategic communication, media, and audience research. Required modules in communication theory and quantitative and qualitative research methods can support campaign planning and evidence-based communication work.",
+    "requirementsSummary": "Two recommendation letters, a roughly 1,000-word research proposal, transcripts, and TOEFL/IELTS unless waived; scholarship consideration also requires a statement of purpose and CV.",
+    "officialSources": [
+      {
+        "label": "CNM Master of Arts by Research: modules, requirements, duration and contact",
+        "url": "https://fass.nus.edu.sg/cnm/master-of-arts-by-research/"
+      },
+      {
+        "label": "NUS Research Scholarship: eligibility, tuition waiver, stipend and terms",
+        "url": "https://nusgs.nus.edu.sg/scholarships/nus-research-scholarship/"
+      },
+      {
+        "label": "CNM research application window and S$50 application fee",
+        "url": "https://fass.nus.edu.sg/prospective-students/graduate/research/application-process/"
+      },
+      {
+        "label": "NUS university-wide medium-of-instruction policy",
+        "url": "https://www.nus.edu.sg/registrar/academic-information-policies/non-graduating/education-at-nus"
+      },
+      {
+        "label": "NUS Graduate School cost-of-living estimate",
+        "url": "https://nusgs.nus.edu.sg/cost-of-living/"
+      },
+      {
+        "label": "ECB historical reference exchange rates",
+        "url": "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml"
+      },
+      {
+        "label": "Central Bank of Taiwan USD/TWD rates",
+        "url": "https://www.cbc.gov.tw/en/lp-700-2.html"
+      }
+    ],
+    "officialScreenshots": [
+      {
+        "kind": "funding",
+        "path": "assets/evidence/nus-funding.jpg",
+        "sourceUrl": "https://nusgs.nus.edu.sg/scholarships/nus-research-scholarship/",
+        "pageTitle": "NUS Research Scholarship",
+        "capturedAt": "2026-11-02",
+        "alt": "Official table showing the international Master’s Research stipend of SGD 2,900 per month, full tuition waiver, and typical two-year award."
+      },
+      {
+        "kind": "requirements",
+        "path": "assets/evidence/nus-requirements.jpg",
+        "sourceUrl": "https://fass.nus.edu.sg/cnm/master-of-arts-by-research/",
+        "pageTitle": "CNM Master of Arts by Research",
+        "capturedAt": "2026-11-02",
+        "alt": "Official CNM page showing the required research modules, TOEFL or IELTS, two recommendations, and a roughly 1,000-word research proposal."
+      }
+    ],
+    "fundingScreenshotUrl": "assets/evidence/nus-funding.jpg",
+    "requirementsScreenshotUrl": "assets/evidence/nus-requirements.jpg",
+    "image": "assets/campuses/nus-university-hall.jpg",
+    "imageAlt": "University Hall at the National University of Singapore",
+    "imageCredit": "Photo by alex.ch, CC BY 2.0; resized for this site",
+    "imageCreditNote": "Campus identifier; resized without cropping. The University Hall image is not an endorsement by NUS.",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:University_Hall,_National_University_of_Singapore_-_20070125.jpg",
+    "imageLicenseLabel": "CC BY 2.0",
+    "imageLicenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+    "lastChecked": "2026-11-02",
+    "sourceReviewDate": "2026-11-02",
+    "verificationDetails": [
+      "NUS scholarship: international Master’s Research stipend and tuition terms.",
+      "CNM programme: modules, application requirements, and maximum candidature.",
+      "University Registrar: English is the medium of instruction unless specified otherwise.",
+      "FX conversion uses ECB/CBC official rates for 30 October 2026."
+    ],
+    "rankingEligible": true,
+    "rank": 1,
+    "score": 100,
     "scoreBreakdown": {
-      "financial": 30.0,
-      "tuition_points_out_of_20": 20.0,
-      "official_monthly_cash_points_out_of_10": 0.0,
-      "documented_duration_points_out_of_10": 10,
-      "course_and_field_fit": 23,
-      "field_fit_points_out_of_10": 8,
-      "official_course_points_out_of_15": 15,
-      "english_medium_points_out_of_10": 0,
-      "application_readiness_out_of_25": 17.5,
-      "known_document_items_out_of_15": 6,
-      "total_out_of_100": 70.5,
-      "cash_basis_note": "",
-      "input_basis": "Source-backed maximum terms; user-only claims do not increase the score.",
-      "as_of": "2026-10-31"
+      "financial": 40,
+      "course_and_field_fit": 25,
+      "english_medium_points_out_of_10": 10,
+      "application_readiness_out_of_25": 25,
+      "total_out_of_100": 100,
+      "tuition_points_out_of_20": 20,
+      "cash_support_points_out_of_10": 10,
+      "funded_duration_points_out_of_10": 10,
+      "field_fit_points_out_of_10": 10,
+      "official_related_course_points_out_of_15": 15,
+      "published_deadline_points_out_of_5": 5,
+      "scholarship_deadline_points_out_of_5": 5,
+      "fee_terms_points_out_of_5": 5,
+      "requirements_completeness_points_out_of_5": 5,
+      "contact_and_start_date_points_out_of_5": 5
     },
-    "rankingSummary": "Linked courses include MC6339 Strategic Public Relations Management, MC6361 Managing Reputation, Crisis, & Media Relations, alongside a Strong fit field fit. The Partly Funded result reflects The programme-specific award covers tuition only and does not state a living stipend.",
-    "rank": 5,
-    "scoreCashBasisNote": ""
+    "scoreCashBasisNote": "Financial score uses the full tuition waiver, SGD 2,900/month converted at the 30 October 2026 ECB/CBC cross-rate, and the typical two-year award term. It does not count a 36-month programme extension as funded.",
+    "rankingSummary": "Direct communications and new-media research fit; full tuition and a SGD 2,900 monthly stipend for the typical two-year scholarship period; English medium is supported by NUS policy. Score 100/100.",
+    "rankReason": "",
+    "award": null
   },
   {
-    "id": "yonsei-pic",
+    "id": "korea-media-adpr",
     "region": "Asia",
-    "university": "Yonsei University",
-    "program": "Global Studies: International Cooperation (PIC)",
-    "degree": "Master of Global Affairs & Policy (MGAP)",
+    "university": "Korea University",
+    "program": "Media Graduate School — Master’s Program (Advertising/PR Major)",
+    "officialProgramName": "미디어대학원 석사학위과정 — 광고PR 전공 (English translation)",
+    "degree": "Master’s degree (Media Graduate School)",
     "city": "Seoul",
     "country": "South Korea",
-    "duration": "Not stated in reviewed official pages",
-    "sourceStatus": "verified",
-    "sourceNote": "The official programme is Global Studies: International Cooperation (PIC), leading to an MGAP degree. English is the stated instructional language, but strategic communication is adjacent rather than central and the standard duration is not stated.",
-    "fieldFit": "Related, but not a dedicated strategic communication degree.",
-    "language": "Yes. The official GSIS overview identifies the language of instruction for Korean Studies and Global Studies as English; PIC is a Global Studies program. This supports English instruction as the program language, but does not explicitly guarantee that every individual class/assignment is exclusively English.",
+    "duration": "Five semesters (2027 spring admissions notice); evening programme for working adults.",
+    "durationSourceNote": "The 2027 spring admissions notice lists five semesters. The programme overview describes a night-time master’s programme for working professionals.",
+    "sourceStatus": "Official 2027 spring admissions, scholarship, programme, and curriculum pages reviewed 2026-11-02. Programme language is not stated.",
+    "sourceNote": "Advertising/PR is a direct content fit. The official programme and curriculum pages reviewed are in Korean and do not state that classes are taught in English. The published scholarship figures are a 2025 aggregate pool, not a per-student 2027 award.",
+    "submittedCandidate": "Replacement selected by the student: Korea University. The Advertising/PR major is the closest official media-school track to IBSC.",
+    "programUrl": "https://mediacom.korea.ac.kr/media_grad/admission.html",
+    "universityUrl": "https://www.korea.ac.kr/",
+    "fieldFit": "Strong direct content fit with public relations and social media.",
+    "language": "Not stated. The official programme, admissions, and curriculum pages reviewed are in Korean; they do not state the language of instruction. English-medium delivery is unconfirmed.",
+    "englishSourceUrl": "https://mediacom.korea.ac.kr/media_grad/admission.html",
     "fundingBadge": "Partly Funded",
     "funding": {
-      "source": "Official GSIS listings include institutional awards and list the Korean Government Scholarship Program (GKS) as an external scholarship for international students, application required. GKS availability is admissions-period-specific.",
-      "tuition": "GSIS institutional Incoming Student Award: up to 100% of tuition per semester, no application necessary, for students with outstanding academic potential; number not limited. This is not a guaranteed full-degree waiver. The GSIS external-scholarship table lists GKS as covering 100% tuition, stipend, etc.; exact complete terms are not stated on that GSIS page. Current GKS application details: https://graduate.yonsei.ac.kr/graduate_en/admission/kgsp_schedule.do",
-      "stipend": "Institutional Incoming Student Award: no stipend stated. GKS: stipend is referenced, but amount is Not stated on the GSIS scholarship page; consult the GKS guidelines linked by Yonsei.",
-      "guarantee": "Incoming Student Award qualification: outstanding academic potential; GSIS does not state a selection rate or provide a quantified competitiveness measure. GKS: international students only and application required; eligibility and selection criteria are governed by the linked GKS guidelines. Institutional awards are semester-based; GSIS does not promise renewal or award for the full degree.",
-      "eligibility": "Incoming Student Award qualification: outstanding academic potential; GSIS does not state a selection rate or provide a quantified competitiveness measure. GKS: international students only and application required; eligibility and selection criteria are governed by the linked GKS guidelines. Institutional awards are semester-based; GSIS does not promise renewal or award for the full degree.",
-      "deadline": "The GSIS scholarship page gives no separate scholarship deadline and says external scholarships are offered only during admissions. Yonsei's 2026 GKS university-track application deadline was March 20, 2026 at 5:00 p.m. KST (now passed). https://graduate.yonsei.ac.kr/graduate_en/admission/kgsp_schedule.do",
-      "sourceUrl": "https://gsis.yonsei.ac.kr/gsis/academics/scholarships.do",
-      "monthlyStipendNTD": "No GSIS monthly stipend amount stated; no NT$ conversion for the separate GKS route.",
-      "classificationNote": "Preliminary classification is PARTLY FUNDED until a cited official monthly student budget confirms that any living stipend covers basic costs for the full funded period.",
-      "localSupportSnapshot": "No monthly stipend stated for the GSIS institutional award. GKS is a separate scholarship route with separate eligibility and deadlines.",
-      "ntdSupportSnapshot": "No GSIS monthly stipend amount stated; no NT$ conversion for the separate GKS route.",
-      "monthlyLocal": "No monthly stipend stated for the GSIS institutional award. GKS is a separate scholarship route with separate eligibility and deadlines.",
-      "projectNote": "Project note: full package, no stipend.",
-      "rubricBasis": "The institutional award is up to 100% tuition per semester, not a guaranteed full-degree package; the GSIS page does not state the GKS stipend amount or guarantee that route.",
+      "source": "Korea University Media Graduate School scholarship page (latest posted figures: 2025)",
+      "sourceUrl": "https://mediacom.korea.ac.kr/media_grad/scholarshipfund.html",
+      "tuition": "2027 entry notice lists KRW 7,196,000 per semester for five semesters plus a KRW 1,234,000 admission fee. The scholarship page does not state a guaranteed 2027 tuition waiver.",
+      "duration": "The new-student award pool is identified as first semester. The current page says annual totals and recipient counts vary by budget.",
+      "stipend": "No monthly stipend stated. The 2025 page reports a KRW 17,800,000 total pool for 12 new students in the first semester; each student’s actual award varies.",
+      "monthlyLocal": "No monthly stipend stated; 2025 first-semester pool: KRW 17,800,000 total across 12 new students.",
+      "monthlyStipendNTD": "No individual monthly amount stated.",
+      "localSupportSnapshot": "No monthly stipend stated. 2025 first-semester pool: ₩17,800,000 total across 12 new students.",
+      "ntdSupportSnapshot": "≈ NT$432,540 total pool, not an individual award.",
+      "snapshotStipend": "No monthly stipend stated. 2025 pool: ₩17,800,000 total across 12 new students (≈ NT$432,540 total; not per student).",
+      "snapshotNote": "The official page says the amount paid to each student varies; these 2025 figures do not confirm a 2027 award or a guaranteed tuition waiver.",
+      "guarantee": "Competitive and awarded after documents/interview. The scholarship amount is a 2025 aggregate; individual awards vary and annual budget may change. A 2027 per-student amount is not stated.",
+      "eligibility": "The 2025 new-student award is for entrants selected through document and interview review. Current per-student 2027 eligibility and award amount are not stated.",
+      "deadline": "No separate 2027 scholarship deadline or award amount is published on the reviewed page. The 2027 spring programme application closed 23 October 2026.",
+      "rubricBasis": "The official scholarship page provides no individual award amount for 2027 and does not promise full tuition or recurring living support. The available 2025 figure is a first-semester aggregate pool, so the rubric classifies this option as Partly Funded rather than treating the pool as a student award.",
+      "projectNote": "The student selected Korea University as a replacement. No individual scholarship amount was supplied; this profile reports only the latest official aggregate and its stated uncertainty.",
       "fxDate": "30 October 2026",
-      "snapshotStipend": "No GSIS monthly stipend stated.",
-      "snapshotNote": "GKS is separate; eligibility applies."
+      "classificationNote": "Partly Funded; no recurring stipend or confirmed full tuition waiver per student is published."
     },
     "requirements": [
       {
         "item": "GPA / academic minimum",
         "status": "Not stated",
-        "details": "No separate status for this item was confirmed in the official-page review. Check the linked current-cycle requirements page before applying."
+        "details": "The 2027 admissions notice reviewed does not state a minimum GPA."
       },
       {
         "item": "Language tests and English-medium degree",
-        "status": "Required",
-        "details": "For Global Studies, the Spring 2026 guide accepts TOEFL, IELTS, TOEIC or Duolingo English Test; check the new-cycle thresholds."
+        "status": "Not stated",
+        "details": "No English-test requirement, English-medium degree waiver, or course language is stated on the official pages reviewed. Do not assume English-taught classes."
       },
       {
         "item": "Transcripts",
         "status": "Required",
-        "details": "Submit academic transcripts with the application; original documents may be required after acceptance."
+        "details": "Submit official transcripts for the completed university-level study; foreign credentials require the stated Korean/English translation and authentication."
       },
       {
         "item": "Diploma / expected graduation",
         "status": "Required",
-        "details": "A bachelor’s degree or equivalent is required for master’s admission."
+        "details": "A four-year bachelor’s degree or equivalent is required. Applicants expected to graduate in February 2027 may submit the official expected-graduation certificate listed in the notice."
       },
       {
         "item": "Thesis / writing sample",
         "status": "Not stated",
-        "details": "No separate status for this item was confirmed in the official-page review. Check the linked current-cycle requirements page before applying."
+        "details": "No separate thesis or writing sample is listed in the reviewed 2027 application checklist."
       },
       {
         "item": "Research proposal / study plan",
         "status": "Required",
-        "details": "Submit an English personal statement and study plan (up to three pages total in the 2026 guide)."
+        "details": "Submit the official self-introduction and research-plan form."
       },
       {
         "item": "Contact with an advisor",
         "status": "Not stated",
-        "details": "No separate status for this item was confirmed in the official-page review. Check the linked current-cycle requirements page before applying."
+        "details": "No prior adviser-contact requirement is stated in the admissions notice."
       },
       {
         "item": "Personal statement",
         "status": "Required",
-        "details": "Submit the personal statement and study plan in English, up to three pages total."
+        "details": "The application requires the official self-introduction form."
       },
       {
         "item": "Recommendation letters",
-        "status": "Required",
-        "details": "One English recommendation letter is submitted directly by the recommender under the reviewed guide."
+        "status": "Not stated",
+        "details": "The published checklist does not list recommendation letters."
       },
       {
         "item": "CV / résumé",
         "status": "Not stated",
-        "details": "No separate status for this item was confirmed in the official-page review. Check the linked current-cycle requirements page before applying."
+        "details": "A separate CV is not listed; employment/career-history documents are conditional in the admissions notice."
       },
       {
         "item": "Passport or ID",
-        "status": "Required",
-        "details": "Submit the applicant’s and parents’ identity/passport copies plus proof of family relationship under the reviewed international guide."
+        "status": "Not stated",
+        "details": "No passport-copy status was confirmed in the reviewed public checklist."
       },
       {
         "item": "Application fee",
-        "status": "Not stated",
-        "details": "No separate status for this item was confirmed in the official-page review. Check the linked current-cycle requirements page before applying."
+        "status": "Required",
+        "details": "KRW 90,000 including service charges; non-refundable."
       },
       {
         "item": "Translations of documents",
         "status": "Required",
-        "details": "Non-English documents require the translations described in the current-cycle guide."
+        "details": "Foreign-language credentials must be accompanied by the Korean or English translations specified in the current notice."
       },
       {
         "item": "Authentication / apostille / legalization",
-        "status": "Not stated",
-        "details": "No separate status for this item was confirmed in the official-page review. Check the linked current-cycle requirements page before applying."
+        "status": "Required",
+        "details": "Foreign academic credentials require apostille or consular confirmation as described in the 2027 notice."
       },
       {
         "item": "Other requirements",
         "status": "Required",
-        "details": "The guide distinguishes applicant categories; both applicant and parents must meet the stated non-Korean-citizenship conditions for the international category reviewed. An interview may be requested."
+        "details": "Online application plus signed printed forms and original documents by registered mail. The 2027 spring cycle includes an in-person interview. Programme is five semesters and held in the evening."
       }
     ],
     "optionalTests": [
       {
-        "name": "GRE",
+        "name": "English test",
         "status": "Not stated",
-        "details": "Not stated"
+        "details": "The official pages reviewed do not state an English test requirement or course language."
       },
       {
-        "name": "GMAT",
+        "name": "GRE / GMAT",
         "status": "Not stated",
-        "details": "Not stated"
+        "details": "No GRE or GMAT rule was found in the reviewed notice."
       },
       {
-        "name": "Local-language test",
+        "name": "Korean-language test",
         "status": "Not stated",
-        "details": "No local-language test requirement was separately confirmed in the reviewed sources."
+        "details": "No Korean-language score rule was found in the reviewed notice."
       }
     ],
-    "applicationFee": "KRW 100,000 for the Spring 2026 guide (historical; confirm next cycle).",
-    "applicationDeadline": "Spring 2026 guide deadline: 13 Oct 2025, 17:00 KST (passed); future intake date not stated.",
-    "scholarshipDeadline": "The GSIS scholarship page gives no separate scholarship deadline and says external scholarships are offered only during admissions. Yonsei's 2026 GKS university-track application deadline was March 20, 2026 at 5:00 p.m. KST (now passed). https://graduate.yonsei.ac.kr/graduate_en/admission/kgsp_schedule.do",
-    "startDate": "Spring/Fall; current start date not stated.",
-    "admissionsContact": "GSIS Admissions: gsis@yonsei.ac.kr; +82-2-2123-3291~3 or 8484~8. Address: New Millennium Hall #510, Yonsei University, 50 Yonsei-ro, Seodaemun-gu, Seoul, Korea. https://gsis.yonsei.ac.kr/gsis/education/master_degree02.do",
+    "greGmat": "GRE / GMAT: not stated on the reviewed official admissions page.",
+    "applicationDeadline": "2027 spring intake: online applications 6–23 October 2026 (closed); in-person interview scheduled 28 November 2026.",
+    "scholarshipDeadline": "No separate 2027 scholarship deadline is published. The scholarship page’s latest figures are for 2025 and say individual awards/budgets vary.",
+    "applicationFee": "KRW 90,000, including service charges; non-refundable",
+    "applicationFeeLocal": "₩90,000 including service charges; non-refundable",
+    "applicationFeeNTD": "≈ NT$2,188",
+    "feeCurrency": "KRW",
+    "feeAmount": 90000,
+    "feeExchangeRate": "1 KRW ≈ NT$0.0243 on 30 October 2026",
+    "stipendNtwd": "No individual monthly amount stated.",
+    "exchangeRate": "ECB 30 October 2026: EUR/USD 1.1172, EUR/SGD 1.4282, EUR/JPY 175.68, EUR/KRW 1491.76; Central Bank of Taiwan USD/TWD 32.478. Indicative cross-rates: SGD 1 ≈ NT$25.4057; JPY 1 ≈ NT$0.2065; KRW 1 ≈ NT$0.0243.",
+    "startDate": "1 March 2027 (2027 spring intake).",
+    "admissionsContact": "Media Graduate School office: gre008@korea.ac.kr; +82-2-3290-1401.",
     "courses": [
       {
-        "title": "Political Communication",
-        "url": "https://gsis.yonsei.ac.kr/_res/gsis/etc/Yonsei_GSIS_PIC_Curriculum_%28As_of_April_2026%29.pdf"
+        "title": "MCP 601 — PR Theory",
+        "url": "https://mediacom.korea.ac.kr/media_grad/opening.html"
       },
       {
-        "title": "Seminar on International News Analysis",
-        "url": "https://gsis.yonsei.ac.kr/_res/gsis/etc/Yonsei_GSIS_PIC_Curriculum_%28As_of_April_2026%29.pdf"
+        "title": "MCN 601 — New Media",
+        "url": "https://mediacom.korea.ac.kr/media_grad/opening.html"
       },
       {
-        "title": "Diplomacy and International Negotiation",
-        "url": "https://gsis.yonsei.ac.kr/_res/gsis/etc/Yonsei_GSIS_PIC_Curriculum_%28As_of_April_2026%29.pdf"
+        "title": "MCN 614 — Social Media",
+        "url": "https://mediacom.korea.ac.kr/media_grad/opening.html"
       }
     ],
-    "description": "This GSIS master’s studies international cooperation through topics such as international relations, development, political economy and global organisations. Its curriculum includes political communication and international news analysis, but strategic communication is not the main focus. The degree is taught in English at Yonsei University in Seoul. Current-cycle duration and future application dates need confirmation.",
-    "draftClaim": "The draft lists public diplomacy, global communication, and international negotiation courses; verify these are actual programme courses.",
+    "description": "Korea University’s Media Graduate School offers a master’s degree with an Advertising/PR major, alongside New Media, Journalism, Video Entertainment, and Crimson Journalism. The 2027 spring notice describes a five-semester evening programme designed for working adults. Its curriculum includes Media Theory, PR Theory, and Social Media. Official pages reviewed do not state that classes are taught in English, so English-medium eligibility remains unconfirmed.",
+    "ibscFit": "The Advertising/PR major aligns closely with IBSC campaign planning and organizational communication. Official curriculum titles include PR Theory, New Media, and Social Media; the content fit is strong, but the pages reviewed do not confirm English-medium teaching.",
+    "requirementsSummary": "The 2027 spring notice requires a signed application, self-introduction/research-plan form, official transcripts and degree evidence; foreign credentials need translation and apostille/consular confirmation. GPA and English requirements are not stated.",
     "officialSources": [
       {
-        "label": "Official programme page",
-        "url": "https://gsis.yonsei.ac.kr/gsis/education/master_degree02.do"
+        "label": "Media Graduate School 2027 spring admission notice",
+        "url": "https://mediacom.korea.ac.kr/media_grad/admission.html"
       },
       {
-        "label": "University website",
-        "url": "https://www.yonsei.ac.kr/en_sc/"
+        "label": "Media Graduate School programme overview and five majors",
+        "url": "https://mediacom.korea.ac.kr/media_grad/introduce.html"
       },
       {
-        "label": "Official language/source",
-        "url": "https://gsis.yonsei.ac.kr/gsis/intro/status.do"
+        "label": "Official Media Graduate School curriculum",
+        "url": "https://mediacom.korea.ac.kr/media_grad/opening.html"
       },
       {
-        "label": "Admissions and document requirements",
-        "url": "https://gsis.yonsei.ac.kr/gsis/community/boards1_01.do?mode=download&articleNo=454680&attachNo=196415"
+        "label": "Media Graduate School scholarship figures and caveats",
+        "url": "https://mediacom.korea.ac.kr/media_grad/scholarshipfund.html"
       },
       {
-        "label": "Official scholarship/funding source",
-        "url": "https://gsis.yonsei.ac.kr/gsis/academics/scholarships.do"
+        "label": "Korea University official website",
+        "url": "https://www.korea.ac.kr/"
       },
       {
-        "label": "Official curriculum/course page",
-        "url": "https://gsis.yonsei.ac.kr/_res/gsis/etc/Yonsei_GSIS_PIC_Curriculum_%28As_of_April_2026%29.pdf"
-      },
-      {
-        "label": "Yonsei GSIS Spring 2027 admissions notice",
-        "url": "https://gsis.yonsei.ac.kr/gsis/community/boards1_01.do?mode=view&articleNo=478909"
-      },
-      {
-        "label": "ECB euro reference exchange rates (30 October 2026)",
-        "url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html"
-      },
-      {
-        "label": "Central Bank of Taiwan USD/TWD closing rates (30 October 2026)",
+        "label": "Central Bank of Taiwan USD/TWD rates",
         "url": "https://www.cbc.gov.tw/en/lp-700-2.html"
+      },
+      {
+        "label": "ECB historical reference exchange rates",
+        "url": "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml"
       }
     ],
-    "image": "assets/campuses/yonsei.jpg",
-    "imageAlt": "Yonsei University Underwood Hall in Seoul",
-    "imageCredit": "Kimhs5400 · CC BY 4.0",
-    "lastChecked": "1 Nov 2026",
-    "rankingEligible": true,
-    "score": 60,
-    "rankReason": "",
-    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Yonseiunderwood.jpg",
-    "submittedCandidate": "Program in International Cooperation — Master of Global Affairs & Policy",
-    "programUrl": "https://gsis.yonsei.ac.kr/gsis/education/master_degree02.do",
-    "universityUrl": "https://www.yonsei.ac.kr/en_sc/",
-    "officialProgramName": "Global Studies: International Cooperation (PIC), Master of Global Affairs & Policy (MGAP). The university warns that the degree title may vary according to entering-year regulations.",
-    "verificationDetails": "The official programme is Global Studies: International Cooperation (PIC), a Master of Global Affairs & Policy. Global Studies instruction is in English, but the degree’s core is international affairs; communication is an adjacent fit. Institutional awards are competitive and semester-based; GKS is separate, and neither is a guaranteed full-degree package. Duration and future-cycle dates are not stated.",
-    "englishSourceUrl": "https://gsis.yonsei.ac.kr/gsis/intro/status.do",
-    "durationSourceNote": "Seoul, South Korea (Yonsei University, Sinchon campus address: 50 Yonsei-ro, Seodaemun-gu). Official pages reviewed do not state this master's program's standard duration; Not stated.",
-    "ibscFit": "The degree is mainly about international policy and cooperation, so it is an adjacent rather than direct strategic-communication fit. Political Communication and Seminar on International News Analysis connect to media and public affairs, while Diplomacy and International Negotiation adds an international-relations perspective.",
-    "requirementsSummary": "The official Spring 2026 international admissions guide (a past intake guide, not a guarantee of future-cycle rules) requires a bachelor's degree or equivalent by entry for master's applicants. For the international category described in the guide, both applicant and parents must not be Korean citizens. Documents include online application; personal statement and study plan (English, up to 3 pages total); bachelor's diploma or expected-graduation certificate; transcript; valid language-proficiency proof (for Global Studies: TOEFL, IELTS, TOEIC or Duolingo); GPA conversion if applicable; applicant and parents' ID/passport copies; proof of family relationship; and student-information release form. Recommendation letter in English is submitted directly by recommender. Original documents are required after acceptance. Screening considers qualifications, academic achievements and motivation; an interview may be requested. Refer to the current-cycle guide before applying.",
-    "applicationFeeNTD": "≈ NT$2,432 (rate dated 30 October 2026)",
-    "exchangeRate": "Indicative cross-rate, 30 October 2026: ECB euro reference rates crossed with the Central Bank of Taiwan's USD/TWD close; amounts rounded to the nearest NT$1. Not a transaction quote. Sources: ECB and CBC links below.",
-    "stipendNtwd": "No GSIS monthly stipend amount stated; no NT$ conversion for the separate GKS route.",
-    "fundingScreenshotUrl": "https://gsis.yonsei.ac.kr/gsis/academics/scholarships.do",
-    "requirementsScreenshotUrl": "https://gsis.yonsei.ac.kr/gsis/community/boards1_01.do?mode=view&articleNo=478909",
-    "sourceReviewDate": "2026-10-31",
-    "award": null,
-    "imageCreditNote": "Kimhs5400 · CC BY 4.0",
     "officialScreenshots": [
       {
         "kind": "funding",
-        "path": "assets/evidence/yonsei-pic-funding.jpg",
-        "sourceUrl": "https://gsis.yonsei.ac.kr/gsis/academics/scholarships.do",
-        "capturedAt": "2026-11-01",
-        "alt": "Official funding information page for this programme; captured 2026-11-01"
+        "path": "assets/evidence/korea-funding.jpg",
+        "sourceUrl": "https://mediacom.korea.ac.kr/media_grad/scholarshipfund.html",
+        "pageTitle": "Korea University Media Graduate School scholarships",
+        "capturedAt": "2026-11-02",
+        "alt": "Official scholarship table showing 2025 aggregate award totals, recipient counts, first-semester period, and a note that individual awards vary."
       },
       {
         "kind": "requirements",
-        "path": "assets/evidence/yonsei-pic-requirements.jpg",
-        "sourceUrl": "https://gsis.yonsei.ac.kr/gsis/community/boards1_01.do?mode=view&articleNo=478909",
-        "capturedAt": "2026-11-01",
-        "pageTitle": "BOARDS > Official Notices 게시판읽기(SPRING 2027 INTERNATIONAL STUDENT ADMISSION) | 국제학대학원",
-        "httpStatus": null,
-        "captureWarning": "Navigation timed out after page load began: Page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://gsis.yonsei.ac.kr/gsis/community/boards1_01.do?mode=view&articleNo=478909\", waiting until \"domcontentloaded\"\n",
-        "alt": "Official requirements information page for this programme; captured 2026-11-01"
+        "path": "assets/evidence/korea-requirements.jpg",
+        "sourceUrl": "https://mediacom.korea.ac.kr/media_grad/admission.html",
+        "pageTitle": "Korea University 2027 spring admissions notice",
+        "capturedAt": "2026-11-02",
+        "alt": "Official Korean-language document checklist for the 2027 spring Media Graduate School application."
       }
     ],
-    "feeExchangeRate": "Indicative cross-rate, 30 October 2026: ECB euro reference rates crossed with the Central Bank of Taiwan's USD/TWD close; amounts rounded to the nearest NT$1. Not a transaction quote. Sources: ECB and CBC links below.",
-    "applicationFeeLocal": "KRW 100,000 in the Spring 2026 guide; historical, confirm the next cycle.",
-    "feeCurrency": "KRW",
-    "feeAmount": 100000,
+    "fundingScreenshotUrl": "assets/evidence/korea-funding.jpg",
+    "requirementsScreenshotUrl": "assets/evidence/korea-requirements.jpg",
+    "image": "assets/campuses/korea-university-main-hall.jpg",
+    "imageAlt": "Korea University Main Hall on the Seoul campus",
+    "imageCredit": "Photo by Ksiom, CC BY-SA 3.0; resized for this site",
+    "imageCreditNote": "Campus identifier; resized without cropping. The image does not imply endorsement by Korea University.",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Korea_University_Main_Hall.jpg",
+    "imageLicenseLabel": "CC BY-SA 3.0",
+    "imageLicenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "lastChecked": "2026-11-02",
+    "sourceReviewDate": "2026-11-02",
+    "verificationDetails": [
+      "2027 spring notice: five semesters, application dates, fee, requirements, and interview.",
+      "Scholarship page: 2025 aggregate award amounts and individual-award caveats.",
+      "The official pages reviewed do not state the programme medium of instruction.",
+      "FX conversion uses ECB/CBC official rates for 30 October 2026."
+    ],
+    "rankingEligible": false,
+    "rank": null,
+    "score": 45,
     "scoreBreakdown": {
-      "financial": 22.5,
-      "tuition_points_out_of_20": 20.0,
-      "official_monthly_cash_points_out_of_10": 0.0,
-      "documented_duration_points_out_of_10": 2.5,
-      "course_and_field_fit": 19,
-      "field_fit_points_out_of_10": 4,
-      "official_course_points_out_of_15": 15,
-      "english_medium_points_out_of_10": 10,
-      "application_readiness_out_of_25": 8.5,
-      "known_document_items_out_of_15": 9,
-      "total_out_of_100": 60.0,
-      "cash_basis_note": "",
-      "input_basis": "Source-backed maximum terms; user-only claims do not increase the score.",
-      "as_of": "2026-10-31"
+      "financial": 0,
+      "course_and_field_fit": 25,
+      "english_medium_points_out_of_10": 0,
+      "application_readiness_out_of_25": 20,
+      "total_out_of_100": 45,
+      "tuition_points_out_of_20": 0,
+      "cash_support_points_out_of_10": 0,
+      "funded_duration_points_out_of_10": 0,
+      "field_fit_points_out_of_10": 10,
+      "official_related_course_points_out_of_15": 15,
+      "published_deadline_points_out_of_5": 5,
+      "scholarship_deadline_points_out_of_5": 0,
+      "fee_terms_points_out_of_5": 5,
+      "requirements_completeness_points_out_of_5": 5,
+      "contact_and_start_date_points_out_of_5": 5
     },
-    "rankingSummary": "Linked courses include Political Communication, Seminar on International News Analysis, alongside a Related, but not a dedicated strategic communication degree. field fit. The Partly Funded result reflects The institutional award is up to 100% tuition per semester, not a guaranteed full-degree package; the GSIS page does not state the GKS stipend amount or guarantee that route.",
-    "rank": 9,
-    "imageLicenseLabel": "CC BY 4.0 license",
-    "imageLicenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-    "scoreCashBasisNote": ""
+    "scoreCashBasisNote": "Financial points are zero because the official 2025 award page gives only an aggregate pool and does not document an individual 2027 tuition waiver or recurring stipend.",
+    "rankingSummary": "Strong direct advertising/PR course fit, but English-medium instruction and a per-student 2027 scholarship are not confirmed. Score 45/100.",
+    "rankReason": "Outside the Top 10 at 45/100. The official programme pages do not state English-medium instruction, and the scholarship source reports a 2025 aggregate pool rather than a confirmed 2027 individual award.",
+    "award": null
   },
   {
-    "id": "tokyo-itasia",
+    "id": "iuj-irp-ma",
     "region": "Asia",
-    "university": "The University of Tokyo",
-    "program": "ITASIA — Information, Technology, and Society in Asia",
-    "degree": "Master of Arts and Sciences (M.A.S.) in Information Studies",
-    "city": "Tokyo",
+    "university": "International University of Japan",
+    "program": "International Relations Program (IRP) — MA in International Relations or Political Science",
+    "officialProgramName": "International Relations Program (IRP)",
+    "degree": "MA in International Relations or MA in Political Science",
+    "city": "Minamiuonuma, Niigata Prefecture",
     "country": "Japan",
-    "duration": "Normally 2 years; intensive Japanese may extend the plan to 3 years",
-    "sourceStatus": "verified",
-    "sourceNote": "ITASIA is an English-instruction master’s, but not a strategic-communication degree. Its media and communication courses offer adjacent relevance. Fall 2027 applicants must take the GRE General Test under current guidelines.",
-    "fieldFit": "Related, but not a direct strategic communication program.",
-    "language": "Yes. Official ITASIA overview states ‘All instruction is in English’; current official 2026 guidelines also say all instruction is conducted in English. FAQ further specifies required courses are taught entirely in English. This supports English instruction, not merely language eligibility.",
+    "duration": "Two years for either IRP MA degree.",
+    "durationSourceNote": "The official IRP overview explicitly describes two 2-year MA degrees.",
+    "sourceStatus": "Official IRP, 2027 admissions, scholarship, cost, and curriculum sources reviewed 2026-11-02.",
+    "sourceNote": "IUJ confirms English-language graduate programmes and a two-year IRP MA. Its Nakayama Premium summary lists full tuition, partial admission-fee support, and ¥100,000/month, but does not state the award period. The award is competitive; the profile therefore does not assume full two-year coverage.",
+    "submittedCandidate": "Replacement selected by the student: International University of Japan (IUJ).",
+    "programUrl": "https://www.iuj.ac.jp/academics/gsir/programs/irp/",
+    "universityUrl": "https://www.iuj.ac.jp/",
+    "fieldFit": "Adjacent fit: public affairs and international policy rather than strategic communication.",
+    "language": "English-medium. IUJ’s official 2027 brochure is labelled “English for all applicants,” and English test exemptions are described for applicants whose prior degree was taught in English.",
+    "englishSourceUrl": "https://www.iuj.ac.jp/admissions/download-materials/",
     "fundingBadge": "Partly Funded",
     "funding": {
-      "source": "Funding is possible but not guaranteed. ITASIA describes a limited number of donor-funded scholarships or tuition waivers recommended by UTokyo for applicants with exceptional academic records; separate scholarships and fellowships may also be applied for. No single named, assured ‘full scholarship’ for every ITASIA student is stated.",
-      "tuition": "ITASIA's 2026 guidelines state limited need-based exemptions of admission fee and annual tuition are available, and a limited number of donor-supported scholarships or tuition waivers may be offered with admission. The published M.A.S. annual tuition is ¥535,800; admission fee ¥282,000 (the tuition page's table has a discrepant ¥282,200 M.A.S. admission figure). No universal full tuition coverage is promised. MEXT awardees are exempt from examination, admission, and tuition fees, but the university's MEXT page says UTokyo accepts MEXT students through the research-student route, not direct program-specific guaranteed award; verify route with ITASIA.",
-      "stipend": "For the ITASIA donor awards/waivers: amount and stipend status Not stated on the cited program pages. The separate University of Tokyo Fellowship states ¥200,000 per month for the standard period of study, for outstanding self-funded international students; it is a separate competitive fellowship and is not guaranteed by ITASIA admission. https://www.u-tokyo.ac.jp/en/prospective-students/fellowship.html",
-      "guarantee": "ITASIA: limited number; for applicants with exceptional academic records; awarded at UTokyo recommendation and offered with admission notification. No detailed eligibility rubric, applicant count, or award probability stated. UTokyo Fellowship: outstanding self-funded international students; application through affiliated/prospective graduate school; separate competitive process. MEXT categories and rules vary by embassy/graduate school; UTokyo states university-recommendation general category is not expected from AY2026 onward. https://itasia.iii.u-tokyo.ac.jp/admissions-guidelines ; https://www.u-tokyo.ac.jp/en/prospective-students/fellowship.html ; https://www.u-tokyo.ac.jp/en/prospective-students/mext_scholarship.html",
-      "eligibility": "ITASIA: limited number; for applicants with exceptional academic records; awarded at UTokyo recommendation and offered with admission notification. No detailed eligibility rubric, applicant count, or award probability stated. UTokyo Fellowship: outstanding self-funded international students; application through affiliated/prospective graduate school; separate competitive process. MEXT categories and rules vary by embassy/graduate school; UTokyo states university-recommendation general category is not expected from AY2026 onward. https://itasia.iii.u-tokyo.ac.jp/admissions-guidelines ; https://www.u-tokyo.ac.jp/en/prospective-students/fellowship.html ; https://www.u-tokyo.ac.jp/en/prospective-students/mext_scholarship.html",
-      "deadline": "Not stated for ITASIA donor awards on the cited current program materials; the available 2026 guidelines say eligible awards are offered with admission notification. Separate scholarship deadlines/processes depend on the award and graduate school; consult the relevant official scholarship/graduate-school instructions.",
-      "sourceUrl": "https://itasia.iii.u-tokyo.ac.jp/tuition",
-      "monthlyStipendNTD": "Separate UTokyo Fellowship: ¥200,000/month ≈ NT$41,307/month if separately awarded; ITASIA award amount is not stated.",
-      "classificationNote": "Preliminary classification is PARTLY FUNDED until a cited official monthly student budget confirms that any living stipend covers basic costs for the full funded period.",
-      "localSupportSnapshot": "No ITASIA programme stipend amount stated. A separate UTokyo Fellowship advertises ¥200,000/month and is not automatic with ITASIA admission.",
-      "ntdSupportSnapshot": "Separate UTokyo Fellowship: ¥200,000/month ≈ NT$41,307/month if separately awarded; ITASIA award amount is not stated.",
-      "monthlyLocal": "No ITASIA programme stipend amount stated. A separate UTokyo Fellowship advertises ¥200,000/month and is not automatic with ITASIA admission.",
-      "projectNote": "Project note: full package, no stipend.",
-      "rubricBasis": "ITASIA donor/tuition awards are limited and do not state a guaranteed full tuition waiver or monthly stipend. The ¥200,000/month UTokyo Fellowship is a separate competitive award.",
+      "source": "Nakayama Premium Scholarship for non-Japanese applicants (IUJ official summary and 2027 scholarship guideline)",
+      "sourceUrl": "https://www.iuj.ac.jp/admissions/cost/",
+      "tuition": "100% tuition is listed for Nakayama Premium. The official summary also lists partial admission-fee support; the exact amount is not stated.",
+      "duration": "The public summary and 2027 guideline reviewed do not state the scholarship period. The IRP MA is two years; do not assume this award covers both years until IUJ confirms it.",
+      "stipend": "¥100,000/month under Nakayama Premium; the official summary does not state the award term.",
+      "monthlyLocal": "¥100,000/month (Nakayama Premium; period not stated)",
+      "monthlyStipendNTD": "≈ NT$20,654/month",
+      "localSupportSnapshot": "¥100,000/month (Nakayama Premium; period not stated)",
+      "ntdSupportSnapshot": "≈ NT$20,654/month",
+      "snapshotStipend": "¥100,000/month ≈ NT$20,654/month (award period not stated)",
+      "snapshotNote": "Competitive award also lists full tuition and partial admission-fee support. The two-year coverage term is not stated.",
+      "guarantee": "Competitive and awarded at admission; not guaranteed. If the recipient later obtains a non-JASSO monthly living stipend, the Nakayama Premium ¥100,000 stipend ends. IUJ also asks recipients to support dorm-life work-study duties.",
+      "eligibility": "IUJ’s simplified table lists Nakayama Premium for non-Japanese Master’s and PhD students. Final conditions are in the 2027 scholarship guideline and scholarship selection is competitive.",
+      "deadline": "No separate scholarship date is stated. Applicants complete the scholarship section in Phase 2 of the online application by the chosen programme deadline.",
+      "rubricBasis": "IUJ lists 100% tuition, partial admission-fee support, and ¥100,000/month. Its official first-year budget implies recurring non-tuition costs of about ¥83,700–90,700/month after tuition and the one-time admission fee are excluded, so the stipend appears sufficient while received. However, the award term is not stated for the two-year MA, so complete tuition and living coverage for the full programme cannot be confirmed; rubric badge is Partly Funded.",
+      "projectNote": "The student selected IUJ as the Japan replacement. Funding terms here are from IUJ’s official current scholarship summary and 2027 guideline; no student-supplied stipend amount was assumed.",
       "fxDate": "30 October 2026",
-      "snapshotStipend": "No ITASIA stipend stated.",
-      "snapshotNote": "Separate competitive fellowship; see full details."
+      "classificationNote": "Partly Funded because the public official sources reviewed do not state how long Nakayama Premium covers the two-year MA."
     },
     "requirements": [
       {
         "item": "GPA / academic minimum",
         "status": "Not stated",
-        "details": "No separate status for this item was confirmed in the official-page review. Check the linked current-cycle requirements page before applying."
+        "details": "The 2027 GSIR admissions materials reviewed do not publish a minimum GPA."
       },
       {
         "item": "Language tests and English-medium degree",
         "status": "Required",
-        "details": "All instruction is in English. Non-native English speakers must provide official TOEFL iBT or IELTS Academic proof; the current guidelines define the native-speaker exemption."
+        "details": "If no exemption applies, submit TOEFL iBT 72, IELTS Academic 6.5, or TOEIC 800. Scores must be within two years. A degree taught in English may qualify for exemption when the institution’s evidence confirms the medium of instruction."
       },
       {
         "item": "Transcripts",
         "status": "Required",
-        "details": "Submit official academic records under the current admissions guidelines."
+        "details": "Submit official academic transcripts with the institution’s stamp or registrar signature. If the school cannot issue English documents, submit the original-language record plus a professional English translation."
       },
       {
         "item": "Diploma / expected graduation",
         "status": "Required",
-        "details": "A bachelor’s degree or equivalent is required for the M.A.S."
+        "details": "Submit official degree certificates. Expected graduates must submit an official certificate with expected graduation date and complete graduation by the stated 2027 enrolment deadline."
       },
       {
         "item": "Thesis / writing sample",
         "status": "Not stated",
-        "details": "No separate status for this item was confirmed in the official-page review. Check the linked current-cycle requirements page before applying."
+        "details": "No separate thesis or writing sample is listed for IRP in the reviewed guidelines."
       },
       {
         "item": "Research proposal / study plan",
         "status": "Required",
-        "details": "Submit an English application including the required study-plan/application materials listed in the current guidelines."
+        "details": "Enter a research-topic summary of 500–700 words in the online application; it should relate to the personal statement and proposed study at IUJ."
       },
       {
         "item": "Contact with an advisor",
         "status": "Not stated",
-        "details": "No separate status for this item was confirmed in the official-page review. Check the linked current-cycle requirements page before applying."
+        "details": "No prior faculty-supervisor contact requirement is stated for IRP."
       },
       {
         "item": "Personal statement",
-        "status": "Not stated",
-        "details": "No separate status for this item was confirmed in the official-page review. Check the linked current-cycle requirements page before applying."
+        "status": "Required",
+        "details": "Required, 400–600 words. IUJ instructs applicants to write it independently and upload it through the online application."
       },
       {
         "item": "Recommendation letters",
-        "status": "Required",
-        "details": "Two online evaluations/references are required; at least one must be from outside GSII."
+        "status": "Not stated",
+        "details": "The application asks for one referee’s name/contact; the reviewed guideline does not state that a recommendation letter must be submitted with the application."
       },
       {
         "item": "CV / résumé",
         "status": "Not stated",
-        "details": "No separate status for this item was confirmed in the official-page review. Check the linked current-cycle requirements page before applying."
+        "details": "The online application collects full-time work and relevant internship/volunteering history; a separate CV upload is not listed in the reviewed checklist."
       },
       {
         "item": "Passport or ID",
         "status": "Required",
-        "details": "Submit the identity and nationality documents required by the current international application guidelines."
+        "details": "Upload a copy of passport or photo identification in the online application."
       },
       {
         "item": "Application fee",
         "status": "Required",
-        "details": "¥10,000 application fee."
+        "details": "¥15,000, non-refundable. International applicants may pay by bank transfer or Flywire."
       },
       {
         "item": "Translations of documents",
         "status": "Required",
-        "details": "Supporting documents not in English or Japanese require official translations."
+        "details": "If official certificates/transcripts are not available in English, submit the original-language documents with professional English translations."
       },
       {
         "item": "Authentication / apostille / legalization",
         "status": "Not stated",
-        "details": "No separate status for this item was confirmed in the official-page review. Check the linked current-cycle requirements page before applying."
+        "details": "Official records must carry the issuing institution’s stamp or registrar signature. No separate apostille rule was confirmed in the reviewed guideline."
       },
       {
         "item": "Other requirements",
         "status": "Required",
-        "details": "Official GRE General Test score report is mandatory for Fall 2027. Selection is based on documents and may include an interview."
+        "details": "List 16 total years of education in the application. Scholarship applicants complete the optional scholarship section in Phase 2. GMAT/GRE is listed for GSIM only, not IRP."
       }
     ],
     "optionalTests": [
       {
-        "name": "GRE",
-        "status": "Required",
-        "details": "GRE General Test required for Fall 2027"
+        "name": "TOEFL iBT",
+        "status": "Required unless exempt",
+        "details": "Minimum 72; score must be within two years."
       },
       {
-        "name": "GMAT",
-        "status": "Not stated",
-        "details": "GRE General Test required for Fall 2027"
+        "name": "IELTS Academic",
+        "status": "Required unless exempt",
+        "details": "Minimum 6.5; score must be within two years."
       },
       {
-        "name": "Local-language test",
+        "name": "TOEIC",
+        "status": "Required unless exempt",
+        "details": "Minimum 800; score must be within two years."
+      },
+      {
+        "name": "English-medium degree exemption",
+        "status": "May qualify",
+        "details": "A prior undergraduate or graduate degree taught in English may qualify with official evidence of the medium of instruction."
+      },
+      {
+        "name": "GRE / GMAT",
+        "status": "Not required for IRP",
+        "details": "The 2027 IUJ guideline lists GMAT/GRE only for GSIM applicants."
+      },
+      {
+        "name": "Japanese-language test",
         "status": "Not stated",
-        "details": "No local-language test requirement was separately confirmed in the reviewed sources."
+        "details": "No Japanese-language test rule is stated for IRP in the reviewed admissions pages."
       }
     ],
-    "applicationFee": "¥10,000; non-refundable status not stated.",
-    "applicationDeadline": "Fall 2027: 2 Dec 2026, 12:00 noon JST.",
-    "scholarshipDeadline": "Not stated for ITASIA donor awards on the cited current program materials; the available 2026 guidelines say eligible awards are offered with admission notification. Separate scholarship deadlines/processes depend on the award and graduate school; consult the relevant official scholarship/graduate-school instructions.",
-    "startDate": "Fall 2027",
-    "admissionsContact": "ITASIA Admissions Office, Graduate School of Interdisciplinary Information Studies, The University of Tokyo, 7-3-1 Hongo, Bunkyo-ku, Tokyo 113-0033, Japan. The official contact page links an email contact form and recommends consulting the ITASIA chatbot first. https://itasia.iii.u-tokyo.ac.jp/contact",
+    "greGmat": "Not required for IRP; 2027 IUJ guideline lists GMAT/GRE only for GSIM applicants.",
+    "applicationDeadline": "September 2027 intake for international GSIR applicants: Round 1 — 10 December 2026; Round 2 — 11 February 2027; Round 3 — 14 April 2027.",
+    "scholarshipDeadline": "No separate date is stated. Complete IUJ’s scholarship section in Phase 2 by the selected programme application deadline.",
+    "applicationFee": "¥15,000, non-refundable; international applicants may pay by bank transfer or Flywire",
+    "applicationFeeLocal": "¥15,000, non-refundable",
+    "applicationFeeNTD": "≈ NT$3,098",
+    "feeCurrency": "JPY",
+    "feeAmount": 15000,
+    "feeExchangeRate": "1 JPY ≈ NT$0.2065 on 30 October 2026",
+    "stipendNtwd": "≈ NT$20,654/month",
+    "exchangeRate": "ECB 30 October 2026: EUR/USD 1.1172, EUR/SGD 1.4282, EUR/JPY 175.68, EUR/KRW 1491.76; Central Bank of Taiwan USD/TWD 32.478. Indicative cross-rates: SGD 1 ≈ NT$25.4057; JPY 1 ≈ NT$0.2065; KRW 1 ≈ NT$0.0243.",
+    "startDate": "September 2027 (international GSIR applicants).",
+    "admissionsContact": "IUJ Graduate School of International Relations Admissions: admgsir@iuj.ac.jp.",
     "courses": [
       {
-        "title": "Introduction to Media and Communication (ITASIA 201)",
-        "url": "https://itasia.iii.u-tokyo.ac.jp/curriculum"
+        "title": "DCC5065 — Foreign Policy Analysis",
+        "url": "https://www.iuj.ac.jp/assets/img/Academics-GSIR-CurriculumHandbook_2026.pdf"
       },
       {
-        "title": "Media Design (ITASIA 411)",
-        "url": "https://itasia.iii.u-tokyo.ac.jp/curriculum"
+        "title": "DCC5020 — International Political Economy",
+        "url": "https://www.iuj.ac.jp/assets/img/Academics-GSIR-CurriculumHandbook_2026.pdf"
       },
       {
-        "title": "Introduction to Digital Technology and Society (ITASIA 302)",
-        "url": "https://itasia.iii.u-tokyo.ac.jp/curriculum"
+        "title": "DCC5095 — International Organization",
+        "url": "https://www.iuj.ac.jp/assets/img/Academics-GSIR-CurriculumHandbook_2026.pdf"
       }
     ],
-    "description": "ITASIA is an interdisciplinary master’s programme on information, technology and Asian society. Students can study media, communication and digital technology alongside regional questions. All instruction is in English, and the M.A.S. normally takes two years, although intensive first-year Japanese can extend the plan. The programme is based at the University of Tokyo’s Hongo campus.",
-    "draftClaim": "The draft lists media and communication courses and MEXT funding; current programme and award details have not been checked.",
+    "description": "IUJ’s International Relations Program offers two two-year master’s degrees: International Relations and Political Science. The curriculum focuses on international relations theory, methods, and policy analysis, with electives in foreign policy and international institutions. IUJ’s official 2027 admissions brochure is for English-language applicants, and the university describes its graduate programmes as English-medium. This is an adjacent public-affairs option, not a strategic-communication degree.",
+    "ibscFit": "The IRP is not a communication degree, but it can support IBSC students interested in public affairs, diplomacy, and international organisations. Courses in foreign policy, international political economy, and international organisations provide policy context rather than direct communication training.",
+    "requirementsSummary": "Official transcripts and degree evidence, TOEFL iBT 72 / IELTS Academic 6.5 / TOEIC 800 unless exempt, a 400–600-word personal statement, 500–700-word research-topic summary, one referee contact, passport/photo ID, and ¥15,000 application fee. The online form records 16 years of education.",
     "officialSources": [
       {
-        "label": "Official programme page",
-        "url": "https://itasia.iii.u-tokyo.ac.jp/introduction"
+        "label": "IUJ International Relations Program: MA options and programme length",
+        "url": "https://www.iuj.ac.jp/academics/gsir/programs/irp/"
       },
       {
-        "label": "University website",
-        "url": "https://www.u-tokyo.ac.jp/en/index.html"
+        "label": "IUJ international master’s admission schedules",
+        "url": "https://www.iuj.ac.jp/admissions/"
       },
       {
-        "label": "Admissions and document requirements",
-        "url": "https://itasia.iii.u-tokyo.ac.jp/admissions"
+        "label": "IUJ 2027 master’s admissions guidelines",
+        "url": "https://www2.iuj.ac.jp/admission/pdf/2027/Instructions_M_E.pdf"
       },
       {
-        "label": "Additional requirements",
-        "url": "https://itasia.iii.u-tokyo.ac.jp/admissions-guidelines"
+        "label": "IUJ 2027 master’s scholarship guidelines",
+        "url": "https://www2.iuj.ac.jp/admission/pdf/2027/Sch_Instructions_M_E.pdf"
       },
       {
-        "label": "Additional requirements",
-        "url": "https://itasia.iii.u-tokyo.ac.jp/blog/202609083865"
+        "label": "IUJ official tuition, costs, and scholarship summary",
+        "url": "https://www.iuj.ac.jp/admissions/cost/"
       },
       {
-        "label": "Official scholarship/funding source",
-        "url": "https://itasia.iii.u-tokyo.ac.jp/tuition"
+        "label": "IUJ 2027 brochure: English-language programme information",
+        "url": "https://www2.iuj.ac.jp/admission/pdf/2027/IUJBrochure_E.pdf"
       },
       {
-        "label": "Official curriculum/course page",
-        "url": "https://itasia.iii.u-tokyo.ac.jp/curriculum"
+        "label": "IUJ 2026 GSIR curriculum handbook",
+        "url": "https://www.iuj.ac.jp/assets/img/Academics-GSIR-CurriculumHandbook_2026.pdf"
       },
       {
-        "label": "Official admissions contact",
-        "url": "https://itasia.iii.u-tokyo.ac.jp/contact"
-      },
-      {
-        "label": "ECB euro reference exchange rates (30 October 2026)",
-        "url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html"
-      },
-      {
-        "label": "Central Bank of Taiwan USD/TWD closing rates (30 October 2026)",
+        "label": "Central Bank of Taiwan USD/TWD rates",
         "url": "https://www.cbc.gov.tw/en/lp-700-2.html"
+      },
+      {
+        "label": "ECB historical reference exchange rates",
+        "url": "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml"
       }
     ],
-    "image": "assets/campuses/tokyo.jpg",
-    "imageAlt": "The University of Tokyo campus building",
-    "imageCredit": "The University of Tokyo official campus page",
-    "lastChecked": "1 Nov 2026",
-    "rankingEligible": false,
-    "score": 48,
-    "rankReason": "It placed outside the Top 10 with 48/100; ITASIA's award amount is not stated and the separate fellowship is not automatic, limiting its financial support comparison.",
-    "imageSourceUrl": "https://www.u-tokyo.ac.jp/en/about/campus.html",
-    "submittedCandidate": "International Master's Degree Program on Information, Technology, and Society in Asia (ITASIA)",
-    "programUrl": "https://itasia.iii.u-tokyo.ac.jp/introduction",
-    "universityUrl": "https://www.u-tokyo.ac.jp/en/index.html",
-    "officialProgramName": "International Master’s/Doctoral Degree Program: Information, Technology, and Society in Asia (ITASIA); the master's degree is Master of Arts and Sciences in the field of Information Studies (M.A.S.).",
-    "verificationDetails": "ITASIA is a valid English-only interdisciplinary M.A.S. programme, usually two years, with communication as an adjacent subject rather than a strategic-communication focus. The Fall 2027 application deadline is 2 December 2026; GRE General is mandatory and two references/evaluations are required. ITASIA donor awards/waivers are limited and unspecified; the ¥200,000/month UTokyo Fellowship is separate and not guaranteed by admission.",
-    "englishSourceUrl": "https://itasia.iii.u-tokyo.ac.jp/introduction",
-    "durationSourceNote": "M.A.S. normally 2 years (30 credits); official curriculum says intensive Japanese during first year may result in a three-year graduation plan. ITASIA Admissions Office/program is at Hongo Campus, Bunkyo-ku, Tokyo, Japan.",
-    "ibscFit": "Media and communication appear in the curriculum, but strategic communication is not the programme’s central focus. Introduction to Media and Communication and Media Design offer the closest communication links; Introduction to Digital Technology and Society adds a digital-society perspective.",
-    "requirementsSummary": "For M.A.S., applicants need a bachelor's degree or equivalent. The current Fall 2027 admissions page states an official GRE General Test score report is mandatory; official TOEFL iBT or IELTS Academic report is required for non-native English speakers (native-speaker definition is on the page). Two online evaluations/references are required, at least one from outside GSII. Official guidelines additionally list online application, certified degree/graduation and academic-record documents, and other application materials; application must be in English, and non-English/Japanese supporting documents need official translation. Selection is based on submitted documents and may include interview if considered necessary. Consult current guidelines, as requirements/docs are cycle-specific.",
-    "applicationFeeNTD": "≈ NT$2,065 (rate dated 30 October 2026)",
-    "exchangeRate": "Indicative cross-rate, 30 October 2026: ECB euro reference rates crossed with the Central Bank of Taiwan's USD/TWD close; amounts rounded to the nearest NT$1. Not a transaction quote. Sources: ECB and CBC links below.",
-    "stipendNtwd": "Separate UTokyo Fellowship: ¥200,000/month ≈ NT$41,307/month if separately awarded; ITASIA award amount is not stated.",
-    "fundingScreenshotUrl": "https://itasia.iii.u-tokyo.ac.jp/tuition",
-    "requirementsScreenshotUrl": "https://itasia.iii.u-tokyo.ac.jp/admissions",
-    "sourceReviewDate": "2026-10-31",
-    "award": null,
-    "imageCreditNote": "The University of Tokyo official campus page",
     "officialScreenshots": [
       {
         "kind": "funding",
-        "path": "assets/evidence/tokyo-itasia-funding.jpg",
-        "sourceUrl": "https://itasia.iii.u-tokyo.ac.jp/tuition",
-        "capturedAt": "2026-11-01",
-        "alt": "Official funding information page for this programme; captured 2026-11-01"
+        "path": "assets/evidence/iuj-funding.jpg",
+        "sourceUrl": "https://www.iuj.ac.jp/admissions/cost/",
+        "pageTitle": "IUJ Tuition and Scholarships — Nakayama Premium",
+        "capturedAt": "2026-11-02",
+        "alt": "Official IUJ scholarship summary showing the Nakayama Premium full tuition coverage, partial admission-fee support, and ¥100,000 monthly stipend; scholarship term is not stated."
       },
       {
         "kind": "requirements",
-        "path": "assets/evidence/tokyo-itasia-requirements.jpg",
-        "sourceUrl": "https://itasia.iii.u-tokyo.ac.jp/admissions",
-        "capturedAt": "2026-11-01",
-        "alt": "Official requirements information page for this programme; captured 2026-11-01"
+        "path": "assets/evidence/iuj-requirements.jpg",
+        "sourceUrl": "https://www2.iuj.ac.jp/admission/pdf/2027/Instructions_M_E.pdf",
+        "pageTitle": "IUJ 2027 Master’s Admissions Guidelines",
+        "capturedAt": "2026-11-02",
+        "alt": "Official IUJ guidelines pages 6–7 showing online application fields, 16-year education requirement, ID, official transcripts, translation rules, and English-test policy."
       }
     ],
-    "feeExchangeRate": "Indicative cross-rate, 30 October 2026: ECB euro reference rates crossed with the Central Bank of Taiwan's USD/TWD close; amounts rounded to the nearest NT$1. Not a transaction quote. Sources: ECB and CBC links below.",
-    "applicationFeeLocal": "¥10,000; non-refundable status not stated.",
-    "feeCurrency": "JPY",
-    "feeAmount": 10000,
+    "fundingScreenshotUrl": "assets/evidence/iuj-funding.jpg",
+    "requirementsScreenshotUrl": "assets/evidence/iuj-requirements.jpg",
+    "image": "assets/campuses/iuj-main-facade.jpg",
+    "imageAlt": "Main Facade at the International University of Japan campus",
+    "imageCredit": "Photo by Wsj / S. J. Wong; released into the public domain; resized for this site",
+    "imageCreditNote": "The Commons page records that the author released the image into the public domain. Resized without cropping.",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:IUJ_Main_Facade.jpg",
+    "imageLicenseLabel": "Public domain (see source page)",
+    "imageLicenseUrl": "",
+    "lastChecked": "2026-11-02",
+    "sourceReviewDate": "2026-11-02",
+    "verificationDetails": [
+      "IUJ IRP: two-year MA degrees in International Relations or Political Science.",
+      "IUJ 2027 cost page: Nakayama Premium coverage and cost estimates.",
+      "IUJ 2027 guidelines: application schedules, documents and scholarship application flow.",
+      "FX conversion uses ECB/CBC official rates for 30 October 2026."
+    ],
+    "rankingEligible": true,
+    "rank": 5,
+    "score": 78.44,
     "scoreBreakdown": {
-      "financial": 0.0,
-      "tuition_points_out_of_20": 0.0,
-      "official_monthly_cash_points_out_of_10": 0.0,
-      "documented_duration_points_out_of_10": 0.0,
-      "course_and_field_fit": 17,
-      "field_fit_points_out_of_10": 2,
-      "official_course_points_out_of_15": 15,
+      "financial": 23.44,
+      "course_and_field_fit": 20,
       "english_medium_points_out_of_10": 10,
-      "application_readiness_out_of_25": 21.0,
-      "known_document_items_out_of_15": 9,
-      "total_out_of_100": 48.0,
-      "cash_basis_note": "",
-      "input_basis": "Source-backed maximum terms; user-only claims do not increase the score.",
-      "as_of": "2026-10-31"
+      "application_readiness_out_of_25": 25,
+      "total_out_of_100": 78.44,
+      "tuition_points_out_of_20": 20,
+      "cash_support_points_out_of_10": 3.44,
+      "funded_duration_points_out_of_10": 0,
+      "field_fit_points_out_of_10": 5,
+      "official_related_course_points_out_of_15": 15,
+      "published_deadline_points_out_of_5": 5,
+      "scholarship_deadline_points_out_of_5": 5,
+      "fee_terms_points_out_of_5": 5,
+      "requirements_completeness_points_out_of_5": 5,
+      "contact_and_start_date_points_out_of_5": 5
     },
-    "rankingSummary": "Linked courses include Introduction to Media and Communication (ITASIA 201), Media Design (ITASIA 411), alongside a Related, but not a direct strategic communication program. field fit. The Partly Funded result reflects ITASIA donor/tuition awards are limited and do not state a guaranteed full tuition waiver or monthly stipend. The ¥200,000/month UTokyo Fellowship is a separate competitive award.",
-    "rank": null,
-    "scoreCashBasisNote": ""
+    "scoreCashBasisNote": "Cash points use ¥100,000/month ≈ NT$20,654 at the 30 October 2026 cross-rate; duration points are zero because the public Nakayama Premium summary does not state the award term.",
+    "rankingSummary": "An English-medium, two-year policy programme with relevant international-affairs courses. Nakayama Premium lists full tuition and ¥100,000/month but does not state its period, so the award is not treated as a full two-year package. Score 78.44/100.",
+    "rankReason": "",
+    "award": null
   },
   {
     "id": "nccu-imics",
@@ -2798,7 +2825,7 @@
       "as_of": "2026-10-31"
     },
     "rankingSummary": "Linked courses include Communication Theories, Research Methods, alongside a Relevant; strategic communication adjacent rather than explicitly a dedicated strategic communication degree. field fit. The Partly Funded result reflects The NCCU pilot and MOE award provide living support, but the Taipei reference budget is about NT$28,000–30,000/month. A full-tuition award by itself does not meet the rubric's living-cost threshold.",
-    "rank": 6,
+    "rank": 7,
     "scoreCashBasisNote": "Cash points use the separate MOE Taiwan Scholarship at NT$20,000/month; its eligibility and application are separate. The NCCU pilot amount shown in the profile is NT$10,000/month."
   },
   {
@@ -3256,7 +3283,7 @@
     "lastChecked": "1 Nov 2026",
     "rankingEligible": false,
     "score": 44,
-    "rankReason": "It placed outside the Top 10 with 44/100; the cited Taiwan award caps tuition support and varies by country-office eligibility, limiting its financial support comparison.",
+    "rankReason": "Outside the Top 10 at 44/100. The NT$30,000 monthly figure remains an AI-derived estimate and is not confirmed by an official departmental award source.",
     "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Sun_and_shadow_over_the_lawns_at_Cheng_Kung_University.jpg",
     "submittedCandidate": "Institute of Creative Industries Design (ICID)",
     "programUrl": "https://icid.ncku.edu.tw/en/academics/programs",
@@ -3506,7 +3533,7 @@
     "lastChecked": "1 Nov 2026",
     "rankingEligible": false,
     "score": 55,
-    "rankReason": "It placed outside the Top 10 with 55/100; the full-degree English instruction is not established and the award runs one year of a two-year programme, limiting its English-medium evidence comparison.",
+    "rankReason": "Outside the Top 10 at 55/100. The published support is limited and the programme fit is less direct than the higher-ranked communication and media options.",
     "imageSourceUrl": "https://www.nkust.edu.tw/p/412-1000-1452.php?Lang=en",
     "submittedCandidate": "M.A. Program in Applied Linguistics and TESOL (English for Business Purposes track)",
     "programUrl": "https://english.nkust.edu.tw/p/412-1098-6644.php?Lang=en",
@@ -3809,7 +3836,7 @@
       "as_of": "2026-10-31"
     },
     "rankingSummary": "Linked courses include Political Economy and Public Policy, International Relations of East Asia, alongside a Low / indirect field fit. The Partly Funded result reflects The stipend is an upper limit and the scholarship is annually renewable with renewal criteria/period not stated; the published Hsinchu basic-living range excludes housing, so full living-cost coverage for the complete degree is not established.",
-    "rank": 4,
+    "rank": 6,
     "scoreCashBasisNote": ""
   }
 ]

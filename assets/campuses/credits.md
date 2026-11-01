@@ -9,10 +9,10 @@ The campus images are included as visual identifiers. Each card links to the ori
 - SOAS: official “What to see at SOAS” visitor page — https://www.soas.ac.uk/about/visit-us/what-see-soas
 - Chulalongkorn University Auditorium: photo by Tangmo, CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:Chulalongkorn_University_Auditorium_High_View.JPG ; license: https://creativecommons.org/licenses/by-sa/3.0/
 - Hong Kong Baptist University: official About HKBU page — https://www.hkbu.edu.hk/en/about-hkbu.html
-- Nanyang Technological University: official Our History page — https://www.ntu.edu.sg/about-us/history
-- Yonsei University Underwood Hall: photo by Kimhs5400, CC BY 4.0 — https://commons.wikimedia.org/wiki/File:Yonseiunderwood.jpg ; license: https://creativecommons.org/licenses/by/4.0/
-- The University of Tokyo: official Explore Our Campuses page — https://www.u-tokyo.ac.jp/en/about/campus.html
 - National Chengchi University: official International MBA website — https://imba.nccu.edu.tw/
 - National Cheng Kung University: photo by Tang Allen, CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Sun_and_shadow_over_the_lawns_at_Cheng_Kung_University.jpg ; license: https://creativecommons.org/licenses/by/2.0/
 - National Kaohsiung University of Science and Technology: official NKUST Briefing page — https://www.nkust.edu.tw/p/412-1000-1452.php?Lang=en
 - National Tsing Hua University: official Campus Photos page — https://nthu-en.site.nthu.edu.tw/p/404-1003-76353.php . The page identifies the gallery as NTHU's but does not state a separate photo author or reuse license; copyright remains with the university.
+- National University of Singapore University Hall: photo by alex.ch, CC BY 2.0; resized — https://commons.wikimedia.org/wiki/File:University_Hall,_National_University_of_Singapore_-_20070125.jpg
+- Korea University Main Hall: photo by Ksiom, CC BY-SA 3.0; resized — https://commons.wikimedia.org/wiki/File:Korea_University_Main_Hall.jpg ; license: https://creativecommons.org/licenses/by-sa/3.0/
+- International University of Japan Main Facade: photo by Wsj / S. J. Wong, released into the public domain; resized — https://commons.wikimedia.org/wiki/File:IUJ_Main_Facade.jpg
