@@ -52,6 +52,7 @@ function applyUserOverrides(programs) {
   programs.forEach(p => {
     if (!p.funding) p.funding = {};
     const matchString = (p.university + ' ' + p.program).toLowerCase();
+    let isOverridden = false;
     
     for (const override of OVERRIDES) {
       if (matchString.includes(override.key)) {
@@ -64,13 +65,16 @@ function applyUserOverrides(programs) {
         p.funding.monthlyStipendNTD = '';
         p.funding.snapshotStipend = '';
         p.stipendNtwd = '';
+        isOverridden = true;
         break; 
       }
     }
 
-    const rawStipend = String(p.funding.snapshotStipend || p.funding.stipend || p.funding.localSupportSnapshot || '').toLowerCase();
-    if (rawStipend.includes('no stipend') || rawStipend.includes('no living stipend') || rawStipend.includes('tuition-only') || rawStipend === 'not stated') {
-      p.fundingBadge = 'Partly Funded';
+    if (!isOverridden) {
+      const rawStipend = String(p.funding.snapshotStipend || p.funding.stipend || p.funding.localSupportSnapshot || '').toLowerCase();
+      if (rawStipend.includes('no stipend') || rawStipend.includes('no living stipend') || rawStipend.includes('tuition-only') || rawStipend === 'not stated') {
+        p.fundingBadge = 'Partly Funded';
+      }
     }
   });
   return programs;
@@ -101,7 +105,6 @@ function externalLink(label, href) {
 }
 
 function imageCreditMarkup(program) {
-  // Purposely returning an empty string to hide all image credits from the site
   return '';
 }
 
@@ -249,7 +252,6 @@ function screenshotPanel(program) {
   const funding = shots.find(shot => /fund/i.test(shot.kind || ''));
   const requirements = shots.find(shot => /require/i.test(shot.kind || ''));
   
-  // Stripped out the figcaption completely so it is literally just the image
   const format = (shot, title) => shot?.path
     ? `<figure style="margin-bottom: 14px;"><img src="${escapeHTML(shot.path)}" alt="${escapeHTML(shot.alt || title)}"></figure>`
     : `<p><strong>${title}:</strong> No screenshot file is attached to this source yet.</p>`;
@@ -288,7 +290,6 @@ function profileHTML(program) {
   const universityLink = externalLink('Official university website', program.universityUrl);
   const programLink = externalLink('Official programme page', program.programUrl);
   
-  // Notice that imageCredit is no longer rendered anywhere in the dialog-head
   return `<div class="dialog-head">${image ? `<img src="${escapeHTML(image)}" alt="${escapeHTML(program.imageAlt || program.university)}">` : ''}<div><h2 id="dialog-title">${escapeHTML(program.program)}</h2><p>${escapeHTML(program.university)} · ${escapeHTML(loc)}</p><div class="profile-links">${programLink}${universityLink}</div></div></div>
     <section class="dialog-section profile-quick-funding"><h3>Funding Details</h3><div class="quick-funding-badge">${fundingBadge(program)}</div><div class="fact-grid quick-fact-grid">
     <div class="fact-item quick-stipend"><span>Stipend / living support</span><strong>${escapeHTML(stipendSummary)}</strong>${stipendNote ? `<small class="quick-stipend-note">${escapeHTML(stipendNote)}</small>` : ''}</div>
@@ -330,8 +331,6 @@ function renderSources(programs) {
   programs.forEach(program => {
     const uniName = program.university;
     if (!byUniversity.has(uniName)) byUniversity.set(uniName, []);
-
-    // Purposely excluded imageSourceUrl and imageLicenseUrl to hide them from the register
 
     [...(program.officialSources || [])].forEach(source => {
       if (source.url && safeURL(source.url)) {
