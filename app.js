@@ -94,7 +94,7 @@ function applyUserOverrides(programs) {
     }
 
     if (matchString.includes('imics')) {
-      p.funding.source = 'MOE Taiwan Scholarship (Government)';
+      p.funding.source = 'New Inbound International Students Scholarship Pilot Plan';
       p.applicationDeadline = 'Round 1 passed. Round 2: Jan 19 – Mar 4, 2027.';
       p.imageCredit = 'NCCU IMICS official website';
     } else if (matchString.includes('gcit')) {
