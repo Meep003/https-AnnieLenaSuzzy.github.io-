@@ -81,7 +81,6 @@ function applyUserOverrides(programs) {
       }
     }
 
-    // Fix Funder Names
     if (matchString.includes('cheng kung') || matchString.includes('ncku')) {
       p.funding.source = 'NCKU Distinguished International Student Scholarship';
     } else if (matchString.includes('kaohsiung') || matchString.includes('nkust')) {
@@ -94,7 +93,6 @@ function applyUserOverrides(programs) {
       p.funding.source = 'DSU Toscana (Regional Grant)';
     }
 
-    // Fix NCCU IMICS & GCIT specifically (Scholarships + Round 2 Deadlines + Bad Image Credits)
     if (matchString.includes('imics')) {
       p.funding.source = 'MOE Taiwan Scholarship (Government)';
       p.applicationDeadline = 'Round 1 passed. Round 2: Jan 19 – Mar 4, 2027.';
@@ -104,7 +102,6 @@ function applyUserOverrides(programs) {
       p.applicationDeadline = 'Round 1 passed. Round 2: Jan 19 – Mar 4, 2027.';
     }
 
-    // Fix Korea University & IUJ
     if (matchString.includes('korea university')) {
       p.language = '100% English (International graduate track)';
       p.rankingEligible = true;
@@ -141,7 +138,6 @@ function applyUserOverrides(programs) {
       }
     }
 
-    // Viciously shorten the fluffy field fit text to 10 words max
     if (p.fieldFit) {
       const fitLower = p.fieldFit.toLowerCase();
       if (fitLower.includes('adjacent')) {
@@ -321,13 +317,13 @@ function renderRanking(programs) {
   )[0];
 
   if (fundingWinner) {
-    document.getElementById('best-funding').textContent = fundingWinner.program;
+    document.getElementById('best-funding').innerHTML = `<span data-open-profile="${escapeHTML(fundingWinner.id)}" style="cursor:pointer; text-decoration:underline; text-underline-offset:2px;" title="Open profile">${escapeHTML(fundingWinner.program)}</span><br><span style="font-size:0.6em; font-weight:500; font-family:var(--sans); letter-spacing:0.03em; text-decoration:none; display:block; margin-top:6px;">${escapeHTML(fundingWinner.university)}</span>`;
     const copy = document.getElementById('best-funding-copy');
     if (copy) copy.textContent = `Highest financial subscore among the Top 10 (${getSubscore(fundingWinner, 'financial')}/40), based on tuition, living support and funded duration.`;
   }
   
   if (educationWinner) {
-    document.getElementById('best-education').textContent = educationWinner.program;
+    document.getElementById('best-education').innerHTML = `<span data-open-profile="${escapeHTML(educationWinner.id)}" style="cursor:pointer; text-decoration:underline; text-underline-offset:2px;" title="Open profile">${escapeHTML(educationWinner.program)}</span><br><span style="font-size:0.6em; font-weight:500; font-family:var(--sans); letter-spacing:0.03em; text-decoration:none; display:block; margin-top:6px;">${escapeHTML(educationWinner.university)}</span>`;
     const copy = document.getElementById('best-education-copy');
     if (copy) copy.textContent = `Highest course/field fit plus English-medium score among the Top 10 (${getSubscore(educationWinner, 'course_and_field_fit') + getSubscore(educationWinner, 'english_medium_points_out_of_10')}/35).`;
   }
@@ -441,7 +437,6 @@ function renderSources(programs) {
     const uniName = program.university;
     if (!byUniversity.has(uniName)) byUniversity.set(uniName, []);
 
-    // Fallback: If no officialSources array, automatically use the program and university URLs so register is never empty
     let sourcesList = Array.isArray(program.officialSources) ? [...program.officialSources] : [];
     if (sourcesList.length === 0) {
       if (program.programUrl) sourcesList.push({label: 'Official Programme Page', url: program.programUrl});
